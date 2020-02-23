@@ -56,7 +56,7 @@ var svg4 = d3.select("body").append("svg")
   .attr("class", "zipcode");*/
 
 svg4.append("text")
-        .attr("x", 250)             
+        .attr("x", 480)             
         .attr("y", 18)
         .attr("text-anchor", "middle")  
         .style("font-size", "22px") 
@@ -74,53 +74,91 @@ var csvFile4 = require('./2001_all.csv');
             d3.min(data, function(d) { return Math.log(d.Number); }),
             d3.max(data, function(d) { return Math.log(d.Number); })
         ]);
-       
-        //Load in GeoJSON data
-        
-            //Merge the ag. data and GeoJSON
-            //Loop through once for each ag. data value
-            for (var i = 0; i < data.length; i++) {
-                //Grab state name
-                var dataState = data[i].District;
+        var minV = d3.min(data, function(d) { return d.Number; });
+        var maxV = d3.max(data, function(d) { return d.Number; });
+        //console.log(minV);
+        //console.log(maxV);
+        //Merge the ag. data and GeoJSON
+        //Loop through once for each ag. data value
+        for (var i = 0; i < data.length; i++) {
+            //Grab state name
+            var dataState = data[i].District;
 
-                //Grab data value, and convert from string to float
-                var dataValue = parseInt(data[i].Number);
+            //Grab data value, and convert from string to float
+            var dataValue = parseInt(data[i].Number);
                 
 
-                //Find the corresponding state inside the GeoJSON
-                for (var j = 0; j < 25; j++) {
-                    var jsonState = json.features[j].properties.dist_num;
+            //Find the corresponding state inside the GeoJSON
+            for (var j = 0; j < 25; j++) {
+                var jsonState = json.features[j].properties.dist_num;
 
-                    if (dataState == jsonState) {
+                if (dataState == jsonState) {
 
-                        //Copy the data value into the JSON
-                        json.features[j].properties.value = Math.log(dataValue);
+                    //Copy the data value into the JSON
+                    json.features[j].properties.value = Math.log(dataValue);
 
-                        break;
-                    }
+                    break;
                 }
             }
-            //Bind data and create one path per GeoJSON feature
-            svg4.selectAll("path")
-                .data(json.features)
-                .enter()
-                .append("path")
-                .attr("d", path)
-                .attr("class", "zipcode")
-                .style("fill", function(d) {
+        }
+        //Bind data and create one path per GeoJSON feature
+        svg4.selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr("class", "zipcode")
+            .style("fill", function(d) {
                 //Get data value
                 var value = d.properties.value;
 
                 if (value) {
                     //If value exists…
-                    console.log(color4(value));
+                    console.log(value);
                     return color4(value);
                 } else {
                     //If value is undefined…
                     return "#ccc";
                 }
-            });
-        
+            });  
+
+        //create legend
+        var svgLegend = d3.select('#legendId')
+                        .append("svg")
+                        .attr("id", "legend")
+                        .attr("width", 130)
+                        .attr("height", 0);
+
+        var legend_data = [];
+        var difference = parseInt((maxV - minV + 1) / 5); 
+        //console.log(difference);
+
+        for (var i = 0; i < 5; i++) {
+            var tmp = parseInt(minV) + (difference * i + 0.01);
+            legend_data.push(tmp);
+        }
+        //console.log(legend_data);
+
+        var legend_box_size = 13;
+        svgLegend.selectAll("legendSquares")
+                .data(legend_data)
+                .enter()
+                .append("rect")
+                .attr("x", 3)
+                .attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
+                .attr("width", legend_box_size)
+                .attr("height", legend_box_size)
+                .style("fill", function(d, i) { return color4(Math.log(d + (-15+4*i)*difference))});
+
+        svgLegend.selectAll("legendLabels")
+                .data(legend_data)
+                .enter()
+                .append("text")
+                .attr("x", 3 + legend_box_size * 1.2)
+                .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
+                .text(function(d) { return (Math.floor(d)) + " - " + Math.floor(d + difference)})
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle");
     });
 
 // append the svg object to the body of the page
