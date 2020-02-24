@@ -148,7 +148,19 @@ var csvFile4 = require('./2001_all.csv');
                 .attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
                 .attr("width", legend_box_size)
                 .attr("height", legend_box_size)
-                .style("fill", function(d, i) { return color4(Math.log(d + (-15+4*i)*difference))});
+                .style("fill", function(d, i) { 
+                  if (i == 4) {
+                    return "rgb(237,248,233)";
+                  } else if (i == 3) {
+                    return "rgb(186,228,179)";
+                  } else if (i == 2) {
+                    return "rgb(116,196,118)";
+                  } else if (i == 1) {
+                    return "rgb(49,163,84)";
+                  } 
+                  return "rgb(0,109,44)";
+                  //return color4(Math.log(d + (-15+4*i)*difference))
+                });
 
         svgLegend.selectAll("legendLabels")
                 .data(legend_data)

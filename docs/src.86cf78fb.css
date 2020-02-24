@@ -17,10 +17,10 @@
     font-size: 20px;
 }
 
-svg {
+/*svg {
     background-color: white;
     height: 580px;
-}
+}*/
 
 #button {
 	margin-bottom: 10px;
@@ -123,7 +123,7 @@ h3 {
 
 #map {
 	margin-top: 60px;
-	margin-left: -150px;
+	margin-left: -100px;
 }
 
 #sy {
@@ -140,5 +140,11 @@ h3 {
 	font-size: 14px;
 }
 
+#legendId {
+	position: absolute;
+	margin-top: 80px;
+	margin-left: 10px;
+}
 
-/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.1e51d8db.css.map */
+
+/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.86cf78fb.css.map */

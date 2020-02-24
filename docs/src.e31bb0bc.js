@@ -374,395 +374,1917 @@ module.exports = {
 };
 },{}],"2001_all.csv":[function(require,module,exports) {
 module.exports = "/2001_all.bb978f5a.csv";
-},{}],"data.json":[function(require,module,exports) {
+},{}],"line_data.json":[function(require,module,exports) {
 module.exports = {
-  "time_percentage": {
-    "2010": [{
-      "time": "0:00-4:00",
-      "count": "0.25"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.12"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.07"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.13"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.17"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.23"
-    }],
-    "2011": [{
-      "time": "0:00-4:00",
-      "count": "0.23"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.1"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.11"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.12"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.19"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.21"
-    }],
-    "2012": [{
-      "time": "0:00-4:00",
-      "count": "0.2"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.1"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.1"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.14"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.19"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.23"
-    }],
-    "2013": [{
-      "time": "0:00-4:00",
-      "count": "0.19"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.13"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.1"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.16"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.16"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.23"
-    }],
-    "2014": [{
-      "time": "0:00-4:00",
-      "count": "0.24"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.11"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.07"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.14"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.18"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.23"
-    }],
-    "2015": [{
-      "time": "0:00-4:00",
-      "count": "0.25"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.1"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.07"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.15"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.2"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.2"
-    }],
-    "2016": [{
-      "time": "0:00-4:00",
-      "count": "0.23"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.1"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.08"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.13"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.2"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.22"
-    }],
-    "2017": [{
-      "time": "0:00-4:00",
-      "count": "0.18"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.11"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.12"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.15"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.19"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.21"
-    }],
-    "2018": [{
-      "time": "0:00-4:00",
-      "count": "0.19"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.11"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.11"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.15"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.18"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.23"
-    }],
-    "2019": [{
-      "time": "0:00-4:00",
-      "count": "0.22"
-    }, {
-      "time": "4:00-8:00",
-      "count": "0.1"
-    }, {
-      "time": "8:00-12:00",
-      "count": "0.09"
-    }, {
-      "time": "12:00-16:00",
-      "count": "0.15"
-    }, {
-      "time": "16:00-20:00",
-      "count": "0.2"
-    }, {
-      "time": "20:00-0:00",
-      "count": "0.21"
-    }]
-  },
-  "arrested_percentage": {
-    "2010": [{
-      "kind": "arrested",
-      "count": "0.53"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.46"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2011": [{
-      "kind": "arrested",
-      "count": "0.57"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.42"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2012": [{
-      "kind": "arrested",
-      "count": "0.56"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.43"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2013": [{
-      "kind": "arrested",
-      "count": "0.56"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.43"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2014": [{
-      "kind": "arrested",
-      "count": "0.56"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.43"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2015": [{
-      "kind": "arrested",
-      "count": "0.61"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.38"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2016": [{
-      "kind": "arrested",
-      "count": "0.66"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.33"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2017": [{
-      "kind": "arrested",
-      "count": "0.73"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.26"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2018": [{
-      "kind": "arrested",
-      "count": "0.65"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.34"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }],
-    "2019": [{
-      "kind": "arrested",
-      "count": "0.77"
-    }, {
-      "kind": "not_arrested",
-      "count": "0.22"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }, {
-      "kind": "arrested",
-      "count": "0"
-    }]
-  }
+  "all": [{
+    "Year": 2001,
+    "Number": 485763
+  }, {
+    "Year": 2002,
+    "Number": 486762
+  }, {
+    "Year": 2003,
+    "Number": 475951
+  }, {
+    "Year": 2004,
+    "Number": 469390
+  }, {
+    "Year": 2005,
+    "Number": 453720
+  }, {
+    "Year": 2006,
+    "Number": 448129
+  }, {
+    "Year": 2007,
+    "Number": 437033
+  }, {
+    "Year": 2008,
+    "Number": 427079
+  }, {
+    "Year": 2009,
+    "Number": 392735
+  }, {
+    "Year": 2010,
+    "Number": 370362
+  }, {
+    "Year": 2011,
+    "Number": 351836
+  }, {
+    "Year": 2012,
+    "Number": 336064
+  }, {
+    "Year": 2013,
+    "Number": 307203
+  }, {
+    "Year": 2014,
+    "Number": 275405
+  }, {
+    "Year": 2015,
+    "Number": 264272
+  }, {
+    "Year": 2016,
+    "Number": 269206
+  }, {
+    "Year": 2017,
+    "Number": 268425
+  }, {
+    "Year": 2018,
+    "Number": 267729
+  }, {
+    "Year": 2019,
+    "Number": 257608
+  }],
+  "arson": [{
+    "Year": 2001,
+    "Number": 1010
+  }, {
+    "Year": 2002,
+    "Number": 1032
+  }, {
+    "Year": 2003,
+    "Number": 955
+  }, {
+    "Year": 2004,
+    "Number": 778
+  }, {
+    "Year": 2005,
+    "Number": 691
+  }, {
+    "Year": 2006,
+    "Number": 726
+  }, {
+    "Year": 2007,
+    "Number": 712
+  }, {
+    "Year": 2008,
+    "Number": 644
+  }, {
+    "Year": 2009,
+    "Number": 616
+  }, {
+    "Year": 2010,
+    "Number": 522
+  }, {
+    "Year": 2011,
+    "Number": 504
+  }, {
+    "Year": 2012,
+    "Number": 469
+  }, {
+    "Year": 2013,
+    "Number": 364
+  }, {
+    "Year": 2014,
+    "Number": 397
+  }, {
+    "Year": 2015,
+    "Number": 453
+  }, {
+    "Year": 2016,
+    "Number": 516
+  }, {
+    "Year": 2017,
+    "Number": 444
+  }, {
+    "Year": 2018,
+    "Number": 373
+  }, {
+    "Year": 2019,
+    "Number": 374
+  }],
+  "assualt": [{
+    "Year": 2001,
+    "Number": 31384
+  }, {
+    "Year": 2002,
+    "Number": 31521
+  }, {
+    "Year": 2003,
+    "Number": 29477
+  }, {
+    "Year": 2004,
+    "Number": 28850
+  }, {
+    "Year": 2005,
+    "Number": 27066
+  }, {
+    "Year": 2006,
+    "Number": 25945
+  }, {
+    "Year": 2007,
+    "Number": 26313
+  }, {
+    "Year": 2008,
+    "Number": 25447
+  }, {
+    "Year": 2009,
+    "Number": 22861
+  }, {
+    "Year": 2010,
+    "Number": 21536
+  }, {
+    "Year": 2011,
+    "Number": 20411
+  }, {
+    "Year": 2012,
+    "Number": 19899
+  }, {
+    "Year": 2013,
+    "Number": 17972
+  }, {
+    "Year": 2014,
+    "Number": 16903
+  }, {
+    "Year": 2015,
+    "Number": 17045
+  }, {
+    "Year": 2016,
+    "Number": 18740
+  }, {
+    "Year": 2017,
+    "Number": 19304
+  }, {
+    "Year": 2018,
+    "Number": 20400
+  }, {
+    "Year": 2019,
+    "Number": 20584
+  }],
+  "battery": [{
+    "Year": 2001,
+    "Number": 93446
+  }, {
+    "Year": 2002,
+    "Number": 94151
+  }, {
+    "Year": 2003,
+    "Number": 88379
+  }, {
+    "Year": 2004,
+    "Number": 87136
+  }, {
+    "Year": 2005,
+    "Number": 83964
+  }, {
+    "Year": 2006,
+    "Number": 80666
+  }, {
+    "Year": 2007,
+    "Number": 79592
+  }, {
+    "Year": 2008,
+    "Number": 75923
+  }, {
+    "Year": 2009,
+    "Number": 68462
+  }, {
+    "Year": 2010,
+    "Number": 65403
+  }, {
+    "Year": 2011,
+    "Number": 60458
+  }, {
+    "Year": 2012,
+    "Number": 59136
+  }, {
+    "Year": 2013,
+    "Number": 54003
+  }, {
+    "Year": 2014,
+    "Number": 49449
+  }, {
+    "Year": 2015,
+    "Number": 48919
+  }, {
+    "Year": 2016,
+    "Number": 50289
+  }, {
+    "Year": 2017,
+    "Number": 49226
+  }, {
+    "Year": 2018,
+    "Number": 49808
+  }, {
+    "Year": 2019,
+    "Number": 49425
+  }],
+  "burglary": [{
+    "Year": 2001,
+    "Number": 26011
+  }, {
+    "Year": 2002,
+    "Number": 25623
+  }, {
+    "Year": 2003,
+    "Number": 25156
+  }, {
+    "Year": 2004,
+    "Number": 24564
+  }, {
+    "Year": 2005,
+    "Number": 25503
+  }, {
+    "Year": 2006,
+    "Number": 24324
+  }, {
+    "Year": 2007,
+    "Number": 24858
+  }, {
+    "Year": 2008,
+    "Number": 26218
+  }, {
+    "Year": 2009,
+    "Number": 26767
+  }, {
+    "Year": 2010,
+    "Number": 26422
+  }, {
+    "Year": 2011,
+    "Number": 26620
+  }, {
+    "Year": 2012,
+    "Number": 22843
+  }, {
+    "Year": 2013,
+    "Number": 17895
+  }, {
+    "Year": 2014,
+    "Number": 14569
+  }, {
+    "Year": 2015,
+    "Number": 13183
+  }, {
+    "Year": 2016,
+    "Number": 14287
+  }, {
+    "Year": 2017,
+    "Number": 12998
+  }, {
+    "Year": 2018,
+    "Number": 11744
+  }, {
+    "Year": 2019,
+    "Number": 9588
+  }],
+  "conceal_carry_license_violation": [{
+    "Year": 2001,
+    "Number": 0
+  }, {
+    "Year": 2002,
+    "Number": 0
+  }, {
+    "Year": 2003,
+    "Number": 0
+  }, {
+    "Year": 2004,
+    "Number": 0
+  }, {
+    "Year": 2005,
+    "Number": 0
+  }, {
+    "Year": 2006,
+    "Number": 0
+  }, {
+    "Year": 2007,
+    "Number": 0
+  }, {
+    "Year": 2008,
+    "Number": 0
+  }, {
+    "Year": 2009,
+    "Number": 0
+  }, {
+    "Year": 2010,
+    "Number": 0
+  }, {
+    "Year": 2011,
+    "Number": 0
+  }, {
+    "Year": 2012,
+    "Number": 0
+  }, {
+    "Year": 2013,
+    "Number": 0
+  }, {
+    "Year": 2014,
+    "Number": 15
+  }, {
+    "Year": 2015,
+    "Number": 34
+  }, {
+    "Year": 2016,
+    "Number": 36
+  }, {
+    "Year": 2017,
+    "Number": 69
+  }, {
+    "Year": 2018,
+    "Number": 149
+  }, {
+    "Year": 2019,
+    "Number": 217
+  }],
+  "crim_sexaul_assault": [{
+    "Year": 2001,
+    "Number": 1804
+  }, {
+    "Year": 2002,
+    "Number": 1831
+  }, {
+    "Year": 2003,
+    "Number": 1600
+  }, {
+    "Year": 2004,
+    "Number": 1574
+  }, {
+    "Year": 2005,
+    "Number": 1553
+  }, {
+    "Year": 2006,
+    "Number": 1475
+  }, {
+    "Year": 2007,
+    "Number": 1551
+  }, {
+    "Year": 2008,
+    "Number": 1539
+  }, {
+    "Year": 2009,
+    "Number": 1431
+  }, {
+    "Year": 2010,
+    "Number": 1370
+  }, {
+    "Year": 2011,
+    "Number": 1487
+  }, {
+    "Year": 2012,
+    "Number": 1430
+  }, {
+    "Year": 2013,
+    "Number": 1317
+  }, {
+    "Year": 2014,
+    "Number": 1358
+  }, {
+    "Year": 2015,
+    "Number": 1408
+  }, {
+    "Year": 2016,
+    "Number": 1577
+  }, {
+    "Year": 2017,
+    "Number": 1641
+  }, {
+    "Year": 2018,
+    "Number": 1643
+  }, {
+    "Year": 2019,
+    "Number": 1571
+  }],
+  "criminal_damage": [{
+    "Year": 2001,
+    "Number": 55851
+  }, {
+    "Year": 2002,
+    "Number": 55940
+  }, {
+    "Year": 2003,
+    "Number": 55011
+  }, {
+    "Year": 2004,
+    "Number": 53164
+  }, {
+    "Year": 2005,
+    "Number": 54548
+  }, {
+    "Year": 2006,
+    "Number": 57124
+  }, {
+    "Year": 2007,
+    "Number": 53749
+  }, {
+    "Year": 2008,
+    "Number": 52841
+  }, {
+    "Year": 2009,
+    "Number": 47724
+  }, {
+    "Year": 2010,
+    "Number": 40653
+  }, {
+    "Year": 2011,
+    "Number": 37332
+  }, {
+    "Year": 2012,
+    "Number": 35854
+  }, {
+    "Year": 2013,
+    "Number": 30853
+  }, {
+    "Year": 2014,
+    "Number": 27798
+  }, {
+    "Year": 2015,
+    "Number": 28675
+  }, {
+    "Year": 2016,
+    "Number": 31018
+  }, {
+    "Year": 2017,
+    "Number": 29044
+  }, {
+    "Year": 2018,
+    "Number": 27821
+  }, {
+    "Year": 2019,
+    "Number": 26637
+  }],
+  "ciminal_trespass": [{
+    "Year": 2001,
+    "Number": 13240
+  }, {
+    "Year": 2002,
+    "Number": 13880
+  }, {
+    "Year": 2003,
+    "Number": 14807
+  }, {
+    "Year": 2004,
+    "Number": 15913
+  }, {
+    "Year": 2005,
+    "Number": 16655
+  }, {
+    "Year": 2006,
+    "Number": 14505
+  }, {
+    "Year": 2007,
+    "Number": 13699
+  }, {
+    "Year": 2008,
+    "Number": 12310
+  }, {
+    "Year": 2009,
+    "Number": 10851
+  }, {
+    "Year": 2010,
+    "Number": 9401
+  }, {
+    "Year": 2011,
+    "Number": 8659
+  }, {
+    "Year": 2012,
+    "Number": 8216
+  }, {
+    "Year": 2013,
+    "Number": 8136
+  }, {
+    "Year": 2014,
+    "Number": 7539
+  }, {
+    "Year": 2015,
+    "Number": 6401
+  }, {
+    "Year": 2016,
+    "Number": 6306
+  }, {
+    "Year": 2017,
+    "Number": 6815
+  }, {
+    "Year": 2018,
+    "Number": 6907
+  }, {
+    "Year": 2019,
+    "Number": 6813
+  }],
+  "deceptive_practice": [{
+    "Year": 2001,
+    "Number": 14909
+  }, {
+    "Year": 2002,
+    "Number": 13719
+  }, {
+    "Year": 2003,
+    "Number": 13456
+  }, {
+    "Year": 2004,
+    "Number": 13249
+  }, {
+    "Year": 2005,
+    "Number": 13573
+  }, {
+    "Year": 2006,
+    "Number": 13594
+  }, {
+    "Year": 2007,
+    "Number": 14153
+  }, {
+    "Year": 2008,
+    "Number": 14905
+  }, {
+    "Year": 2009,
+    "Number": 13850
+  }, {
+    "Year": 2010,
+    "Number": 12525
+  }, {
+    "Year": 2011,
+    "Number": 12683
+  }, {
+    "Year": 2012,
+    "Number": 13692
+  }, {
+    "Year": 2013,
+    "Number": 13803
+  }, {
+    "Year": 2014,
+    "Number": 15800
+  }, {
+    "Year": 2015,
+    "Number": 16203
+  }, {
+    "Year": 2016,
+    "Number": 19047
+  }, {
+    "Year": 2017,
+    "Number": 19317
+  }, {
+    "Year": 2018,
+    "Number": 19320
+  }, {
+    "Year": 2019,
+    "Number": 17671
+  }],
+  "domestic_violence": [{
+    "Year": 2001,
+    "Number": 1
+  }, {
+    "Year": 2002,
+    "Number": 0
+  }, {
+    "Year": 2003,
+    "Number": 0
+  }, {
+    "Year": 2004,
+    "Number": 0
+  }, {
+    "Year": 2005,
+    "Number": 0
+  }, {
+    "Year": 2006,
+    "Number": 0
+  }, {
+    "Year": 2007,
+    "Number": 0
+  }, {
+    "Year": 2008,
+    "Number": 0
+  }, {
+    "Year": 2009,
+    "Number": 0
+  }, {
+    "Year": 2010,
+    "Number": 0
+  }, {
+    "Year": 2011,
+    "Number": 0
+  }, {
+    "Year": 2012,
+    "Number": 0
+  }, {
+    "Year": 2013,
+    "Number": 0
+  }, {
+    "Year": 2014,
+    "Number": 0
+  }, {
+    "Year": 2015,
+    "Number": 0
+  }, {
+    "Year": 2016,
+    "Number": 0
+  }, {
+    "Year": 2017,
+    "Number": 0
+  }, {
+    "Year": 2018,
+    "Number": 0
+  }, {
+    "Year": 2019,
+    "Number": 0
+  }],
+  "gambling": [{
+    "Year": 2001,
+    "Number": 934
+  }, {
+    "Year": 2002,
+    "Number": 971
+  }, {
+    "Year": 2003,
+    "Number": 1088
+  }, {
+    "Year": 2004,
+    "Number": 1122
+  }, {
+    "Year": 2005,
+    "Number": 1078
+  }, {
+    "Year": 2006,
+    "Number": 1368
+  }, {
+    "Year": 2007,
+    "Number": 1409
+  }, {
+    "Year": 2008,
+    "Number": 1199
+  }, {
+    "Year": 2009,
+    "Number": 991
+  }, {
+    "Year": 2010,
+    "Number": 927
+  }, {
+    "Year": 2011,
+    "Number": 736
+  }, {
+    "Year": 2012,
+    "Number": 724
+  }, {
+    "Year": 2013,
+    "Number": 596
+  }, {
+    "Year": 2014,
+    "Number": 393
+  }, {
+    "Year": 2015,
+    "Number": 310
+  }, {
+    "Year": 2016,
+    "Number": 189
+  }, {
+    "Year": 2017,
+    "Number": 191
+  }, {
+    "Year": 2018,
+    "Number": 201
+  }, {
+    "Year": 2019,
+    "Number": 142
+  }],
+  "homicide": [{
+    "Year": 2001,
+    "Number": 667
+  }, {
+    "Year": 2002,
+    "Number": 657
+  }, {
+    "Year": 2003,
+    "Number": 604
+  }, {
+    "Year": 2004,
+    "Number": 454
+  }, {
+    "Year": 2005,
+    "Number": 453
+  }, {
+    "Year": 2006,
+    "Number": 476
+  }, {
+    "Year": 2007,
+    "Number": 448
+  }, {
+    "Year": 2008,
+    "Number": 513
+  }, {
+    "Year": 2009,
+    "Number": 460
+  }, {
+    "Year": 2010,
+    "Number": 438
+  }, {
+    "Year": 2011,
+    "Number": 438
+  }, {
+    "Year": 2012,
+    "Number": 515
+  }, {
+    "Year": 2013,
+    "Number": 429
+  }, {
+    "Year": 2014,
+    "Number": 426
+  }, {
+    "Year": 2015,
+    "Number": 502
+  }, {
+    "Year": 2016,
+    "Number": 788
+  }, {
+    "Year": 2017,
+    "Number": 674
+  }, {
+    "Year": 2018,
+    "Number": 592
+  }, {
+    "Year": 2019,
+    "Number": 503
+  }],
+  "human_trafficking": [{
+    "Year": 2001,
+    "Number": 0
+  }, {
+    "Year": 2002,
+    "Number": 0
+  }, {
+    "Year": 2003,
+    "Number": 0
+  }, {
+    "Year": 2004,
+    "Number": 0
+  }, {
+    "Year": 2005,
+    "Number": 0
+  }, {
+    "Year": 2006,
+    "Number": 0
+  }, {
+    "Year": 2007,
+    "Number": 0
+  }, {
+    "Year": 2008,
+    "Number": 0
+  }, {
+    "Year": 2009,
+    "Number": 0
+  }, {
+    "Year": 2010,
+    "Number": 1
+  }, {
+    "Year": 2013,
+    "Number": 2
+  }, {
+    "Year": 2014,
+    "Number": 2
+  }, {
+    "Year": 2015,
+    "Number": 13
+  }, {
+    "Year": 2016,
+    "Number": 11
+  }, {
+    "Year": 2017,
+    "Number": 10
+  }, {
+    "Year": 2018,
+    "Number": 12
+  }, {
+    "Year": 2019,
+    "Number": 12
+  }],
+  "interference_with_public_officer": [{
+    "Year": 2001,
+    "Number": 406
+  }, {
+    "Year": 2002,
+    "Number": 361
+  }, {
+    "Year": 2003,
+    "Number": 408
+  }, {
+    "Year": 2004,
+    "Number": 531
+  }, {
+    "Year": 2005,
+    "Number": 615
+  }, {
+    "Year": 2006,
+    "Number": 758
+  }, {
+    "Year": 2007,
+    "Number": 677
+  }, {
+    "Year": 2008,
+    "Number": 580
+  }, {
+    "Year": 2009,
+    "Number": 573
+  }, {
+    "Year": 2010,
+    "Number": 797
+  }, {
+    "Year": 2011,
+    "Number": 1048
+  }, {
+    "Year": 2012,
+    "Number": 1228
+  }, {
+    "Year": 2013,
+    "Number": 1281
+  }, {
+    "Year": 2014,
+    "Number": 1399
+  }, {
+    "Year": 2015,
+    "Number": 1308
+  }, {
+    "Year": 2016,
+    "Number": 936
+  }, {
+    "Year": 2017,
+    "Number": 1087
+  }, {
+    "Year": 2018,
+    "Number": 1306
+  }, {
+    "Year": 2019,
+    "Number": 1546
+  }],
+  "intimidation": [{
+    "Year": 2001,
+    "Number": 279
+  }, {
+    "Year": 2002,
+    "Number": 337
+  }, {
+    "Year": 2003,
+    "Number": 364
+  }, {
+    "Year": 2004,
+    "Number": 349
+  }, {
+    "Year": 2005,
+    "Number": 258
+  }, {
+    "Year": 2006,
+    "Number": 276
+  }, {
+    "Year": 2007,
+    "Number": 255
+  }, {
+    "Year": 2008,
+    "Number": 261
+  }, {
+    "Year": 2009,
+    "Number": 231
+  }, {
+    "Year": 2010,
+    "Number": 197
+  }, {
+    "Year": 2011,
+    "Number": 171
+  }, {
+    "Year": 2012,
+    "Number": 156
+  }, {
+    "Year": 2013,
+    "Number": 134
+  }, {
+    "Year": 2014,
+    "Number": 115
+  }, {
+    "Year": 2015,
+    "Number": 123
+  }, {
+    "Year": 2016,
+    "Number": 135
+  }, {
+    "Year": 2017,
+    "Number": 151
+  }, {
+    "Year": 2018,
+    "Number": 169
+  }, {
+    "Year": 2019,
+    "Number": 163
+  }],
+  "kidnapping": [{
+    "Year": 2001,
+    "Number": 933
+  }, {
+    "Year": 2002,
+    "Number": 829
+  }, {
+    "Year": 2003,
+    "Number": 705
+  }, {
+    "Year": 2004,
+    "Number": 482
+  }, {
+    "Year": 2005,
+    "Number": 389
+  }, {
+    "Year": 2006,
+    "Number": 339
+  }, {
+    "Year": 2007,
+    "Number": 329
+  }, {
+    "Year": 2008,
+    "Number": 359
+  }, {
+    "Year": 2009,
+    "Number": 293
+  }, {
+    "Year": 2010,
+    "Number": 313
+  }, {
+    "Year": 2011,
+    "Number": 266
+  }, {
+    "Year": 2012,
+    "Number": 235
+  }, {
+    "Year": 2013,
+    "Number": 242
+  }, {
+    "Year": 2014,
+    "Number": 220
+  }, {
+    "Year": 2015,
+    "Number": 190
+  }, {
+    "Year": 2016,
+    "Number": 202
+  }, {
+    "Year": 2017,
+    "Number": 190
+  }, {
+    "Year": 2018,
+    "Number": 171
+  }, {
+    "Year": 2019,
+    "Number": 173
+  }],
+  "liquor_law_violation": [{
+    "Year": 2001,
+    "Number": 1637
+  }, {
+    "Year": 2002,
+    "Number": 1414
+  }, {
+    "Year": 2003,
+    "Number": 1311
+  }, {
+    "Year": 2004,
+    "Number": 985
+  }, {
+    "Year": 2005,
+    "Number": 1005
+  }, {
+    "Year": 2006,
+    "Number": 1135
+  }, {
+    "Year": 2007,
+    "Number": 1170
+  }, {
+    "Year": 2008,
+    "Number": 912
+  }, {
+    "Year": 2009,
+    "Number": 746
+  }, {
+    "Year": 2010,
+    "Number": 736
+  }, {
+    "Year": 2011,
+    "Number": 619
+  }, {
+    "Year": 2012,
+    "Number": 573
+  }, {
+    "Year": 2013,
+    "Number": 465
+  }, {
+    "Year": 2014,
+    "Number": 397
+  }, {
+    "Year": 2015,
+    "Number": 292
+  }, {
+    "Year": 2016,
+    "Number": 227
+  }, {
+    "Year": 2017,
+    "Number": 191
+  }, {
+    "Year": 2018,
+    "Number": 268
+  }, {
+    "Year": 2019,
+    "Number": 230
+  }],
+  "motor_vehicle_theft": [{
+    "Year": 2001,
+    "Number": 27549
+  }, {
+    "Year": 2002,
+    "Number": 25121
+  }, {
+    "Year": 2003,
+    "Number": 22748
+  }, {
+    "Year": 2004,
+    "Number": 22805
+  }, {
+    "Year": 2005,
+    "Number": 22497
+  }, {
+    "Year": 2006,
+    "Number": 21818
+  }, {
+    "Year": 2007,
+    "Number": 18573
+  }, {
+    "Year": 2008,
+    "Number": 18881
+  }, {
+    "Year": 2009,
+    "Number": 15482
+  }, {
+    "Year": 2010,
+    "Number": 19029
+  }, {
+    "Year": 2011,
+    "Number": 19388
+  }, {
+    "Year": 2012,
+    "Number": 16492
+  }, {
+    "Year": 2013,
+    "Number": 12582
+  }, {
+    "Year": 2014,
+    "Number": 9912
+  }, {
+    "Year": 2015,
+    "Number": 10068
+  }, {
+    "Year": 2016,
+    "Number": 11293
+  }, {
+    "Year": 2017,
+    "Number": 11384
+  }, {
+    "Year": 2018,
+    "Number": 9984
+  }, {
+    "Year": 2019,
+    "Number": 8975
+  }],
+  "narcotics": [{
+    "Year": 2001,
+    "Number": 50567
+  }, {
+    "Year": 2002,
+    "Number": 51789
+  }, {
+    "Year": 2003,
+    "Number": 54288
+  }, {
+    "Year": 2004,
+    "Number": 57060
+  }, {
+    "Year": 2005,
+    "Number": 56234
+  }, {
+    "Year": 2006,
+    "Number": 55813
+  }, {
+    "Year": 2007,
+    "Number": 54454
+  }, {
+    "Year": 2008,
+    "Number": 46507
+  }, {
+    "Year": 2009,
+    "Number": 43542
+  }, {
+    "Year": 2010,
+    "Number": 43393
+  }, {
+    "Year": 2011,
+    "Number": 38605
+  }, {
+    "Year": 2012,
+    "Number": 35488
+  }, {
+    "Year": 2013,
+    "Number": 34127
+  }, {
+    "Year": 2014,
+    "Number": 29118
+  }, {
+    "Year": 2015,
+    "Number": 23935
+  }, {
+    "Year": 2016,
+    "Number": 13314
+  }, {
+    "Year": 2017,
+    "Number": 11666
+  }, {
+    "Year": 2018,
+    "Number": 13494
+  }, {
+    "Year": 2019,
+    "Number": 14084
+  }],
+  "obscenity": [{
+    "Year": 2001,
+    "Number": 19
+  }, {
+    "Year": 2002,
+    "Number": 26
+  }, {
+    "Year": 2003,
+    "Number": 16
+  }, {
+    "Year": 2004,
+    "Number": 13
+  }, {
+    "Year": 2005,
+    "Number": 19
+  }, {
+    "Year": 2006,
+    "Number": 17
+  }, {
+    "Year": 2007,
+    "Number": 11
+  }, {
+    "Year": 2008,
+    "Number": 13
+  }, {
+    "Year": 2009,
+    "Number": 21
+  }, {
+    "Year": 2010,
+    "Number": 34
+  }, {
+    "Year": 2011,
+    "Number": 40
+  }, {
+    "Year": 2012,
+    "Number": 26
+  }, {
+    "Year": 2013,
+    "Number": 25
+  }, {
+    "Year": 2014,
+    "Number": 38
+  }, {
+    "Year": 2015,
+    "Number": 48
+  }, {
+    "Year": 2016,
+    "Number": 51
+  }, {
+    "Year": 2017,
+    "Number": 86
+  }, {
+    "Year": 2018,
+    "Number": 86
+  }, {
+    "Year": 2019,
+    "Number": 58
+  }],
+  "offense_involving_children": [{
+    "Year": 2001,
+    "Number": 2246
+  }, {
+    "Year": 2002,
+    "Number": 2581
+  }, {
+    "Year": 2003,
+    "Number": 3038
+  }, {
+    "Year": 2004,
+    "Number": 3082
+  }, {
+    "Year": 2005,
+    "Number": 2886
+  }, {
+    "Year": 2006,
+    "Number": 2761
+  }, {
+    "Year": 2007,
+    "Number": 2895
+  }, {
+    "Year": 2008,
+    "Number": 2629
+  }, {
+    "Year": 2009,
+    "Number": 2591
+  }, {
+    "Year": 2010,
+    "Number": 2572
+  }, {
+    "Year": 2011,
+    "Number": 2371
+  }, {
+    "Year": 2012,
+    "Number": 2246
+  }, {
+    "Year": 2013,
+    "Number": 2395
+  }, {
+    "Year": 2014,
+    "Number": 2421
+  }, {
+    "Year": 2015,
+    "Number": 2338
+  }, {
+    "Year": 2016,
+    "Number": 2340
+  }, {
+    "Year": 2017,
+    "Number": 2294
+  }, {
+    "Year": 2018,
+    "Number": 2281
+  }, {
+    "Year": 2019,
+    "Number": 2286
+  }],
+  "other_narcotic_violation": [{
+    "Year": 2001,
+    "Number": 6
+  }, {
+    "Year": 2002,
+    "Number": 5
+  }, {
+    "Year": 2003,
+    "Number": 2
+  }, {
+    "Year": 2004,
+    "Number": 9
+  }, {
+    "Year": 2005,
+    "Number": 9
+  }, {
+    "Year": 2006,
+    "Number": 9
+  }, {
+    "Year": 2007,
+    "Number": 12
+  }, {
+    "Year": 2008,
+    "Number": 12
+  }, {
+    "Year": 2009,
+    "Number": 7
+  }, {
+    "Year": 2010,
+    "Number": 6
+  }, {
+    "Year": 2011,
+    "Number": 5
+  }, {
+    "Year": 2012,
+    "Number": 6
+  }, {
+    "Year": 2013,
+    "Number": 5
+  }, {
+    "Year": 2014,
+    "Number": 10
+  }, {
+    "Year": 2015,
+    "Number": 5
+  }, {
+    "Year": 2016,
+    "Number": 4
+  }, {
+    "Year": 2017,
+    "Number": 11
+  }, {
+    "Year": 2018,
+    "Number": 1
+  }, {
+    "Year": 2019,
+    "Number": 8
+  }],
+  "other_offense": [{
+    "Year": 2001,
+    "Number": 29657
+  }, {
+    "Year": 2002,
+    "Number": 32599
+  }, {
+    "Year": 2003,
+    "Number": 31147
+  }, {
+    "Year": 2004,
+    "Number": 29532
+  }, {
+    "Year": 2005,
+    "Number": 28028
+  }, {
+    "Year": 2006,
+    "Number": 27101
+  }, {
+    "Year": 2007,
+    "Number": 26863
+  }, {
+    "Year": 2008,
+    "Number": 26533
+  }, {
+    "Year": 2009,
+    "Number": 25601
+  }, {
+    "Year": 2010,
+    "Number": 22012
+  }, {
+    "Year": 2011,
+    "Number": 20192
+  }, {
+    "Year": 2012,
+    "Number": 17481
+  }, {
+    "Year": 2013,
+    "Number": 17995
+  }, {
+    "Year": 2014,
+    "Number": 16984
+  }, {
+    "Year": 2015,
+    "Number": 17559
+  }, {
+    "Year": 2016,
+    "Number": 17298
+  }, {
+    "Year": 2017,
+    "Number": 17248
+  }, {
+    "Year": 2018,
+    "Number": 17235
+  }, {
+    "Year": 2019,
+    "Number": 16635
+  }],
+  "prostitution": [{
+    "Year": 2001,
+    "Number": 6026
+  }, {
+    "Year": 2002,
+    "Number": 6408
+  }, {
+    "Year": 2003,
+    "Number": 6214
+  }, {
+    "Year": 2004,
+    "Number": 7476
+  }, {
+    "Year": 2005,
+    "Number": 6124
+  }, {
+    "Year": 2006,
+    "Number": 7034
+  }, {
+    "Year": 2007,
+    "Number": 6087
+  }, {
+    "Year": 2008,
+    "Number": 5141
+  }, {
+    "Year": 2009,
+    "Number": 3940
+  }, {
+    "Year": 2010,
+    "Number": 2485
+  }, {
+    "Year": 2011,
+    "Number": 2424
+  }, {
+    "Year": 2012,
+    "Number": 2204
+  }, {
+    "Year": 2013,
+    "Number": 1652
+  }, {
+    "Year": 2014,
+    "Number": 1626
+  }, {
+    "Year": 2015,
+    "Number": 1322
+  }, {
+    "Year": 2016,
+    "Number": 800
+  }, {
+    "Year": 2017,
+    "Number": 735
+  }, {
+    "Year": 2018,
+    "Number": 718
+  }, {
+    "Year": 2019,
+    "Number": 680
+  }],
+  "public_indecency": [{
+    "Year": 2001,
+    "Number": 9
+  }, {
+    "Year": 2002,
+    "Number": 8
+  }, {
+    "Year": 2003,
+    "Number": 6
+  }, {
+    "Year": 2004,
+    "Number": 9
+  }, {
+    "Year": 2005,
+    "Number": 4
+  }, {
+    "Year": 2006,
+    "Number": 4
+  }, {
+    "Year": 2007,
+    "Number": 5
+  }, {
+    "Year": 2008,
+    "Number": 4
+  }, {
+    "Year": 2009,
+    "Number": 10
+  }, {
+    "Year": 2010,
+    "Number": 7
+  }, {
+    "Year": 2011,
+    "Number": 13
+  }, {
+    "Year": 2012,
+    "Number": 17
+  }, {
+    "Year": 2013,
+    "Number": 10
+  }, {
+    "Year": 2014,
+    "Number": 10
+  }, {
+    "Year": 2015,
+    "Number": 14
+  }, {
+    "Year": 2016,
+    "Number": 10
+  }, {
+    "Year": 2017,
+    "Number": 10
+  }, {
+    "Year": 2018,
+    "Number": 14
+  }, {
+    "Year": 2019,
+    "Number": 11
+  }],
+  "public_peace_violation": [{
+    "Year": 2001,
+    "Number": 2750
+  }, {
+    "Year": 2002,
+    "Number": 2457
+  }, {
+    "Year": 2003,
+    "Number": 2430
+  }, {
+    "Year": 2004,
+    "Number": 2495
+  }, {
+    "Year": 2005,
+    "Number": 2730
+  }, {
+    "Year": 2006,
+    "Number": 3068
+  }, {
+    "Year": 2007,
+    "Number": 3315
+  }, {
+    "Year": 2008,
+    "Number": 3013
+  }, {
+    "Year": 2009,
+    "Number": 3147
+  }, {
+    "Year": 2010,
+    "Number": 3538
+  }, {
+    "Year": 2011,
+    "Number": 3095
+  }, {
+    "Year": 2012,
+    "Number": 3007
+  }, {
+    "Year": 2013,
+    "Number": 3135
+  }, {
+    "Year": 2014,
+    "Number": 2903
+  }, {
+    "Year": 2015,
+    "Number": 2422
+  }, {
+    "Year": 2016,
+    "Number": 1607
+  }, {
+    "Year": 2017,
+    "Number": 1498
+  }, {
+    "Year": 2018,
+    "Number": 1371
+  }, {
+    "Year": 2019,
+    "Number": 1518
+  }],
+  "ritualism": [{
+    "Year": 2001,
+    "Number": 8
+  }, {
+    "Year": 2002,
+    "Number": 2
+  }, {
+    "Year": 2003,
+    "Number": 2
+  }, {
+    "Year": 2004,
+    "Number": 1
+  }, {
+    "Year": 2005,
+    "Number": 2
+  }, {
+    "Year": 2006,
+    "Number": 7
+  }, {
+    "Year": 2007,
+    "Number": 1
+  }, {
+    "Year": 2008,
+    "Number": 0
+  }, {
+    "Year": 2009,
+    "Number": 0
+  }, {
+    "Year": 2010,
+    "Number": 0
+  }, {
+    "Year": 2011,
+    "Number": 0
+  }, {
+    "Year": 2012,
+    "Number": 0
+  }, {
+    "Year": 2013,
+    "Number": 0
+  }, {
+    "Year": 2014,
+    "Number": 0
+  }, {
+    "Year": 2015,
+    "Number": 0
+  }, {
+    "Year": 2016,
+    "Number": 0
+  }, {
+    "Year": 2017,
+    "Number": 0
+  }, {
+    "Year": 2018,
+    "Number": 0
+  }, {
+    "Year": 2019,
+    "Number": 0
+  }],
+  "robbery": [{
+    "Year": 2001,
+    "Number": 18441
+  }, {
+    "Year": 2002,
+    "Number": 18522
+  }, {
+    "Year": 2003,
+    "Number": 17332
+  }, {
+    "Year": 2004,
+    "Number": 15978
+  }, {
+    "Year": 2005,
+    "Number": 16047
+  }, {
+    "Year": 2006,
+    "Number": 15968
+  }, {
+    "Year": 2007,
+    "Number": 15450
+  }, {
+    "Year": 2008,
+    "Number": 16703
+  }, {
+    "Year": 2009,
+    "Number": 15980
+  }, {
+    "Year": 2010,
+    "Number": 14274
+  }, {
+    "Year": 2011,
+    "Number": 13983
+  }, {
+    "Year": 2012,
+    "Number": 13485
+  }, {
+    "Year": 2013,
+    "Number": 11820
+  }, {
+    "Year": 2014,
+    "Number": 9799
+  }, {
+    "Year": 2015,
+    "Number": 9638
+  }, {
+    "Year": 2016,
+    "Number": 11960
+  }, {
+    "Year": 2017,
+    "Number": 11880
+  }, {
+    "Year": 2018,
+    "Number": 9679
+  }, {
+    "Year": 2019,
+    "Number": 7987
+  }],
+  "sex_offense": [{
+    "Year": 2001,
+    "Number": 2232
+  }, {
+    "Year": 2002,
+    "Number": 2170
+  }, {
+    "Year": 2003,
+    "Number": 2074
+  }, {
+    "Year": 2004,
+    "Number": 1804
+  }, {
+    "Year": 2005,
+    "Number": 1807
+  }, {
+    "Year": 2006,
+    "Number": 1571
+  }, {
+    "Year": 2007,
+    "Number": 1529
+  }, {
+    "Year": 2008,
+    "Number": 1493
+  }, {
+    "Year": 2009,
+    "Number": 1256
+  }, {
+    "Year": 2010,
+    "Number": 1125
+  }, {
+    "Year": 2011,
+    "Number": 1080
+  }, {
+    "Year": 2012,
+    "Number": 1069
+  }, {
+    "Year": 2013,
+    "Number": 1035
+  }, {
+    "Year": 2014,
+    "Number": 988
+  }, {
+    "Year": 2015,
+    "Number": 1008
+  }, {
+    "Year": 2016,
+    "Number": 998
+  }, {
+    "Year": 2017,
+    "Number": 1029
+  }, {
+    "Year": 2018,
+    "Number": 1136
+  }, {
+    "Year": 2019,
+    "Number": 1274
+  }],
+  "stalking": [{
+    "Year": 2001,
+    "Number": 203
+  }, {
+    "Year": 2002,
+    "Number": 200
+  }, {
+    "Year": 2003,
+    "Number": 247
+  }, {
+    "Year": 2004,
+    "Number": 215
+  }, {
+    "Year": 2005,
+    "Number": 192
+  }, {
+    "Year": 2006,
+    "Number": 186
+  }, {
+    "Year": 2007,
+    "Number": 213
+  }, {
+    "Year": 2008,
+    "Number": 190
+  }, {
+    "Year": 2009,
+    "Number": 168
+  }, {
+    "Year": 2010,
+    "Number": 189
+  }, {
+    "Year": 2011,
+    "Number": 181
+  }, {
+    "Year": 2012,
+    "Number": 207
+  }, {
+    "Year": 2013,
+    "Number": 154
+  }, {
+    "Year": 2014,
+    "Number": 140
+  }, {
+    "Year": 2015,
+    "Number": 155
+  }, {
+    "Year": 2016,
+    "Number": 176
+  }, {
+    "Year": 2017,
+    "Number": 191
+  }, {
+    "Year": 2018,
+    "Number": 207
+  }, {
+    "Year": 2019,
+    "Number": 222
+  }],
+  "theft": [{
+    "Year": 2001,
+    "Number": 99265
+  }, {
+    "Year": 2002,
+    "Number": 98327
+  }, {
+    "Year": 2003,
+    "Number": 98875
+  }, {
+    "Year": 2004,
+    "Number": 95463
+  }, {
+    "Year": 2005,
+    "Number": 85684
+  }, {
+    "Year": 2006,
+    "Number": 86240
+  }, {
+    "Year": 2007,
+    "Number": 85156
+  }, {
+    "Year": 2008,
+    "Number": 88433
+  }, {
+    "Year": 2009,
+    "Number": 80975
+  }, {
+    "Year": 2010,
+    "Number": 76756
+  }, {
+    "Year": 2011,
+    "Number": 75149
+  }, {
+    "Year": 2012,
+    "Number": 75462
+  }, {
+    "Year": 2013,
+    "Number": 71531
+  }, {
+    "Year": 2014,
+    "Number": 61565
+  }, {
+    "Year": 2015,
+    "Number": 57340
+  }, {
+    "Year": 2016,
+    "Number": 61614
+  }, {
+    "Year": 2017,
+    "Number": 64368
+  }, {
+    "Year": 2018,
+    "Number": 65252
+  }, {
+    "Year": 2019,
+    "Number": 62285
+  }],
+  "weapons_violation": [{
+    "Year": 2001,
+    "Number": 4274
+  }, {
+    "Year": 2002,
+    "Number": 4281
+  }, {
+    "Year": 2003,
+    "Number": 4211
+  }, {
+    "Year": 2004,
+    "Number": 4297
+  }, {
+    "Year": 2005,
+    "Number": 4106
+  }, {
+    "Year": 2006,
+    "Number": 3821
+  }, {
+    "Year": 2007,
+    "Number": 3554
+  }, {
+    "Year": 2008,
+    "Number": 3877
+  }, {
+    "Year": 2009,
+    "Number": 4158
+  }, {
+    "Year": 2010,
+    "Number": 3704
+  }, {
+    "Year": 2011,
+    "Number": 3880
+  }, {
+    "Year": 2012,
+    "Number": 3907
+  }, {
+    "Year": 2013,
+    "Number": 3246
+  }, {
+    "Year": 2014,
+    "Number": 3113
+  }, {
+    "Year": 2015,
+    "Number": 3364
+  }, {
+    "Year": 2016,
+    "Number": 3451
+  }, {
+    "Year": 2017,
+    "Number": 4686
+  }, {
+    "Year": 2018,
+    "Number": 5456
+  }, {
+    "Year": 2019,
+    "Number": 6323
+  }]
 };
-},{}],"crime_number.csv":[function(require,module,exports) {
-module.exports = "/crime_number.0cb8e383.csv";
 },{}],"index.js":[function(require,module,exports) {
 // set the dimensions and margins of the graph
 var margin = {
@@ -800,7 +2322,7 @@ var offset = [width4 - (bounds[0][0] + bounds[1][0]) / 2, height4 - (bounds[0][1
 projection = d3.geoMercator().center(center).scale(scale * 0.9).translate(offset);
 path = path.projection(projection); //Create SVG element
 
-var svg4 = d3.select("body").append("svg").attr("width", width4).attr("height", height4).attr("id", "map"); //Bind data and create one path per GeoJSON feature
+var svg4 = d3.select("#mapArea").append("svg").attr("width", width4).attr("height", height4).attr("id", "map"); //Bind data and create one path per GeoJSON feature
 
 /*svg4.selectAll("path")
   .data(json.features)
@@ -809,7 +2331,7 @@ var svg4 = d3.select("body").append("svg").attr("width", width4).attr("height", 
   .attr("d", path)
   .attr("class", "zipcode");*/
 
-svg4.append("text").attr("x", 250).attr("y", 18).attr("text-anchor", "middle").style("font-size", "22px").style("font-family", "STFangsong").style("font-weight", "bold").text("Chicago Map");
+svg4.append("text").attr("x", 480).attr("y", 18).attr("text-anchor", "middle").style("font-size", "22px").style("font-family", "STFangsong").style("font-weight", "bold").text("Chicago Map");
 var color4 = d3.scaleQuantize().range(["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
 
 var csvFile4 = require('./2001_all.csv');
@@ -819,7 +2341,14 @@ d3.csv(csvFile4).then(function (data) {
     return Math.log(d.Number);
   }), d3.max(data, function (d) {
     return Math.log(d.Number);
-  })]); //Load in GeoJSON data
+  })]);
+  var minV = d3.min(data, function (d) {
+    return d.Number;
+  });
+  var maxV = d3.max(data, function (d) {
+    return d.Number;
+  }); //console.log(minV);
+  //console.log(maxV);
   //Merge the ag. data and GeoJSON
   //Loop through once for each ag. data value
 
@@ -847,187 +2376,361 @@ d3.csv(csvFile4).then(function (data) {
 
     if (value) {
       //If value exists…
-      console.log(color4(value));
+      // console.log(value);
       return color4(value);
     } else {
       //If value is undefined…
       return "#ccc";
     }
-  });
-}); // append the svg object to the body of the page
-// append a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
+  }); //create legend
 
-var svg = d3.select("body").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-var tip = d3.tip().attr('class', 'd3-tip').direction('n').offset([-5, 0]).html(function (d) {
-  var content = "<span style='margin-left: 2.5px;'><b>" + d.number + "</b></span><br>";
-  return content;
+  var svgLegend = d3.select('#legendId').append("svg").attr("id", "legend").attr("width", 130).attr("height", 200);
+  var legend_data = [];
+  var difference = parseInt((maxV - minV + 1) / 5); //console.log(difference);
+
+  for (var i = 0; i < 5; i++) {
+    var tmp = parseInt(minV) + (difference * i + 0.01);
+    legend_data.push(tmp);
+  } //console.log(legend_data);
+
+
+  var legend_box_size = 13;
+  svgLegend.selectAll("legendSquares").data(legend_data).enter().append("rect").attr("x", 3).attr("y", function (d, i) {
+    return 10 + i * (legend_box_size + 8);
+  }).attr("width", legend_box_size).attr("height", legend_box_size).style("fill", function (d, i) {
+    if (i == 4) {
+      return "rgb(237,248,233)";
+    } else if (i == 3) {
+      return "rgb(186,228,179)";
+    } else if (i == 2) {
+      return "rgb(116,196,118)";
+    } else if (i == 1) {
+      return "rgb(49,163,84)";
+    }
+
+    return "rgb(0,109,44)"; //return color4(Math.log(d + (-15+4*i)*difference))
+  });
+  svgLegend.selectAll("legendLabels").data(legend_data).enter().append("text").attr("x", 3 + legend_box_size * 1.2).attr("y", function (d, i) {
+    return 10 + i * (legend_box_size + 8) + 8;
+  }).text(function (d) {
+    return Math.floor(d) + " - " + Math.floor(d + difference);
+  }).attr("text-anchor", "left").style("alignment-baseline", "middle");
+}); // Line-Chart start here
+
+var file_data = require('./line_data.json');
+
+var type = "all";
+var type_arr = ["all", "arson", "assualt", "battery", "burglary", "conceal_carry_license_violation", "crim_sexaul_assault", "criminal_damage", "ciminal_trespass", "deceptive_practice", "domestic_violence", "gambling", "homicide", "human_trafficking", "interference_with_public_officer", "intimidation", "kidnapping", "liquor_law_violation", "motor_vehicle_theft", "narcotics", "obscenity", "offense_involving_children", "other_narcotic_violation", "other_offense", "prostitution", "public_indecency", "public_peace_violation", "ritualism", "robbery", "sex_offense", "stalking", "theft", "weapons_violation"];
+var margin = {
+  top: 30,
+  right: 50,
+  bottom: 50,
+  left: 100
+},
+    width = 800 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom; // append the svg object to the body of the page
+
+var svg = d3.select("#lineChart").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.bottom + margin.top).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var parseTime = d3.timeParse("%Y"); // set the ranges
+
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]); // define the line
+
+var valueline = d3.line().x(function (d) {
+  return x(d.Year);
+}).y(function (d) {
+  return y(d.Number);
 });
-goBack();
-var radius = Math.min(width, height) / 2;
-var color = d3.scaleOrdinal(["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f"]);
-var pie = d3.pie().value(function (d) {
-  return d.count;
-}).sort(null);
-var arc = d3.arc().innerRadius(100).outerRadius(radius);
+var dataTime = d3.range(0, 19).map(function (d) {
+  return new Date(2001 + d, 1, 1);
+}); // slider start here
 
-function type(d) {
-  d.time_percentage = Number(d.time_percentage);
-  d.arrested_percentage = Number(d.arrested_percentage);
-  return d;
-}
+var sliderTime = d3.sliderBottom().min(d3.min(dataTime)).max(d3.max(dataTime)).step(1000 * 60 * 60 * 24 * 365).width(650).tickFormat(d3.timeFormat('%Y')).tickValues(dataTime).default(new Date(2001, 1, 1)).on('onchange', function (val) {
+  svg.selectAll("line").remove();
+  svg.selectAll("circle").remove();
+  var year = parseInt(val.getFullYear().toString());
+  getNum(year);
+  var x_pos = (year - 2001) * 650 / 18;
+  svg.append("line").attr("x1", x_pos) //<<== change your code here
+  .attr("y1", 0).attr("x2", x_pos) //<<== and here
+  .attr("y2", height).attr("class", "h").style("stroke-width", 2).style("stroke", "gray").style("opacity", "0.7").style("fill", "none");
+  var circle = svg.append("circle").attr("cx", 100).attr("cy", 350).attr("r", 5).attr("fill", "steelblue");
+  var path = svg.select("path");
+  var pathEl = path.node();
+  var pos = pathEl.getPointAtLength(x_pos);
+  var beginning = x_pos,
+      end = 1200;
 
-function arcTween(a) {
-  var i = d3.interpolate(this._current, a);
-  this._current = i(1);
-  return function (t) {
-    return arc(i(t));
-  };
-}
+  while (true) {
+    target = Math.floor((beginning + end) / 2);
+    pos = pathEl.getPointAtLength(target);
 
-function update() {
-  var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.value;
-  svg.selectAll("text").remove();
-  var butt = document.getElementById("control");
-  butt.style.display = "block";
-  var note = document.getElementById("note");
-  note.style.display = "block";
-  var ex1 = document.getElementById("explain1");
-  ex1.style.display = "none";
-  var ex2 = document.getElementById("explain2");
-  ex2.style.display = "block";
-  svg.attr("transform", "translate(".concat(300, ", ", height - 120, ")"));
-  svg.append("circle").attr("cx", 0).attr("cy", 0).attr("r", 1).attr("id", "center").attr("opacity", 0).style("fill", "#66c2a5");
+    if ((target === end || target === beginning) && pos.x !== x) {
+      break;
+    }
 
-  var data = require('./data.json');
-
-  d3.selectAll("input").on("change", update);
-  svg.append("circle").attr("cx", 300).attr("cy", 0).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#66c2a5");
-  svg.append("circle").attr("cx", 300).attr("cy", 30).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#fc8d62");
-  svg.append("circle").attr("cx", 300).attr("cy", 60).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#8da0cb");
-  svg.append("circle").attr("cx", 300).attr("cy", 90).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#e78ac3");
-  svg.append("circle").attr("cx", 300).attr("cy", 120).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#a6d854");
-  svg.append("circle").attr("cx", 300).attr("cy", 150).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#ffd92f");
-  svg.append("text").attr("x", 320).attr("y", 0).text("0:00-4:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 30).text("4:00-8:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 60).text("8:00-12:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 90).text("12:00-16:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 120).text("16:00-20:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 150).text("20:00-0:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("circle").attr("cx", 300).attr("cy", 0).attr("r", 6).attr("opacity", 0).attr("class", "label2").style("fill", "#66c2a5");
-  svg.append("circle").attr("cx", 300).attr("cy", 30).attr("r", 6).attr("opacity", 0).attr("class", "label2").style("fill", "#fc8d62");
-  svg.append("text").attr("x", 320).attr("y", 0).text("arrested").attr("opacity", 0).attr("class", "label2").style("font-size", "15px").attr("alignment-baseline", "middle");
-  svg.append("text").attr("x", 320).attr("y", 30).text("not arrested").attr("opacity", 0).attr("class", "label2").style("font-size", "15px").attr("alignment-baseline", "middle");
-  var path2 = svg.selectAll("path").data(pie(data[val][year])); // Update existing arcs
-
-  path2.transition().duration(200).attrTween("d", arcTween);
-  var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0, 0]).html(function (d, i) {
-    var content = "<span style='margin-left: 2.5px;'><b>" + Math.round(d.data.count * 100) + "%" + "</b></span><br>";
-    return content;
-  });
-  svg.call(tip2);
-  var str = "When did homicide cases happen in ";
-
-  if (val == "arrested_percentage") {
-    str = "How many percent of homicide commiters were arrested ";
+    if (pos.x > x_pos) end = target;else if (pos.x < x_pos) beginning = target;else break; //position found
   }
 
-  svg.append("text").attr("x", 20).attr("y", -230).attr("text-anchor", "middle").style("font-size", "20px").style("font-family", "STFangsong").style("font-weight", "bold").text(str + year + " ?*"); // Enter new arcs
+  circle.attr("opacity", 0.8).attr("cx", pos.x).attr("cy", pos.y);
+  svg.append("line").attr("x1", 0) //<<== change your code here
+  .attr("y1", pos.y).attr("x2", width) //<<== and here
+  .attr("y2", pos.y).attr("class", "v").style("stroke-width", 2).style("stroke-dasharray", "5, 5").style("stroke", "grey").style("opacity", "0.5").style("fill", "none");
+});
+var gTime = d3.select('#slider').append('svg').attr('width', 800).attr('height', 80).append('g').attr('transform', 'translate(100,30)');
+gTime.call(sliderTime); // slider ends here
 
-  path2.enter().append("path").attr("fill", function (d, i) {
-    return color(i);
-  }).attr("d", arc).attr("stroke", "white").attr("stroke-width", "6px").on("mouseover", function (d, i) {
-    tip2.show(d, i, document.getElementById("center"));
-    d3.select(this).transition().duration('50').attr('opacity', '0.6');
-  }).on("mouseout", function (d, i) {
-    tip2.hide(d, i);
-    d3.select(this).transition().duration('50').attr('opacity', '1');
-  }).each(function (d) {
-    this._current = d;
+function getNum(year) {
+  var data = file_data[type];
+  data.forEach(function (d) {
+    var y = d.Year;
+
+    if (!Number.isInteger(y)) {
+      y = parseInt(y.getFullYear().toString());
+    }
+
+    if (y == year) {
+      d3.select('#year').text("Type: " + type + " | Year: " + year + " | Number of Cases: " + d.Number);
+      return;
+    }
   });
-  var app = document.getElementsByClassName("label1");
-  var app2 = document.getElementsByClassName("label2");
-
-  if (val == "time_percentage") {
-    for (var i = 0; i < app2.length; i++) {
-      app2[i].style.opacity = 0;
-    }
-
-    for (var k = 0; k < app.length; k++) {
-      app[k].style.opacity = 1;
-    }
-  } else {
-    for (var l = 0; l < app.length; l++) {
-      app[l].style.opacity = 0;
-    }
-
-    for (var j = 0; j < app2.length; j++) {
-      app2[j].style.opacity = 1;
-    }
-  }
 }
 
-document.getElementById("button").onclick = function () {
-  goBack();
+function draw(data, type, year) {
+  // format the data
+  var data = data[type];
+  data.forEach(function (d) {
+    d.Year = parseTime(d.Year);
+    d.Number = d.Number;
+  }); // Scale the range of the data
+
+  x.domain(d3.extent(data, function (d) {
+    return d.Year;
+  }));
+  y.domain([0, d3.max(data, function (d) {
+    return d.Number;
+  })]); // Add the valueline path.
+
+  svg.append("path").data([data]).attr("class", "line").attr("d", valueline).style("stroke-width", 2); // Add the X Axis
+
+  svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20)).style("font-size", "12px"); // Add the Y Axis
+
+  svg.append("g").call(d3.axisLeft(y)).style("font-size", "12px");
+  svg.append("text").attr("x", 320).attr("y", 260).text("Year").style("font-size", "15px");
+  svg.append("text").attr("x", -125).attr("y", -65).attr("transform", "rotate(-90)").text("Total Cases").style("font-size", "15px");
+}
+
+function update(type) {
+  svg.selectAll("*").remove();
+  draw(file_data, type, 2001);
+  sliderTime.value(new Date(2001, 1, 1));
+}
+
+document.getElementById("inds").onchange = function (d) {
+  // recover the option that has been chosen
+  type = type_arr[parseInt(d3.select(this).property("value"))]; // run the updateChart function with this selected option
+
+  update(type);
 };
 
-function goBack() {
-  var butt = document.getElementById("control");
-  butt.style.display = "none";
-  var r = document.getElementById("r");
-  r.checked = true;
-  var note = document.getElementById("note");
-  note.style.display = "none";
-  var ex1 = document.getElementById("explain1");
-  ex1.style.display = "block";
-  var ex2 = document.getElementById("explain2");
-  ex2.style.display = "none";
-  svg.selectAll("*").remove();
-  svg.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  svg.call(tip);
-  svg.append("text").attr("x", 350).attr("y", -30).attr("text-anchor", "middle").style("font-size", "22px").style("font-family", "STFangsong").style("font-weight", "bold").text("Number of Homicide Cases over Years"); // get the data
-  //d3.csv('./crime_number.csv', type).then(data => {
-
-  var csvFile = require('./crime_number.csv');
-
-  d3.csv(csvFile).then(function (data) {
-    // format the data
-    data.forEach(function (d) {
-      d.number = +d.number;
-    }); // Scale the range of the data in the domains
-
-    x.domain(data.map(function (d) {
-      return d.year;
-    }));
-    y.domain([0, 800]); // append the rectangles for the bar chart
-
-    svg.selectAll(".bar").data(data).enter().append("rect").attr("class", "bar").attr("x", function (d) {
-      return x(d.year);
-    }).attr("width", x.bandwidth()).attr("height", function (d) {
-      return height - y(0);
-    }) // always equal to 0
-    .attr("y", function (d) {
-      return y(0);
-    }).on("mouseover", tip.show).on("mouseout", tip.hide).on("click", function (d) {
-      year = d.year;
-      svg.selectAll("*").remove();
-      update("time_percentage");
-      d3.select(".d3-tip").remove();
-    });
-    svg.selectAll("rect").transition().duration(800).attr("y", function (d) {
-      return y(d.number);
-    }).attr("height", function (d) {
-      return height - y(d.number);
-    }); // add the y Axis
-
-    svg.append("g").call(d3.axisLeft(y)).style("font-size", "12px"); // add the x Axis
-
-    svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x)).style("font-size", "12px");
-    svg.append("text").attr("x", 300).attr("y", 495).text("Year");
-    svg.append("text").attr("x", -250).attr("y", -50).attr("transform", "rotate(-90)").text("Total Cases");
-  });
-}
-},{"./chicago.json":"chicago.json","./2001_all.csv":"2001_all.csv","./data.json":"data.json","./crime_number.csv":"crime_number.csv"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+update("all"); // append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+// var svg = d3.select("body").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//     .append("g")
+//     .attr("transform",
+//         "translate(" + margin.left + "," + margin.top + ")");
+// var tip = d3.tip().attr('class', 'd3-tip').direction('n').offset([-5, 0])
+//     .html(function(d) {
+//         var content = "<span style='margin-left: 2.5px;'><b>" + d.number + "</b></span><br>";
+//         return content;
+//     });
+// goBack();
+// const radius = Math.min(width,height) / 2;
+// const color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb",
+//     "#e78ac3","#a6d854","#ffd92f"]);
+// const pie = d3.pie()
+//     .value(d => d.count)
+//     .sort(null);
+// const arc = d3.arc()
+//     .innerRadius(100)
+//     .outerRadius(radius);
+// function type(d) {
+//     d.time_percentage = Number(d.time_percentage);
+//     d.arrested_percentage = Number(d.arrested_percentage);
+//     return d;
+// }
+// function arcTween(a) {
+//     const i = d3.interpolate(this._current, a);
+//     this._current = i(1);
+//     return (t) => arc(i(t));
+// }
+// function update(val = this.value) {
+//     svg.selectAll("text").remove();
+//     var butt = document.getElementById("control");
+//     butt.style.display = "block";
+//     var note = document.getElementById("note");
+//     note.style.display = "block";
+//     var ex1 = document.getElementById("explain1");
+//     ex1.style.display = "none";
+//     var ex2 = document.getElementById("explain2");
+//     ex2.style.display = "block";
+//     svg.attr("transform", `translate(${300}, ${height - 120})`);
+//     svg.append("circle").attr("cx", 0).attr("cy", 0).attr("r", 1).attr("id", "center").attr("opacity", 0).style("fill", "#66c2a5");
+//     var data = require('./data.json');
+//     d3.selectAll("input")
+//         .on("change", update);
+//     svg.append("circle").attr("cx", 300).attr("cy", 0).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#66c2a5");
+//     svg.append("circle").attr("cx", 300).attr("cy", 30).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#fc8d62");
+//     svg.append("circle").attr("cx", 300).attr("cy", 60).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#8da0cb");
+//     svg.append("circle").attr("cx", 300).attr("cy", 90).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#e78ac3");
+//     svg.append("circle").attr("cx", 300).attr("cy", 120).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#a6d854");
+//     svg.append("circle").attr("cx", 300).attr("cy", 150).attr("r", 6).attr("class", "label1").attr("opacity", 0).style("fill", "#ffd92f");
+//     svg.append("text").attr("x", 320).attr("y", 0).text("0:00-4:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 30).text("4:00-8:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 60).text("8:00-12:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 90).text("12:00-16:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 120).text("16:00-20:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 150).text("20:00-0:00").attr("class", "label1").attr("opacity", 0).style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("circle").attr("cx", 300).attr("cy", 0).attr("r", 6).attr("opacity", 0).attr("class", "label2").style("fill", "#66c2a5");
+//     svg.append("circle").attr("cx", 300).attr("cy", 30).attr("r", 6).attr("opacity", 0).attr("class", "label2").style("fill", "#fc8d62");
+//     svg.append("text").attr("x", 320).attr("y", 0).text("arrested").attr("opacity", 0).attr("class", "label2").style("font-size", "15px").attr("alignment-baseline", "middle");
+//     svg.append("text").attr("x", 320).attr("y", 30).text("not arrested").attr("opacity", 0).attr("class", "label2").style("font-size", "15px").attr("alignment-baseline", "middle");
+//     const path2 = svg.selectAll("path")
+//         .data(pie(data[val][year]));
+//     // Update existing arcs
+//     path2.transition().duration(200).attrTween("d", arcTween);
+//     var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
+//         .html(function(d,i) {
+//             var content = "<span style='margin-left: 2.5px;'><b>" + Math.round(d.data.count * 100) + "%" + "</b></span><br>";   
+//             return content;
+//         });
+//     svg.call(tip2);
+//     var str = "When did homicide cases happen in ";
+//     if (val == "arrested_percentage") {
+//         str = "How many percent of homicide commiters were arrested "
+//     }
+//     svg.append("text")
+//         .attr("x", 20)             
+//         .attr("y", -230)
+//         .attr("text-anchor", "middle")  
+//         .style("font-size", "20px") 
+//         .style("font-family", "STFangsong")
+//         .style("font-weight", "bold")
+//         .text(str + year + " ?*");
+//     // Enter new arcs
+//     path2.enter().append("path")
+//         .attr("fill", (d, i) => color(i))
+//         .attr("d", arc)
+//         .attr("stroke", "white")
+//         .attr("stroke-width", "6px")
+//         .on("mouseover", function(d,i) {
+//             tip2.show(d,i,document.getElementById("center"));
+//             d3.select(this).transition().duration('50').attr('opacity', '0.6');
+//         })
+//         .on("mouseout", function(d,i) {
+//             tip2.hide(d,i);
+//             d3.select(this).transition().duration('50').attr('opacity', '1');
+//         })  
+//         .each(function(d) { this._current = d; });
+//     var app = document.getElementsByClassName("label1");
+//     var app2 = document.getElementsByClassName("label2");
+//     if (val == "time_percentage") {
+//         for (var i = 0; i < app2.length; i++) {
+//             app2[i].style.opacity = 0;
+//         }
+//         for (var k = 0; k < app.length; k++) {
+//             app[k].style.opacity = 1;
+//         }
+//     } else {
+//         for (var l = 0; l < app.length; l++) {
+//             app[l].style.opacity = 0;
+//         }
+//         for (var j = 0; j < app2.length; j++) {
+//             app2[j].style.opacity = 1;
+//         }
+//     }
+// }
+// document.getElementById("button").onclick = function() {goBack()};
+// function goBack() {
+//     var butt = document.getElementById("control");
+//     butt.style.display = "none";
+//     var r = document.getElementById("r");
+//     r.checked = true;
+//     var note = document.getElementById("note");
+//     note.style.display = "none";
+//     var ex1 = document.getElementById("explain1");
+//     ex1.style.display = "block";
+//     var ex2 = document.getElementById("explain2");
+//     ex2.style.display = "none";
+//     svg.selectAll("*").remove();
+//     svg.attr("transform",
+//         "translate(" + margin.left + "," + margin.top + ")");
+//     svg.call(tip);
+//     svg.append("text")
+//         .attr("x", 350)             
+//         .attr("y", -30)
+//         .attr("text-anchor", "middle")  
+//         .style("font-size", "22px") 
+//         .style("font-family", "STFangsong")
+//         .style("font-weight", "bold")
+//         .text("Number of Homicide Cases over Years");
+//     // get the data
+//     //d3.csv('./crime_number.csv', type).then(data => {
+//     var csvFile = require('./crime_number.csv');
+//     d3.csv(csvFile).then(function(data) {
+//         // format the data
+//         data.forEach(function(d) {
+//             d.number = +d.number;
+//         });
+//         // Scale the range of the data in the domains
+//         x.domain(data.map(function(d) { return d.year; }));
+//         y.domain([0, 800]);
+//         // append the rectangles for the bar chart
+//         svg.selectAll(".bar")
+//             .data(data)
+//             .enter().append("rect")
+//             .attr("class", "bar")
+//             .attr("x", function(d) { return x(d.year); })
+//             .attr("width", x.bandwidth())
+//             .attr("height", function(d) { return height - y(0); }) // always equal to 0
+//             .attr("y", function(d) { return y(0); })
+//             .on("mouseover", tip.show)
+//             .on("mouseout", tip.hide)
+//             .on("click", function(d) {
+//                 year = d.year;
+//                 svg.selectAll("*").remove();                    
+//                 update("time_percentage");  
+//                 d3.select(".d3-tip").remove(); 
+//             });
+//         svg.selectAll("rect")
+//        .transition()
+//        .duration(800)
+//        .attr("y", function(d) { return y(d.number); })
+//        .attr("height", function(d) { return height - y(d.number); });
+//        // add the y Axis
+//         svg.append("g")
+//             .call(d3.axisLeft(y))
+//             .style("font-size", "12px");
+//         // add the x Axis
+//         svg.append("g")
+//             .attr("transform", "translate(0," + height + ")")
+//             .call(d3.axisBottom(x))
+//             .style("font-size", "12px");
+//         svg.append("text")
+//             .attr("x", 300)
+//             .attr("y", 495)
+//             .text("Year");
+//         svg.append("text")
+//             .attr("x", -250)
+//             .attr("y", -50)
+//             .attr("transform", "rotate(-90)")
+//             .text("Total Cases");
+//     });
+// }
+},{"./chicago.json":"chicago.json","./2001_all.csv":"2001_all.csv","./line_data.json":"line_data.json"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1055,7 +2758,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63810" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57175" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
