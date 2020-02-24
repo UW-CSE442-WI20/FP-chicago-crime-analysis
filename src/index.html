@@ -9,7 +9,7 @@
     <h3>Explore the distribution of each crime type across Chicago over years</h3>
 </div>
 
-<div>
+<!-- <div>
     <p id="note">
         *Percentage of each type may add up to be not equal to 100% due to rounding.</p>
 </div>
@@ -43,17 +43,17 @@
     <p>We choose to meet up together to do this project and we basically have one person do the actual coding, other people help to debug.</p>
     <p>4. Development Process</p>
     <p>Each person spent about 14 hours on this project. We spent most time working with d3 to make the interaction/graph work properly. For the design part, we didn’t spend much time on the design of visualization but the design keeps changing when we develop our application. We keep adjusting our design to make it realizable and user friendly. For the implementation part,  all of us are new to d3, so we spent a lot of time looking at examples online and trying to learn and use technique in our project.It is interesting to learn a new coding language by looking at examples. We first tried to understand the code then apply it to our own data.</p>
-</div>
+</div> -->
 
 <body>
-	<div id="control" style="display: none">
+	<!-- <div id="control" style="display: none">
 	    <form>
 	    	<div class="button_cont" align="center" id="button" type="button">Back to All Years</div>
 	        <label class="select"><input type="radio" name="dataset" value="time_percentage" id = "r" checked> Time Period Percentage</label>
 	        <label class="select"><input type="radio" name="dataset" value="arrested_percentage"> Arrested Percentage</label>
 	    </form>
-	</div>
-    <div id="sy">Select Crime Type</div>
+	</div> -->
+    <div id="sy">Crime Type</div>
     <select id="inds">
         <option value="0" selected="selected">All</option>
         <option value="1">Arson</option>
@@ -93,8 +93,38 @@
         <p id="legendLabel">Crime Cases</p>
     </div>
 <!-- load the d3.js library -->
+</body>
+
+<style>
+    /* tell the SVG path to be a thin blue line without any area fill */
+    path {
+        stroke: steelblue;
+        stroke-width: 1;
+        fill: none;
+    }    
+    .axis {
+      shape-rendering: crispEdges;
+    }
+    .x.axis line {
+      stroke: lightgrey;
+    }
+    .x.axis .minor {
+      stroke-opacity: .5;
+    }
+    .x.axis path {
+      display: none;
+    }
+    .y.axis line, .y.axis path {
+      fill: none;
+      stroke: #000;
+    }
+</style>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+<div id="mapArea"></div>
+<div id="slider"></div>
+<div style="position: absolute; top: 1175px; left: 95px;" id="year"></div>
+<div id="lineChart"></div>
 <script src="d3-tip.js"></script>
 <script src="index.js"></script>
-</body>
