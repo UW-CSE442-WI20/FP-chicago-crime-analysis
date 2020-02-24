@@ -4,6 +4,7 @@ var margin = {top: 80, right: 50, bottom: -30, left: 80},
     height = 500 - margin.top - margin.bottom;
 
 var year = 2010;
+var format = d3.timeFormat("%Y");
 
 // set the ranges
 var x = d3.scaleBand()
@@ -41,11 +42,6 @@ projection = d3.geoMercator().center(center)
 path = path.projection(projection);
 
 
-//Create SVG element
-var svg4 = d3.select("#mapArea").append("svg")
-           .attr("width", width4)
-            .attr("height", height4)
-            .attr("id", "map");
 
 //Bind data and create one path per GeoJSON feature
 /*svg4.selectAll("path")
@@ -55,7 +51,61 @@ var svg4 = d3.select("#mapArea").append("svg")
   .attr("d", path)
   .attr("class", "zipcode");*/
 
-svg4.append("text")
+var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
+         .html(function(d) {
+         	if (d.properties.value == null) {
+         		num = 0; 
+         	} else {
+         		num = d.properties.value
+         	}
+            var content = "<span style='margin-left: 2.5px;'><b>" + num + "</b></span><br>";   
+             return content;
+         });
+
+
+var color4 = d3.scaleQuantize()
+            .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+var mapData = {};
+mapData["all"] = require('./all.csv');
+mapData["arson"] = require('./arson.csv');
+mapData["assualt"] = require('./assualt.csv');
+mapData["battery"] = require('./battery.csv');
+mapData["burglary"] = require('./burglary.csv');
+mapData["conceal_carry_license_violation"] = require('./conceal_carry_license_violation.csv');
+mapData["crim_sexaul_assault"] = require('./crim_sexaul_assault.csv');
+mapData["criminal_damage"] = require('./criminal_damage.csv');
+mapData["ciminal_trespass"] = require('./ciminal_trespass.csv');
+mapData["deceptive_practice"] = require('/deceptive_practice.csv');
+mapData["domestic_violence"] = require('./domestic_violence.csv');
+mapData["gambling"] = require('./gambling.csv');
+mapData["homicide"] = require('./homicide.csv');
+mapData["human_trafficking"] = require('./human_trafficking.csv');
+mapData["interference_with_public_officer"] = require('./interference_with_public_officer.csv');
+mapData["intimidation"] = require('./intimidation.csv');
+mapData["kidnapping"] = require('./kidnapping.csv');
+mapData["liquor_law_violation"] = require('./liquor_law_violation.csv');
+mapData["motor_vehicle_theft"] = require('./motor_vehicle_theft.csv');
+mapData["narcotics"] = require('./narcotics.csv');
+mapData["obscenity"] = require('./obscenity.csv');
+mapData["offense_involving_children"] = require('./offense_involving_children.csv');
+mapData["other_narcotic_violation"] = require('./other_narcotic_violation.csv');
+mapData["other_offense"] = require('./other_offense.csv');
+mapData["prostitution"] = require('./prostitution.csv');
+mapData["public_indecency"] = require('./public_indecency.csv');
+mapData["public_peace_violation"] = require('./public_peace_violation.csv');
+mapData["ritualism"] = require('./ritualism.csv');
+mapData["robbery"] = require('./robbery.csv');
+mapData["sex_offense"] = require('./sex_offense.csv');
+mapData["stalking"] = require('./stalking.csv');
+mapData["theft"] = require('./theft.csv');
+mapData["weapons_violation"] = require('./weapons_violation.csv');
+
+var svg4 = d3.select("#mapArea").append("svg")
+           .attr("width", width4)
+            .attr("height", height4)
+            .attr("id", "map");
+    svg4.call(tip2);
+    svg4.append("text")
         .attr("x", 480)             
         .attr("y", 18)
         .attr("text-anchor", "middle")  
@@ -63,115 +113,120 @@ svg4.append("text")
         .style("font-family", "STFangsong")
         .style("font-weight", "bold")
         .text("Chicago Map");
+svg4.selectAll("path")
+            	.data(json.features)
+            	.enter()
+            	.append("path")
+            	.attr("d", path)
+            	.attr("class", "zipcode")
 
+function drawMap(type, year) {
+	var csvFile4 = mapData[type];
+    	d3.csv(csvFile4).then(function(data) {
+       		color4.domain([
+            	d3.min(data, function(d) { return parseInt(d[year]); }),
+            	d3.max(data, function(d) { return parseInt(d[year]); })
+        	]);
+        	var minV = d3.min(data, function(d) { return parseInt(d[year]); });
+        	var maxV = d3.max(data, function(d) { return parseInt(d[year]); });
+        	//Merge the ag. data and GeoJSON
+        	//Loop through once for each ag. data value
+        	for (var i = 0; i < data.length; i++) {
+            	//Grab state name
+            	var dataState = data[i].District;
 
-var color4 = d3.scaleQuantize()
-            .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-
-var csvFile4 = require('./2001_all.csv');
-    d3.csv(csvFile4).then(function(data) {
-        color4.domain([
-            d3.min(data, function(d) { return Math.log(d.Number); }),
-            d3.max(data, function(d) { return Math.log(d.Number); })
-        ]);
-        var minV = d3.min(data, function(d) { return d.Number; });
-        var maxV = d3.max(data, function(d) { return d.Number; });
-        //console.log(minV);
-        //console.log(maxV);
-        //Merge the ag. data and GeoJSON
-        //Loop through once for each ag. data value
-        for (var i = 0; i < data.length; i++) {
-            //Grab state name
-            var dataState = data[i].District;
-
-            //Grab data value, and convert from string to float
-            var dataValue = parseInt(data[i].Number);
+            	//Grab data value, and convert from string to float
+            	var dataValue = parseInt(data[i][year]);
                 
 
-            //Find the corresponding state inside the GeoJSON
-            for (var j = 0; j < 25; j++) {
-                var jsonState = json.features[j].properties.dist_num;
+            	//Find the corresponding state inside the GeoJSON
+            	for (var j = 0; j < 25; j++) {
+                	var jsonState = json.features[j].properties.dist_num;
 
-                if (dataState == jsonState) {
+                	if (dataState == jsonState) {
 
-                    //Copy the data value into the JSON
-                    json.features[j].properties.value = Math.log(dataValue);
+                   		//Copy the data value into the JSON
+                    	json.features[j].properties.value = dataValue;
 
-                    break;
-                }
-            }
-        }
-        //Bind data and create one path per GeoJSON feature
-        svg4.selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("class", "zipcode")
-            .style("fill", function(d) {
+                    	break;
+                	}
+            	}
+        	}
+        	//Bind data and create one path per GeoJSON feature
+        	svg4.selectAll("path")
+            	.on("mouseover", function(d) {
+             		tip2.show(d);
+            		d3.select(this).transition().duration('50').attr('opacity', '0.6');
+         		})
+        		.on("mouseout", function(d) {
+            		tip2.hide(d);
+            		d3.select(this).transition().duration('50').attr('opacity', '1');
+        		})  
+            	.style("fill", function(d) {
                 //Get data value
-                var value = d.properties.value;
+                	var value = d.properties.value;
 
-                if (value) {
+
+                	if (value > 0) {
                     //If value exists…
-                    // console.log(value);
-                    return color4(value);
-                } else {
+                    	return color4(value);
+                	} else {
                     //If value is undefined…
-                    return "#ccc";
-                }
-            });  
+                    	return "#ccc";
+                	}
+            	});  
 
-        //create legend
-        var svgLegend = d3.select('#legendId')
-                        .append("svg")
-                        .attr("id", "legend")
-                        .attr("width", 130)
-                        .attr("height", 200);
+        	//create legend
+        	d3.select('#legendId').select("svg").remove();
+        	var svgLegend = d3.select('#legendId')
+                        	.append("svg")
+                        	.attr("id", "legend")
+                        	.attr("width", 130)
+                        	.attr("height", 200);
 
-        var legend_data = [];
-        var difference = parseInt((maxV - minV + 1) / 5); 
-        //console.log(difference);
+        	var legend_data = [];
+        	var difference = parseInt((maxV - minV) / 5) + 1; 
+        	//console.log(difference);
 
-        for (var i = 0; i < 5; i++) {
-            var tmp = parseInt(minV) + (difference * i + 0.01);
-            legend_data.push(tmp);
-        }
-        //console.log(legend_data);
+        	for (var i = 0; i < 5; i++) {
+            	var tmp = parseInt(minV) + (difference * i + 0.01);
+            	legend_data.push(tmp);
+        	}
 
-        var legend_box_size = 13;
-        svgLegend.selectAll("legendSquares")
-                .data(legend_data)
-                .enter()
-                .append("rect")
-                .attr("x", 3)
-                .attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
-                .attr("width", legend_box_size)
-                .attr("height", legend_box_size)
-                .style("fill", function(d, i) { 
-                  if (i == 4) {
-                    return "rgb(237,248,233)";
-                  } else if (i == 3) {
-                    return "rgb(186,228,179)";
-                  } else if (i == 2) {
-                    return "rgb(116,196,118)";
-                  } else if (i == 1) {
-                    return "rgb(49,163,84)";
-                  } 
-                  return "rgb(0,109,44)";
-                  //return color4(Math.log(d + (-15+4*i)*difference))
-                });
+        	var legend_box_size = 13;
+        	svgLegend.selectAll("legendSquares")
+                	.data(legend_data)
+                	.enter()
+                	.append("rect")
+                	.attr("x", 3)
+                	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
+                	.attr("width", legend_box_size)
+                	.attr("height", legend_box_size)
+               		.style("fill", function(d, i) { 
+                  	if (i == 4) {
+                    	return "rgb(0,109,44)";
+                  	} else if (i == 3) {
+                    	return  "rgb(49,163,84)";
+                  	} else if (i == 2) {
+                    	return "rgb(116,196,118)";
+                  	} else if (i == 1) {
+                    	return "rgb(186,228,179)";
+                  	} 
+                  	return "rgb(237,248,233)";
+                  	//return color4(Math.log(d + (-15+4*i)*difference))
+                	});
 
-        svgLegend.selectAll("legendLabels")
-                .data(legend_data)
-                .enter()
-                .append("text")
-                .attr("x", 3 + legend_box_size * 1.2)
-                .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
-                .text(function(d) { return (Math.floor(d)) + " - " + Math.floor(d + difference)})
-                .attr("text-anchor", "left")
-                .style("alignment-baseline", "middle");
-    });
+        	svgLegend.selectAll("legendLabels")
+                	.data(legend_data)
+                	.enter()
+                	.append("text")
+                	.attr("x", 3 + legend_box_size * 1.2)
+                	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
+                	.text(function(d) { return (Math.floor(d)) + " - " + Math.floor(d + difference)})
+                	.attr("text-anchor", "left")
+                	.style("alignment-baseline", "middle");
+    	});
+ }
 
 
 // Line-Chart start here
@@ -227,11 +282,11 @@ var sliderTime = d3
 .default(new Date(2001, 1, 1))
 .on('onchange', val => {
     svg.selectAll("line").remove();
-    svg.selectAll("circle").remove();
-
-    var year = parseInt(val.getFullYear().toString());
+    svg.select("#highlight").remove();
+    var year = format(val);
 
     getNum(year);
+    drawMap(type, year);
 
     var x_pos = ((year - 2001) * 650)/18;
 
@@ -245,12 +300,6 @@ var sliderTime = d3
     .style("stroke", "gray")
     .style("opacity", "0.7")
     .style("fill", "none");
-
-    var circle = svg.append("circle")
-        .attr("cx", 100)
-        .attr("cy", 350)
-        .attr("r", 5)
-        .attr("fill", "steelblue");
 
     var path = svg.select("path");
     var pathEl = path.node();
@@ -268,11 +317,13 @@ var sliderTime = d3
       else if (pos.x < x_pos) beginning = target;
       else                break; //position found
     }
-
-    circle
-      .attr("opacity", 0.8)
-      .attr("cx", pos.x)
-      .attr("cy", pos.y);
+    var circle = svg.append("circle")
+        .attr("cx", pos.x)
+        .attr("cy", pos.y)
+        .attr("r", 8)
+        .attr("opacity", 0.8)
+        .attr("fill", "steelblue")
+        .attr("id", "highlight");
 
     svg.append("line")
     .attr("x1", 0)  //<<== change your code here
@@ -286,7 +337,12 @@ var sliderTime = d3
     .style("opacity", "0.5")
     .style("fill", "none");
 
+
 });
+
+
+
+
 
 var gTime = d3
     .select('#slider')
@@ -303,9 +359,6 @@ function getNum(year) {
     var data = file_data[type];
     data.forEach(function(d) {
       var y = d.Year;
-      if  (!Number.isInteger(y)){
-        y = parseInt(y.getFullYear().toString());
-      }
       if (y == year) {
         d3.select('#year')
         .text("Type: " + type + " | Year: "+ year + " | Number of Cases: " + d.Number);
@@ -317,7 +370,7 @@ function getNum(year) {
 function draw(data, type, year) {
   
   // format the data
-  var data = data[type];
+  data = data[type];
   data.forEach(function(d) {
       d.Year = parseTime(d.Year);
       d.Number = d.Number;
@@ -326,13 +379,16 @@ function draw(data, type, year) {
   // Scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.Year; }));
   y.domain([0, d3.max(data, function(d) { return d.Number; })]);
-  
+
   // Add the valueline path.
   svg.append("path")
       .data([data])
       .attr("class", "line")
       .attr("d", valueline)
       .style("stroke-width", 2);
+  
+  
+ 
 
   // Add the X Axis
   svg.append("g")
@@ -344,6 +400,33 @@ function draw(data, type, year) {
   svg.append("g")
       .call(d3.axisLeft(y))
       .style("font-size", "12px");
+
+  
+  var path = svg.select("path");
+  var pathEl = path.node();
+  for (var i = 2001; i < 2020; i++) {
+  	var x_pos = ((i - 2001) * 650)/18;
+  	var pos = pathEl.getPointAtLength(x_pos);
+  	var beginning = x_pos, end = 1200;
+  	while (true) {
+      target = Math.floor((beginning + end) / 2);
+      pos = pathEl.getPointAtLength(target);
+      if ((target === end || target === beginning) && pos.x !== x) {
+          break;
+      }
+      if (pos.x > x_pos)      end = target;
+      else if (pos.x < x_pos) beginning = target;
+      else                break; //position found
+    }
+  	var circle = svg.append("circle")
+        .attr("cx", pos.x)
+        .attr("cy", pos.y)
+        .attr("r", 5)
+        .attr("fill", "steelblue")
+        .style("opacity", "0.5")
+        .attr("id", "dot" + i);
+  }
+
 
 
    svg.append("text")
@@ -358,12 +441,18 @@ function draw(data, type, year) {
         .attr("transform", "rotate(-90)")
         .text("Total Cases")
         .style("font-size", "15px");
+
+    data.forEach(function(d) {
+      d.Year = format(d.Year);
+      d.Number = d.Number;
+  });
 }
 
 function update(type) {
     svg.selectAll("*").remove();
     draw(file_data, type, 2001);
     sliderTime.value(new Date(2001,1,1));
+    drawMap(type, 2001)
 }
 
 document.getElementById("inds").onchange = function(d) {
@@ -374,6 +463,7 @@ document.getElementById("inds").onchange = function(d) {
 }
 
 update("all");
+
 
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
