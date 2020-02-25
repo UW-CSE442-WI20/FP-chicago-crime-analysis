@@ -130,36 +130,53 @@ svg4.selectAll("path")
             	.attr("d", path)
             	.attr("class", "zipcode")
 
+color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
+
 function drawMap(type, year) {
 	var csvFile4 = mapData[type];
     	d3.csv(csvFile4).then(function(data) {
        		color4.domain([
-            	d3.min(data, function(d) { return parseInt(d[year]); }),
+            	d3.min(data, function(d) {
+            		if (parseInt(d[year]) == 0) {
+            			return Number.MAX_SAFE_INTEGER;
+            		} 
+            		return parseInt(d[year]);
+            	}),
             	d3.max(data, function(d) { return parseInt(d[year]); })
         	]);
-        	var minV = d3.min(data, function(d) { return parseInt(d[year]); });
+        	var minV = d3.min(data, function(d) { 
+        		if (parseInt(d[year]) == 0) {
+            		return Number.MAX_SAFE_INTEGER;
+            	} 
+            	return parseInt(d[year]);
+            	});
         	var maxV = d3.max(data, function(d) { return parseInt(d[year]); });
         	//Merge the ag. data and GeoJSON
         	//Loop through once for each ag. data value
-        	for (var i = 0; i < data.length; i++) {
+        	for (var j = 0; j < 25; j++) {
             	//Grab state name
-            	var dataState = data[i].District;
-
-            	//Grab data value, and convert from string to float
-            	var dataValue = parseInt(data[i][year]);
+            	
                 
-
+            	var jsonState = json.features[j].properties.dist_num;
+            	var flag = false;
             	//Find the corresponding state inside the GeoJSON
-            	for (var j = 0; j < 25; j++) {
-                	var jsonState = json.features[j].properties.dist_num;
+            	for (var i = 0; i < data.length; i++) {
+                	var dataState = data[i].District;
+
+            		//Grab data value, and convert from string to float
+            		var dataValue = parseInt(data[i][year]);
 
                 	if (dataState == jsonState) {
 
                    		//Copy the data value into the JSON
                     	json.features[j].properties.value = dataValue;
-
+                    	flag = true;
                     	break;
                 	}
+            	}
+
+            	if (flag == false) {
+            		json.features[j].properties.value = 0;	
             	}
         	}
         	//Bind data and create one path per GeoJSON feature
@@ -187,6 +204,7 @@ function drawMap(type, year) {
             	});  
 
         	//create legend
+        	//create legend
         	d3.select('#legendId').select("svg").remove();
         	var svgLegend = d3.select('#legendId')
                         	.append("svg")
@@ -195,12 +213,22 @@ function drawMap(type, year) {
                         	.attr("height", 200);
 
         	var legend_data = [];
-        	var difference = parseInt((maxV - minV) / 5) + 1; 
+        	var difference;
         	//console.log(difference);
-
-        	for (var i = 0; i < 5; i++) {
-            	var tmp = parseInt(minV) + (difference * i + 0.01);
-            	legend_data.push(tmp);
+        	legend_data.push(-1);
+        	if (maxV - minV >= 5) {
+        		for (var i = 0; i < 5; i++) {
+        			difference = (maxV - minV) / 5.0; 
+            		var tmp = parseInt(minV) + (difference * i + 0.01);
+            		legend_data.push(tmp);
+        		}
+        	} else {
+        		for (var i = 0; i < (maxV - minV) + 1; i++) {
+            		var tmp = parseInt(minV) + i;
+            		legend_data.push(tmp);
+        		}
+        		difference = 0;
+  
         	}
 
         	var legend_box_size = 13;
@@ -212,19 +240,37 @@ function drawMap(type, year) {
                 	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
                 	.attr("width", legend_box_size)
                 	.attr("height", legend_box_size)
-               		.style("fill", function(d, i) { 
-                  	if (i == 4) {
-                    	return "rgb(0,109,44)";
-                  	} else if (i == 3) {
-                    	return  "rgb(49,163,84)";
-                  	} else if (i == 2) {
-                    	return "rgb(116,196,118)";
-                  	} else if (i == 1) {
-                    	return "rgb(186,228,179)";
-                  	} 
-                  	return "rgb(237,248,233)";
+               		.style("fill", function(d, i) {
+               		if  (maxV - minV >= 5) {
+                  		/*if (i == 4) {
+                    		return "rgb(0,109,44)";
+                  		} else if (i == 3) {
+                    		return  "rgb(49,163,84)";
+                  		} else if (i == 2) {
+                    		return "rgb(116,196,118)";
+                  		} else if (i == 1) {
+                    		return "rgb(186,228,179)";
+                  		} 
+                  			return "rgb(237,248,233)";*/
+                  		if (d == -1) {
+                  			return "#ccc";
+                  		}
+                  		return color5[i - 1];
                   	//return color4(Math.log(d + (-15+4*i)*difference))
-                	});
+                	} else {
+                		if (d == -1) {
+                  			return "#ccc";
+                  		}
+                  		if (d == 1 && d != maxV) {
+                  			return "rgb(237,248,233)";
+                  		}
+                  		if (d == 2 && maxV == 3) {
+                  			return "rgb(116,196,118)";
+                  		}
+                  		var n = 3 - maxV + minV + i;
+                		return color5[n];
+                	}
+                	}); 
 
         	svgLegend.selectAll("legendLabels")
                 	.data(legend_data)
@@ -232,7 +278,12 @@ function drawMap(type, year) {
                 	.append("text")
                 	.attr("x", 3 + legend_box_size * 1.2)
                 	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
-                	.text(function(d) { return (Math.floor(d)) + " - " + Math.floor(d + difference)})
+                	.text(function(d) {
+                		if (d == -1) {
+                			return 0;
+                		} 
+                		return (Math.round(d) + " - " + Math.round(d + difference));
+                	})
                 	.attr("text-anchor", "left")
                 	.style("alignment-baseline", "middle");
     	});
