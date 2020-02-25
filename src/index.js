@@ -72,9 +72,32 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
              return content;
          });
 
+color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
+function color4(legend_data, maxV, minV, difference, x) {
+            for (var i = 1; i < legend_data.length; i++) {
+              var min = Math.floor(legend_data[i]);
+              if (i > 1) {
+                min++;
+              }
+              var max = Math.floor(legend_data[i] + difference);
+              if (maxV - minV >= 5) {
+                if (x >= min && x <= max) {
+                  return color5[i - 1];
+                }
+              } else {
+                if (x == minV && x != maxV) {
+                        return "rgb(237,248,233)";
+                      }
+                      if (x == minV + 1 && maxV - minV == 2) {
+                        return "rgb(116,196,118)";
+                      }
+                      var n = 3 - maxV + minV + x;
+                    return color5[n];
+              }
 
-var color4 = d3.scaleQuantize()
-            .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+            }
+}
+
 var mapData = {};
 mapData["all"] = require('./all.csv');
 mapData["arson"] = require('./arson.csv');
@@ -130,27 +153,36 @@ svg4.selectAll("path")
             	.attr("d", path)
             	.attr("class", "zipcode")
 
-color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
-
 function drawMap(type, year) {
 	var csvFile4 = mapData[type];
     	d3.csv(csvFile4).then(function(data) {
-       		color4.domain([
-            	d3.min(data, function(d) {
-            		if (parseInt(d[year]) == 0) {
-            			return Number.MAX_SAFE_INTEGER;
-            		} 
-            		return parseInt(d[year]);
-            	}),
-            	d3.max(data, function(d) { return parseInt(d[year]); })
-        	]);
-        	var minV = d3.min(data, function(d) { 
-        		if (parseInt(d[year]) == 0) {
-            		return Number.MAX_SAFE_INTEGER;
-            	} 
-            	return parseInt(d[year]);
-            	});
-        	var maxV = d3.max(data, function(d) { return parseInt(d[year]); });
+       		var minV = d3.min(data, function(d) { 
+            if (parseInt(d[year]) == 0) {
+                return Number.MAX_SAFE_INTEGER;
+              } 
+              return parseInt(d[year]);
+              });
+          var maxV = d3.max(data, function(d) { return parseInt(d[year]); });
+
+          var legend_data = [];
+          var difference;
+          //console.log(difference);
+          legend_data.push(-1);
+          if (maxV - minV >= 5) {
+            for (var i = 0; i < 5; i++) {
+              difference = (maxV - minV) / 5.0; 
+                var tmp = parseInt(minV) + (difference * i);
+                legend_data.push(tmp);
+            }
+          } else {
+            for (var i = 0; i < (maxV - minV) + 1; i++) {
+                var tmp = parseInt(minV) + i;
+                legend_data.push(tmp);
+            }
+            difference = 0;
+  
+          }
+       
         	//Merge the ag. data and GeoJSON
         	//Loop through once for each ag. data value
         	for (var j = 0; j < 25; j++) {
@@ -181,112 +213,90 @@ function drawMap(type, year) {
         	}
         	//Bind data and create one path per GeoJSON feature
         	svg4.selectAll("path")
-            	.on("mouseover", function(d) {
-             		tip2.show(d);
-            		d3.select(this).transition().duration('50').attr('opacity', '0.6');
-         		})
-        		.on("mouseout", function(d) {
-            		tip2.hide(d);
-            		d3.select(this).transition().duration('50').attr('opacity', '1');
-        		})  
-            	.style("fill", function(d) {
+              .on("mouseover", function(d) {
+                tip2.show(d);
+                d3.select(this).transition().duration('50').attr('opacity', '0.6');
+            })
+            .on("mouseout", function(d) {
+                tip2.hide(d);
+                d3.select(this).transition().duration('50').attr('opacity', '1');
+            })  
+              .style("fill", function(d) {
                 //Get data value
-                	var value = d.properties.value;
+                  var value = d.properties.value;
 
 
-                	if (value > 0) {
+                  if (value > 0) {
                     //If value exists…
-                    	return color4(value);
-                	} else {
+                      //return color4(value);
+                      return color4(legend_data, maxV, minV, difference, value);
+                  } else {
                     //If value is undefined…
-                    	return "#ccc";
-                	}
-            	});  
+                      return "#ccc";
+                  }
+              });  
+
 
         	//create legend
         	//create legend
         	d3.select('#legendId').select("svg").remove();
-        	var svgLegend = d3.select('#legendId')
-                        	.append("svg")
-                        	.attr("id", "legend")
-                        	.attr("width", 130)
-                        	.attr("height", 200);
+          var svgLegend = d3.select('#legendId')
+                          .append("svg")
+                          .attr("id", "legend")
+                          .attr("width", 130)
+                          .attr("height", 200);
 
-        	var legend_data = [];
-        	var difference;
-        	//console.log(difference);
-        	legend_data.push(-1);
-        	if (maxV - minV >= 5) {
-        		for (var i = 0; i < 5; i++) {
-        			difference = (maxV - minV) / 5.0; 
-            		var tmp = parseInt(minV) + (difference * i + 0.01);
-            		legend_data.push(tmp);
-        		}
-        	} else {
-        		for (var i = 0; i < (maxV - minV) + 1; i++) {
-            		var tmp = parseInt(minV) + i;
-            		legend_data.push(tmp);
-        		}
-        		difference = 0;
-  
-        	}
+          
 
-        	var legend_box_size = 13;
-        	svgLegend.selectAll("legendSquares")
-                	.data(legend_data)
-                	.enter()
-                	.append("rect")
-                	.attr("x", 3)
-                	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
-                	.attr("width", legend_box_size)
-                	.attr("height", legend_box_size)
-               		.style("fill", function(d, i) {
-               		if  (maxV - minV >= 5) {
-                  		/*if (i == 4) {
-                    		return "rgb(0,109,44)";
-                  		} else if (i == 3) {
-                    		return  "rgb(49,163,84)";
-                  		} else if (i == 2) {
-                    		return "rgb(116,196,118)";
-                  		} else if (i == 1) {
-                    		return "rgb(186,228,179)";
-                  		} 
-                  			return "rgb(237,248,233)";*/
-                  		if (d == -1) {
-                  			return "#ccc";
-                  		}
-                  		return color5[i - 1];
-                  	//return color4(Math.log(d + (-15+4*i)*difference))
-                	} else {
-                		if (d == -1) {
-                  			return "#ccc";
-                  		}
-                  		if (d == 1 && d != maxV) {
-                  			return "rgb(237,248,233)";
-                  		}
-                  		if (d == 2 && maxV == 3) {
-                  			return "rgb(116,196,118)";
-                  		}
-                  		var n = 3 - maxV + minV + i;
-                		return color5[n];
-                	}
-                	}); 
+          var legend_box_size = 13;
+          svgLegend.selectAll("legendSquares")
+                  .data(legend_data)
+                  .enter()
+                  .append("rect")
+                  .attr("x", 3)
+                  .attr("y", function(d, i) { return 10 + i*(legend_box_size+8)})
+                  .attr("width", legend_box_size)
+                  .attr("height", legend_box_size)
+                  .style("fill", function(d, i) {
+                  if  (maxV - minV >= 5) {
+                      if (d == -1) {
+                        return "#ccc";
+                      }
+                      return color5[i - 1];
+                    //return color4(Math.log(d + (-15+4*i)*difference))
+                  } else {
+                    if (d == -1) {
+                        return "#ccc";
+                      }
+                      if (d == minV && d != maxV) {
+                        return "rgb(237,248,233)";
+                      }
+                      if (d == minV + 1 && maxV - minV == 2) {
+                        return "rgb(116,196,118)";
+                      }
+                      var n = 3 - maxV + minV + i;
+                    return color5[n];
+                  }
+                  }); 
 
-        	svgLegend.selectAll("legendLabels")
-                	.data(legend_data)
-                	.enter()
-                	.append("text")
-                	.attr("x", 3 + legend_box_size * 1.2)
-                	.attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
-                	.text(function(d) {
-                		if (d == -1) {
-                			return 0;
-                		} 
-                		return (Math.round(d) + " - " + Math.round(d + difference));
-                	})
-                	.attr("text-anchor", "left")
-                	.style("alignment-baseline", "middle");
-    	});
+          svgLegend.selectAll("legendLabels")
+                  .data(legend_data)
+                  .enter()
+                  .append("text")
+                  .attr("x", 3 + legend_box_size * 1.2)
+                  .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
+                  .text(function(d) {
+                    if (d == -1) {
+                      return 0;
+                    }
+                    if (d == minV  || maxV - minV < 5) {
+                      return (Math.floor(d) + " - " + Math.floor(d + difference));  
+                    }
+                    return (Math.floor(d + 1) + " - " + Math.floor(d + difference));
+                  })
+                  .attr("text-anchor", "left")
+                  .style("alignment-baseline", "middle");
+      });
  }
 
 
