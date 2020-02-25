@@ -51,14 +51,24 @@ path = path.projection(projection);
   .attr("d", path)
   .attr("class", "zipcode");*/
 
+var distName = ["Central","Wentworth","Grand Crossing","South Chicago","Calumet","Gresham","Englewood",
+"Chicago Lawn","Deering","Ogden","Harrison","Near West","Dist 13","Shakespeare","Austin","Jefferson Park","Albany Park",
+"Near North","Town Hall","Lincoln","Dist 21","Morgan Park","Dist 23","Rogers Park","Grand Central"];
+
 var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
          .html(function(d) {
+          dist = parseInt(d.properties.dist_num);
+          if (dist != 31) {
+            name = distName[dist-1];
+          } else {
+            name = "Norridge,Harwood Heights";
+          }
          	if (d.properties.value == null) {
          		num = 0; 
          	} else {
          		num = d.properties.value
          	}
-            var content = "<span style='margin-left: 2.5px;'><b>" + num + "</b></span><br>";   
+            var content = "<span style='margin-left: 2.5px;'>District: " + name + "<br>Case Count: " + num + "</span><br>";   
              return content;
          });
 
@@ -298,6 +308,7 @@ var sliderTime = d3
     .attr("class", "h")
     .style("stroke-width", 2)
     .style("stroke", "gray")
+    .style("stroke-dasharray", ("5, 5"))
     .style("opacity", "0.7")
     .style("fill", "none");
 
@@ -320,9 +331,9 @@ var sliderTime = d3
     var circle = svg.append("circle")
         .attr("cx", pos.x)
         .attr("cy", pos.y)
-        .attr("r", 8)
-        .attr("opacity", 0.8)
-        .attr("fill", "steelblue")
+        .attr("r", 7)
+        .attr("opacity", 0.9)
+        .attr("fill", "gray")
         .attr("id", "highlight");
 
     svg.append("line")
@@ -339,10 +350,6 @@ var sliderTime = d3
 
 
 });
-
-
-
-
 
 var gTime = d3
     .select('#slider')
@@ -387,9 +394,6 @@ function draw(data, type, year) {
       .attr("d", valueline)
       .style("stroke-width", 2);
   
-  
- 
-
   // Add the X Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -423,11 +427,9 @@ function draw(data, type, year) {
         .attr("cy", pos.y)
         .attr("r", 5)
         .attr("fill", "steelblue")
-        .style("opacity", "0.5")
+        .style("opacity", "1")
         .attr("id", "dot" + i);
   }
-
-
 
    svg.append("text")
             .attr("x", 320)
