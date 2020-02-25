@@ -372,8 +372,72 @@ module.exports = {
     }
   }]
 };
-},{}],"sMla":[function(require,module,exports) {
-module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/2001_all.f37063f6.csv";
+},{}],"TSeo":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/all.11f91ad4.csv";
+},{}],"J683":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/arson.8cd8b099.csv";
+},{}],"En6q":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/assualt.3b369055.csv";
+},{}],"qkM5":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/battery.d4eaadd6.csv";
+},{}],"Glyx":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/burglary.1501fb3f.csv";
+},{}],"sTgT":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/conceal_carry_license_violation.fce973ac.csv";
+},{}],"BECv":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/crim_sexaul_assault.f50dcb13.csv";
+},{}],"qDpI":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/criminal_damage.9a141624.csv";
+},{}],"t9qf":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/ciminal_trespass.8df5fd87.csv";
+},{}],"kw1y":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/deceptive_practice.28b8c607.csv";
+},{}],"I9DO":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/domestic_violence.f7ccdf9a.csv";
+},{}],"dWrb":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/gambling.da9ec594.csv";
+},{}],"zgVV":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/homicide.30bb5e22.csv";
+},{}],"NFT6":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/human_trafficking.cf1f964e.csv";
+},{}],"clO3":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/interference_with_public_officer.8955687d.csv";
+},{}],"wxIp":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/intimidation.06370d77.csv";
+},{}],"TtOU":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/kidnapping.86074a95.csv";
+},{}],"duZc":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/liquor_law_violation.24958a96.csv";
+},{}],"lE4B":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/motor_vehicle_theft.da6342a8.csv";
+},{}],"hPKQ":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/narcotics.aec29bc6.csv";
+},{}],"lXNf":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/obscenity.27a78cfa.csv";
+},{}],"FWGR":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/offense_involving_children.9fec940f.csv";
+},{}],"j9Bk":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/other_narcotic_violation.0f271361.csv";
+},{}],"aPOM":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/other_offense.380e7ab5.csv";
+},{}],"ilLv":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/prostitution.98c19ef3.csv";
+},{}],"i14k":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/public_indecency.39ef2cc0.csv";
+},{}],"rJun":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/public_peace_violation.43b2085c.csv";
+},{}],"JdXh":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/ritualism.f380fbe0.csv";
+},{}],"CcB3":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/robbery.6f17ccb4.csv";
+},{}],"XPPc":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/sex_offense.b71f443a.csv";
+},{}],"sd9o":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/stalking.577c08f9.csv";
+},{}],"PPgd":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/theft.9c0054e9.csv";
+},{}],"H5Wm":[function(require,module,exports) {
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/weapons_violation.c192c5f0.csv";
 },{}],"h8WH":[function(require,module,exports) {
 module.exports = {
   "all": [{
@@ -2295,7 +2359,8 @@ var margin = {
 },
     width = 800 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-var year = 2010; // set the ranges
+var year = 2010;
+var format = d3.timeFormat("%Y"); // set the ranges
 
 var x = d3.scaleBand().range([0, width]).padding(0.2);
 var y = d3.scaleLinear().range([height, 0]);
@@ -2320,9 +2385,7 @@ var scale = hscale < vscale ? hscale : vscale;
 var offset = [width4 - (bounds[0][0] + bounds[1][0]) / 2, height4 - (bounds[0][1] + bounds[1][1]) / 2]; // new projection
 
 projection = d3.geoMercator().center(center).scale(scale * 0.9).translate(offset);
-path = path.projection(projection); //Create SVG element
-
-var svg4 = d3.select("#mapArea").append("svg").attr("width", width4).attr("height", height4).attr("id", "map"); //Bind data and create one path per GeoJSON feature
+path = path.projection(projection); //Bind data and create one path per GeoJSON feature
 
 /*svg4.selectAll("path")
   .data(json.features)
@@ -2331,91 +2394,226 @@ var svg4 = d3.select("#mapArea").append("svg").attr("width", width4).attr("heigh
   .attr("d", path)
   .attr("class", "zipcode");*/
 
+var distName = ["Central", "Wentworth", "Grand Crossing", "South Chicago", "Calumet", "Gresham", "Englewood", "Chicago Lawn", "Deering", "Ogden", "Harrison", "Near West", "Dist 13", "Shakespeare", "Austin", "Jefferson Park", "Albany Park", "Near North", "Town Hall", "Lincoln", "Dist 21", "Morgan Park", "Dist 23", "Rogers Park", "Grand Central"];
+var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0, 0]).html(function (d) {
+  dist = parseInt(d.properties.dist_num);
+
+  if (dist != 31) {
+    name = distName[dist - 1];
+  } else {
+    name = "Norridge,Harwood Heights";
+  }
+
+  if (d.properties.value == null) {
+    num = 0;
+  } else {
+    num = d.properties.value;
+  }
+
+  var content = "<span style='margin-left: 2.5px;'>District: " + name + "<br>Case Count: " + num + "</span><br>";
+  return content;
+});
+color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
+
+function color4(legend_data, maxV, minV, difference, x) {
+  for (var i = 1; i < legend_data.length; i++) {
+    var min = Math.floor(legend_data[i]);
+
+    if (i > 1) {
+      min++;
+    }
+
+    var max = Math.floor(legend_data[i] + difference);
+
+    if (maxV - minV >= 5) {
+      if (x >= min && x <= max) {
+        return color5[i - 1];
+      }
+    } else {
+      if (x == minV && x != maxV) {
+        return color5[0];
+      }
+
+      if (x == minV + 1 && maxV - minV == 2) {
+        return color5[2];
+      }
+
+      var n = 3 - maxV + minV + x;
+      return color5[n];
+    }
+  }
+}
+
+var mapData = {};
+mapData["all"] = require('./all.csv');
+mapData["arson"] = require('./arson.csv');
+mapData["assualt"] = require('./assualt.csv');
+mapData["battery"] = require('./battery.csv');
+mapData["burglary"] = require('./burglary.csv');
+mapData["conceal_carry_license_violation"] = require('./conceal_carry_license_violation.csv');
+mapData["crim_sexaul_assault"] = require('./crim_sexaul_assault.csv');
+mapData["criminal_damage"] = require('./criminal_damage.csv');
+mapData["ciminal_trespass"] = require('./ciminal_trespass.csv');
+mapData["deceptive_practice"] = require('/deceptive_practice.csv');
+mapData["domestic_violence"] = require('./domestic_violence.csv');
+mapData["gambling"] = require('./gambling.csv');
+mapData["homicide"] = require('./homicide.csv');
+mapData["human_trafficking"] = require('./human_trafficking.csv');
+mapData["interference_with_public_officer"] = require('./interference_with_public_officer.csv');
+mapData["intimidation"] = require('./intimidation.csv');
+mapData["kidnapping"] = require('./kidnapping.csv');
+mapData["liquor_law_violation"] = require('./liquor_law_violation.csv');
+mapData["motor_vehicle_theft"] = require('./motor_vehicle_theft.csv');
+mapData["narcotics"] = require('./narcotics.csv');
+mapData["obscenity"] = require('./obscenity.csv');
+mapData["offense_involving_children"] = require('./offense_involving_children.csv');
+mapData["other_narcotic_violation"] = require('./other_narcotic_violation.csv');
+mapData["other_offense"] = require('./other_offense.csv');
+mapData["prostitution"] = require('./prostitution.csv');
+mapData["public_indecency"] = require('./public_indecency.csv');
+mapData["public_peace_violation"] = require('./public_peace_violation.csv');
+mapData["ritualism"] = require('./ritualism.csv');
+mapData["robbery"] = require('./robbery.csv');
+mapData["sex_offense"] = require('./sex_offense.csv');
+mapData["stalking"] = require('./stalking.csv');
+mapData["theft"] = require('./theft.csv');
+mapData["weapons_violation"] = require('./weapons_violation.csv');
+var svg4 = d3.select("#mapArea").append("svg").attr("width", width4).attr("height", height4).attr("id", "map");
+svg4.call(tip2);
 svg4.append("text").attr("x", 480).attr("y", 18).attr("text-anchor", "middle").style("font-size", "22px").style("font-family", "STFangsong").style("font-weight", "bold").text("Chicago Map");
-var color4 = d3.scaleQuantize().range(["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
+svg4.selectAll("path").data(json.features).enter().append("path").attr("d", path).attr("class", "zipcode");
 
-var csvFile4 = require('./2001_all.csv');
+function drawMap(type, year) {
+  var csvFile4 = mapData[type];
+  d3.csv(csvFile4).then(function (data) {
+    var minV = d3.min(data, function (d) {
+      if (parseInt(d[year]) == 0) {
+        return Number.MAX_SAFE_INTEGER;
+      }
 
-d3.csv(csvFile4).then(function (data) {
-  color4.domain([d3.min(data, function (d) {
-    return Math.log(d.Number);
-  }), d3.max(data, function (d) {
-    return Math.log(d.Number);
-  })]);
-  var minV = d3.min(data, function (d) {
-    return d.Number;
-  });
-  var maxV = d3.max(data, function (d) {
-    return d.Number;
-  }); //console.log(minV);
-  //console.log(maxV);
-  //Merge the ag. data and GeoJSON
-  //Loop through once for each ag. data value
+      return parseInt(d[year]);
+    });
+    var maxV = d3.max(data, function (d) {
+      return parseInt(d[year]);
+    });
+    var legend_data = [];
+    var difference; //console.log(difference);
 
-  for (var i = 0; i < data.length; i++) {
-    //Grab state name
-    var dataState = data[i].District; //Grab data value, and convert from string to float
+    legend_data.push(-1);
 
-    var dataValue = parseInt(data[i].Number); //Find the corresponding state inside the GeoJSON
+    if (maxV - minV >= 5) {
+      for (var i = 0; i < 5; i++) {
+        difference = (maxV - minV) / 5.0;
+        var tmp = parseInt(minV) + difference * i;
+        legend_data.push(tmp);
+      }
+    } else {
+      for (var i = 0; i < maxV - minV + 1; i++) {
+        var tmp = parseInt(minV) + i;
+        legend_data.push(tmp);
+      }
+
+      difference = 0;
+    } //Merge the ag. data and GeoJSON
+    //Loop through once for each ag. data value
+
 
     for (var j = 0; j < 25; j++) {
+      //Grab state name
       var jsonState = json.features[j].properties.dist_num;
+      var flag = false; //Find the corresponding state inside the GeoJSON
 
-      if (dataState == jsonState) {
-        //Copy the data value into the JSON
-        json.features[j].properties.value = Math.log(dataValue);
-        break;
+      for (var i = 0; i < data.length; i++) {
+        var dataState = data[i].District; //Grab data value, and convert from string to float
+
+        var dataValue = parseInt(data[i][year]);
+
+        if (dataState == jsonState) {
+          //Copy the data value into the JSON
+          json.features[j].properties.value = dataValue;
+          flag = true;
+          break;
+        }
       }
-    }
-  } //Bind data and create one path per GeoJSON feature
+
+      if (flag == false) {
+        json.features[j].properties.value = 0;
+      }
+    } //Bind data and create one path per GeoJSON feature
 
 
-  svg4.selectAll("path").data(json.features).enter().append("path").attr("d", path).attr("class", "zipcode").style("fill", function (d) {
-    //Get data value
-    var value = d.properties.value;
+    svg4.selectAll("path").on("mouseover", function (d) {
+      tip2.show(d);
+      d3.select(this).transition().duration('50').attr('opacity', '0.6');
+    }).on("mouseout", function (d) {
+      tip2.hide(d);
+      d3.select(this).transition().duration('50').attr('opacity', '1');
+    }).style("fill", function (d) {
+      //Get data value
+      var value = d.properties.value;
 
-    if (value) {
-      //If value exists…
-      // console.log(value);
-      return color4(value);
-    } else {
-      //If value is undefined…
-      return "#ccc";
-    }
-  }); //create legend
+      if (value > 0) {
+        //If value exists…
+        //return color4(value);
+        return color4(legend_data, maxV, minV, difference, value);
+      } else {
+        //If value is undefined…
+        return "#ccc";
+      }
+    }); //create legend
+    //create legend
 
-  var svgLegend = d3.select('#legendId').append("svg").attr("id", "legend").attr("width", 130).attr("height", 200);
-  var legend_data = [];
-  var difference = parseInt((maxV - minV + 1) / 5); //console.log(difference);
+    d3.select('#legendId').select("svg").remove();
+    var svgLegend = d3.select('#legendId').append("svg").attr("id", "legend").attr("width", 130).attr("height", 200);
+    var legend_box_size = 13;
+    svgLegend.selectAll("legendSquares").data(legend_data).enter().append("rect").attr("x", 3).attr("y", function (d, i) {
+      return 10 + i * (legend_box_size + 8);
+    }).attr("width", legend_box_size).attr("height", legend_box_size).style("fill", function (d, i) {
+      if (maxV - minV >= 5) {
+        if (d == -1) {
+          return "#ccc";
+        }
 
-  for (var i = 0; i < 5; i++) {
-    var tmp = parseInt(minV) + (difference * i + 0.01);
-    legend_data.push(tmp);
-  } //console.log(legend_data);
+        return color5[i - 1]; //return color4(Math.log(d + (-15+4*i)*difference))
+      } else {
+        if (d == -1) {
+          return "#ccc";
+        }
 
+        if (d == minV && d != maxV) {
+          return color5[0];
+        }
 
-  var legend_box_size = 13;
-  svgLegend.selectAll("legendSquares").data(legend_data).enter().append("rect").attr("x", 3).attr("y", function (d, i) {
-    return 10 + i * (legend_box_size + 8);
-  }).attr("width", legend_box_size).attr("height", legend_box_size).style("fill", function (d, i) {
-    if (i == 4) {
-      return "rgb(237,248,233)";
-    } else if (i == 3) {
-      return "rgb(186,228,179)";
-    } else if (i == 2) {
-      return "rgb(116,196,118)";
-    } else if (i == 1) {
-      return "rgb(49,163,84)";
-    }
+        if (d == minV + 1 && maxV - minV == 2) {
+          return color5[2];
+        }
 
-    return "rgb(0,109,44)"; //return color4(Math.log(d + (-15+4*i)*difference))
+        var n = 3 - maxV + minV + i;
+        return color5[n];
+      }
+    });
+    svgLegend.selectAll("legendLabels").data(legend_data).enter().append("text").attr("x", 3 + legend_box_size * 1.2).attr("y", function (d, i) {
+      return 10 + i * (legend_box_size + 8) + 8;
+    }).text(function (d) {
+      console.log(difference);
+
+      if (d == -1) {
+        return 0;
+      }
+
+      if (difference == 0) {
+        return Math.floor(d);
+      }
+
+      if (d == minV || maxV - minV < 5) {
+        return Math.floor(d) + " - " + Math.floor(d + difference);
+      }
+
+      return Math.floor(d + 1) + " - " + Math.floor(d + difference);
+    }).attr("text-anchor", "left").style("alignment-baseline", "middle");
   });
-  svgLegend.selectAll("legendLabels").data(legend_data).enter().append("text").attr("x", 3 + legend_box_size * 1.2).attr("y", function (d, i) {
-    return 10 + i * (legend_box_size + 8) + 8;
-  }).text(function (d) {
-    return Math.floor(d) + " - " + Math.floor(d + difference);
-  }).attr("text-anchor", "left").style("alignment-baseline", "middle");
-}); // Line-Chart start here
+} // Line-Chart start here
+
 
 var file_data = require('./line_data.json');
 
@@ -2440,21 +2638,25 @@ var valueline = d3.line().x(function (d) {
   return x(d.Year);
 }).y(function (d) {
   return y(d.Number);
-});
-var dataTime = d3.range(0, 19).map(function (d) {
-  return new Date(2001 + d, 1, 1);
 }); // slider start here
 
+var current = new Date(2001, 1, 1);
+var target = new Date(2019, 1, 1);
+var playButton = document.getElementById("button1");
+var resetButton = document.getElementById("button2");
+var dataTime = d3.range(0, 19).map(function (d) {
+  return new Date(2001 + d, 1, 1);
+});
 var sliderTime = d3.sliderBottom().min(d3.min(dataTime)).max(d3.max(dataTime)).step(1000 * 60 * 60 * 24 * 365).width(650).tickFormat(d3.timeFormat('%Y')).tickValues(dataTime).default(new Date(2001, 1, 1)).on('onchange', function (val) {
   svg.selectAll("line").remove();
-  svg.selectAll("circle").remove();
-  var year = parseInt(val.getFullYear().toString());
+  svg.select("#highlight").remove();
+  var year = format(val);
   getNum(year);
+  drawMap(type, year);
   var x_pos = (year - 2001) * 650 / 18;
   svg.append("line").attr("x1", x_pos) //<<== change your code here
   .attr("y1", 0).attr("x2", x_pos) //<<== and here
-  .attr("y2", height).attr("class", "h").style("stroke-width", 2).style("stroke", "gray").style("opacity", "0.7").style("fill", "none");
-  var circle = svg.append("circle").attr("cx", 100).attr("cy", 350).attr("r", 5).attr("fill", "steelblue");
+  .attr("y2", height).attr("class", "h").style("stroke-width", 2).style("stroke", "gray").style("stroke-dasharray", "5, 5").style("opacity", "0.7").style("fill", "none");
   var path = svg.select("path");
   var pathEl = path.node();
   var pos = pathEl.getPointAtLength(x_pos);
@@ -2472,22 +2674,43 @@ var sliderTime = d3.sliderBottom().min(d3.min(dataTime)).max(d3.max(dataTime)).s
     if (pos.x > x_pos) end = target;else if (pos.x < x_pos) beginning = target;else break; //position found
   }
 
-  circle.attr("opacity", 0.8).attr("cx", pos.x).attr("cy", pos.y);
+  var circle = svg.append("circle").attr("cx", pos.x).attr("cy", pos.y).attr("r", 7).attr("opacity", 0.9).attr("fill", "gray").attr("id", "highlight");
   svg.append("line").attr("x1", 0) //<<== change your code here
   .attr("y1", pos.y).attr("x2", width) //<<== and here
   .attr("y2", pos.y).attr("class", "v").style("stroke-width", 2).style("stroke-dasharray", "5, 5").style("stroke", "grey").style("opacity", "0.5").style("fill", "none");
 });
 var gTime = d3.select('#slider').append('svg').attr('width', 800).attr('height', 80).append('g').attr('transform', 'translate(100,30)');
 gTime.call(sliderTime); // slider ends here
+// play starts here
+
+playButton.onclick = function () {
+  var button = d3.select(this);
+
+  if (button.text() == "Pause") {
+    clearInterval(timer);
+    button.text("Play");
+  } else {
+    timer = setInterval(step, 400);
+    button.text("Pause");
+  }
+};
+
+function step() {
+  current = sliderTime.value().setFullYear(sliderTime.value().getFullYear() + 1);
+  sliderTime.value(current);
+}
+
+resetButton.onclick = function () {
+  sliderTime.value(new Date(2001, 1, 1));
+  playButton.click();
+  current = new Date(2001, 1, 1);
+}; // play ends here
+
 
 function getNum(year) {
   var data = file_data[type];
   data.forEach(function (d) {
     var y = d.Year;
-
-    if (!Number.isInteger(y)) {
-      y = parseInt(y.getFullYear().toString());
-    }
 
     if (y == year) {
       d3.select('#year').text("Type: " + type + " | Year: " + year + " | Number of Cases: " + d.Number);
@@ -2498,7 +2721,7 @@ function getNum(year) {
 
 function draw(data, type, year) {
   // format the data
-  var data = data[type];
+  data = data[type];
   data.forEach(function (d) {
     d.Year = parseTime(d.Year);
     d.Number = d.Number;
@@ -2516,14 +2739,42 @@ function draw(data, type, year) {
   svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20)).style("font-size", "12px"); // Add the Y Axis
 
   svg.append("g").call(d3.axisLeft(y)).style("font-size", "12px");
+  var path = svg.select("path");
+  var pathEl = path.node();
+
+  for (var i = 2001; i < 2020; i++) {
+    var x_pos = (i - 2001) * 650 / 18;
+    var pos = pathEl.getPointAtLength(x_pos);
+    var beginning = x_pos,
+        end = 1200;
+
+    while (true) {
+      target = Math.floor((beginning + end) / 2);
+      pos = pathEl.getPointAtLength(target);
+
+      if ((target === end || target === beginning) && pos.x !== x) {
+        break;
+      }
+
+      if (pos.x > x_pos) end = target;else if (pos.x < x_pos) beginning = target;else break; //position found
+    }
+
+    var circle = svg.append("circle").attr("cx", pos.x).attr("cy", pos.y).attr("r", 5).attr("fill", "steelblue").style("opacity", "1").attr("id", "dot" + i);
+  }
+
   svg.append("text").attr("x", 320).attr("y", 260).text("Year").style("font-size", "15px");
   svg.append("text").attr("x", -125).attr("y", -65).attr("transform", "rotate(-90)").text("Total Cases").style("font-size", "15px");
+  data.forEach(function (d) {
+    d.Year = format(d.Year);
+    d.Number = d.Number;
+  });
 }
 
 function update(type) {
   svg.selectAll("*").remove();
   draw(file_data, type, 2001);
   sliderTime.value(new Date(2001, 1, 1));
+  drawMap(type, 2001);
 }
 
 document.getElementById("inds").onchange = function (d) {
@@ -2730,5 +2981,5 @@ update("all"); // append the svg object to the body of the page
 //             .text("Total Cases");
 //     });
 // }
-},{"./chicago.json":"hXOi","./2001_all.csv":"sMla","./line_data.json":"h8WH"}]},{},["Focm"], null)
-//# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.e2987fe8.js.map
+},{"./chicago.json":"hXOi","./all.csv":"TSeo","./arson.csv":"J683","./assualt.csv":"En6q","./battery.csv":"qkM5","./burglary.csv":"Glyx","./conceal_carry_license_violation.csv":"sTgT","./crim_sexaul_assault.csv":"BECv","./criminal_damage.csv":"qDpI","./ciminal_trespass.csv":"t9qf","/deceptive_practice.csv":"kw1y","./domestic_violence.csv":"I9DO","./gambling.csv":"dWrb","./homicide.csv":"zgVV","./human_trafficking.csv":"NFT6","./interference_with_public_officer.csv":"clO3","./intimidation.csv":"wxIp","./kidnapping.csv":"TtOU","./liquor_law_violation.csv":"duZc","./motor_vehicle_theft.csv":"lE4B","./narcotics.csv":"hPKQ","./obscenity.csv":"lXNf","./offense_involving_children.csv":"FWGR","./other_narcotic_violation.csv":"j9Bk","./other_offense.csv":"aPOM","./prostitution.csv":"ilLv","./public_indecency.csv":"i14k","./public_peace_violation.csv":"rJun","./ritualism.csv":"JdXh","./robbery.csv":"CcB3","./sex_offense.csv":"XPPc","./stalking.csv":"sd9o","./theft.csv":"PPgd","./weapons_violation.csv":"H5Wm","./line_data.json":"h8WH"}]},{},["Focm"], null)
+//# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.d41a8ca3.js.map

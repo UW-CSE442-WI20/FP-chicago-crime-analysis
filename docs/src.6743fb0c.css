@@ -14,7 +14,7 @@
     background: rgba(0, 0, 0, 0.7);
     color: #fff;
     border-radius: 4px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 /*svg {
@@ -22,13 +22,15 @@
     height: 580px;
 }*/
 
-#button {
+.button {
 	margin-bottom: 10px;
+	height:20px;
+	width:40px;
 	color: white;
 	text-decoration: none;
-	background: cornflowerblue;
+	background: steelblue;
 	padding: 5px;
-	border-radius: 5px;
+	border-radius: 3px;
 	display: inline-block;
 	border: none;
 	transition: all 0.4s ease 0s;
@@ -36,7 +38,7 @@
 	font-weight: bold;
 }
 
-#button:hover {
+.button:hover {
 	background: #434343;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
@@ -147,4 +149,4 @@ h3 {
 }
 
 
-/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.86cf78fb.css.map */
+/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.6743fb0c.css.map */
