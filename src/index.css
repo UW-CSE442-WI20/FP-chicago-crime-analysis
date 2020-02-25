@@ -22,13 +22,15 @@
     height: 580px;
 }*/
 
-#button {
+.button {
 	margin-bottom: 10px;
+	height:20px;
+	width:40px;
 	color: white;
 	text-decoration: none;
-	background: cornflowerblue;
+	background: steelblue;
 	padding: 5px;
-	border-radius: 5px;
+	border-radius: 3px;
 	display: inline-block;
 	border: none;
 	transition: all 0.4s ease 0s;
@@ -36,7 +38,7 @@
 	font-weight: bold;
 }
 
-#button:hover {
+.button:hover {
 	background: #434343;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;

@@ -327,11 +327,15 @@ var valueline = d3.line()
     .y(function(d) { return y(d.Number); });
 
 
+// slider start here
+var current = new Date(2001, 1, 1);
+var target = new Date(2019, 1, 1);
+var playButton = document.getElementById("button1");
+var resetButton = document.getElementById("button2");
+
 var dataTime = d3.range(0, 19).map(function(d) {
     return new Date(2001 + d, 1, 1);
 });
-
-// slider start here
 var sliderTime = d3
 .sliderBottom()
 .min(d3.min(dataTime))
@@ -413,6 +417,30 @@ var gTime = d3
 gTime.call(sliderTime);
 // slider ends here
 
+// play starts here
+playButton.onclick =  function() {
+    var button = d3.select(this);
+    if (button.text() == "Pause") {
+        clearInterval(timer);
+        button.text("Play");
+    } else {
+        timer = setInterval(step, 400);
+        button.text("Pause");
+    }
+}
+
+ function step(){
+      current = sliderTime.value().setFullYear(sliderTime.value().getFullYear() + 1);
+      sliderTime.value(current);
+  }
+
+  resetButton.onclick =  function() {
+    sliderTime.value(new Date(2001,1,1));
+    playButton.click();
+    current = new Date(2001,1,1);
+  }
+// play ends here
+
 function getNum(year) {
     var data = file_data[type];
     data.forEach(function(d) {
@@ -456,7 +484,6 @@ function draw(data, type, year) {
       .call(d3.axisLeft(y))
       .style("font-size", "12px");
 
-  
   var path = svg.select("path");
   var pathEl = path.node();
   for (var i = 2001; i < 2020; i++) {
@@ -494,7 +521,7 @@ function draw(data, type, year) {
         .attr("transform", "rotate(-90)")
         .text("Total Cases")
         .style("font-size", "15px");
-
+        
     data.forEach(function(d) {
       d.Year = format(d.Year);
       d.Number = d.Number;
