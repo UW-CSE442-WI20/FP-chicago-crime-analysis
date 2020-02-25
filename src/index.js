@@ -286,11 +286,15 @@ function drawMap(type, year) {
                   .attr("x", 3 + legend_box_size * 1.2)
                   .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
                   .text(function(d) {
+                  	console.log(difference);
                     if (d == -1) {
-                      return 0;
+                        return 0;
+                    }
+                    if (difference == 0) {
+                    	return Math.floor(d);
                     }
                     if (d == minV  || maxV - minV < 5) {
-                      return (Math.floor(d) + " - " + Math.floor(d + difference));  
+                        return (Math.floor(d) + " - " + Math.floor(d + difference));  
                     }
                     return (Math.floor(d + 1) + " - " + Math.floor(d + difference));
                   })
