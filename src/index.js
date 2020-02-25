@@ -86,10 +86,10 @@ function color4(legend_data, maxV, minV, difference, x) {
                 }
               } else {
                 if (x == minV && x != maxV) {
-                        return "rgb(237,248,233)";
+                        return color5[0];
                       }
                       if (x == minV + 1 && maxV - minV == 2) {
-                        return "rgb(116,196,118)";
+                        return color5[2];
                       }
                       var n = 3 - maxV + minV + x;
                     return color5[n];
@@ -269,10 +269,10 @@ function drawMap(type, year) {
                         return "#ccc";
                       }
                       if (d == minV && d != maxV) {
-                        return "rgb(237,248,233)";
+                        return color5[0];
                       }
                       if (d == minV + 1 && maxV - minV == 2) {
-                        return "rgb(116,196,118)";
+                        return color5[2];
                       }
                       var n = 3 - maxV + minV + i;
                     return color5[n];
