@@ -72,7 +72,7 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
              return content;
          });
 
-color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
+color5 = ["rgb(215,224,232)","rgb(175,194,210)", "rgb(135,164,188)","rgb(95,134,166)", "rgb(56,104,144)"];
 function color4(legend_data, maxV, minV, difference, x) {
             for (var i = 1; i < legend_data.length; i++) {
               var min = Math.floor(legend_data[i]);
@@ -215,7 +215,7 @@ function drawMap(type, year) {
         	svg4.selectAll("path")
               .on("mouseover", function(d) {
                 tip2.show(d);
-                d3.select(this).transition().duration('50').attr('opacity', '0.6');
+                d3.select(this).transition().duration('50').attr('opacity', '0.3');
             })
             .on("mouseout", function(d) {
                 tip2.hide(d);
