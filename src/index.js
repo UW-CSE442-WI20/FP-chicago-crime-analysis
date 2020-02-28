@@ -295,7 +295,6 @@ function drawMap(type, year) {
                   .attr("x", 3 + legend_box_size * 1.2)
                   .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
                   .text(function(d) {
-                  	// console.log(difference);
                     if (d == -1) {
                         return 0;
                     }
@@ -570,21 +569,31 @@ playButton.onclick =  function() {
 // play ends here
 
 function getNum(year) {
-    var data = file_data[type];
-    data.forEach(function(d) {
-      var y = d.Year;
-      var districtName;
-      if (dist1 == -1) {
-        districtName = "all";
-      } else {
-        districtName = distName[dist1-1];
-      }
-      if (y == year) {
-        d3.select('#year')
-        .text("Type: " + type + " | District: " + districtName + " | Year: "+ year + " | Number of Cases: " + d.Number);
-        return;
-      }
-    }); 
+    if (dist1 == -1) {
+      var data = file_data[type];
+      data.forEach(function(d) { 
+        var y = d.Year;
+        if (y == year) {
+          d3.select('#year')
+            .text("Type: " + type + " | District: all" + " | Year: "+ year + " | Number of Cases: " + d.Number);
+          return;
+        }
+      });
+    } else {
+      districtName = distName[dist1-1];
+      var csvFile6 = mapData[type];
+      d3.csv(csvFile6).then(function(data) {
+        for (var i = 0; i < data.length; i++) {
+                  var dataState = data[i].District;
+                  if (dataState == dist1){
+                    d3.select('#year')
+                      .text("Type: " + type + " | District: " + distName[dist1-1] + " | Year: "+ year + " | Number of Cases: " + parseInt(data[i][year]));
+                      return;  
+                  }
+
+        }
+      });
+    }
 }
 
 function drawLine(data, type, year) {
@@ -749,8 +758,6 @@ function drawBar(type, year) {
         .attr("y", function(d) {return yBar(distName[d.District-1]); })
         .attr("height", yBar.bandwidth() - 7)
         .attr("fill", function(d) {
-          console.log(d.District);
-          console.log("clicked: " + dist1);
           if (d.District == dist1) {
             return "tomato";
           } else {
