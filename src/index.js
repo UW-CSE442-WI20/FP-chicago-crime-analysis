@@ -745,15 +745,17 @@ function drawBar(type, year) {
         .enter().append("rect")
         .attr("class", "bar")
         .attr("x", 0)
-        .attr("width", 0)
+        .attr("width", function(d) { return xBar(d[year])})
         .attr("y", function(d) {return yBar(distName[d.District-1]); })
-        .attr("height", yBar.bandwidth() - 7);
-
-        svg2.selectAll("rect")
-            .transition()
-            .duration(600)
-            .attr("width", function(d) { return xBar(d[year])})
-            .attr("height", yBar.bandwidth() - 7);
+        .attr("height", yBar.bandwidth() - 7)
+        .attr("fill", function(d) {
+          console.log(d.District);
+          console.log("clicked: " + dist1);
+          if (d.District == dist1) {
+            return "tomato";
+          } else {
+            return "steelblue";
+          }});
 
         svg2.selectAll(".text")     
         .data(data)
