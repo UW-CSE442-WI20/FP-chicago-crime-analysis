@@ -61,7 +61,7 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
           if (dist != 31) {
             name = distName[dist-1];
           } else {
-            name = "Norridge,Harwood Heights";
+            name = "Norridge and Harwood Heights";
           }
          	if (d.properties.value == null) {
          		num = 0; 
@@ -286,7 +286,7 @@ function drawMap(type, year) {
                   .attr("x", 3 + legend_box_size * 1.2)
                   .attr("y", function(d, i) { return 10 + i*(legend_box_size+8) + 8})
                   .text(function(d) {
-                  	console.log(difference);
+                  	// console.log(difference);
                     if (d == -1) {
                         return 0;
                     }
@@ -366,6 +366,7 @@ var sliderTime = d3
 
     getNum(year);
     drawMap(type, year);
+    drawBar(type, year);
 
     var x_pos = ((year - 2001) * 650)/18;
 
@@ -438,7 +439,7 @@ playButton.onclick =  function() {
         clearInterval(timer);
         button.text("Play");
     } else {
-        timer = setInterval(step, 400);
+        timer = setInterval(step, 1200);
         button.text("Pause");
     }
 }
@@ -446,11 +447,16 @@ playButton.onclick =  function() {
  function step(){
       current = sliderTime.value().setFullYear(sliderTime.value().getFullYear() + 1);
       sliderTime.value(current);
+      if (current >= new Date(2018,3,10).getTime()) {
+        playButton.click();
+      }
   }
 
   resetButton.onclick =  function() {
     sliderTime.value(new Date(2001,1,1));
-    playButton.click();
+    if (playButton.textContent == "Pause") {
+        playButton.click();
+    }
     current = new Date(2001,1,1);
   }
 // play ends here
@@ -467,7 +473,7 @@ function getNum(year) {
     }); 
 }
 
-function draw(data, type, year) {
+function drawLine(data, type, year) {
   
   // format the data
   data = data[type];
@@ -496,6 +502,7 @@ function draw(data, type, year) {
   // Add the Y Axis
   svg.append("g")
       .call(d3.axisLeft(y))
+      .transition(100)
       .style("font-size", "12px");
 
   var path = svg.select("path");
@@ -541,12 +548,132 @@ function draw(data, type, year) {
       d.Number = d.Number;
   });
 }
+// Line chart ends here
+
+//Bar chart start here
+var marginBar = {top: 30, right: 50, bottom: 50, left: 110},
+    widthBar = 550 - marginBar.left - marginBar.right,
+    heightBar = 300 - marginBar.top - marginBar.bottom;
+
+// append the svg object to the body of the page
+var svg2 = d3.select("#barChart")
+    .append("svg")
+    .attr("width", widthBar + marginBar.left + marginBar.right)
+    .attr("height", heightBar + marginBar.bottom + marginBar.top)
+    .append("g")
+    .attr("transform",
+          "translate(" + marginBar.left + "," + marginBar.top + ")");
+
+function drawBar(type, year) {
+  svg2.selectAll("*").remove();
+
+  var typeName = type;
+  if (typeName == "all") {
+    typeName = "All Crime";
+  } else {
+    var words = typeName.split('_');
+    typeName = "";
+    for (var i = 0; i < words.length; i++) {
+      typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
+    }
+  }
+
+  svg2.append("text")
+        .attr("x", 150)             
+        .attr("y", -15)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "18px") 
+        .text("Top 5 Districts of " + typeName + " in Chicago " + year);
+
+  var csvFile4 = mapData[type];
+  d3.csv(csvFile4).then(function(data) {
+
+    data = data.sort(function(a, b) {
+              return d3.descending(+a[year], +b[year]);
+          }).slice(0, 5);
+
+    data = data.sort(function(a, b) {
+              return d3.ascending(+a[year], +b[year])});
+
+    var xBar = d3.scaleLinear()
+              .range([0, widthBar])
+              .domain([0, d3.max(data, function(d) { 
+                return parseInt(d[year]); })]);
+
+    svg2.append("g")
+      .attr("transform", "translate(0," + heightBar + ")")
+      .call(d3.axisBottom(xBar).ticks(3).tickFormat(d3.format("d")))
+      .style("font-size", "12px");
+
+    svg2.append("text")
+            .attr("x", 150)
+            .attr("y", 260)
+            .text("Number of Cases")
+            .style("font-size", "15px");
+
+    var yBar = d3.scaleBand()
+            .rangeRound([heightBar, 0], .1)
+            .domain(data.map(function (d) {
+              return distName[d.District-1];
+            }));
+
+    var yAxis = d3.axisLeft()
+            .scale(yBar)
+            .tickSize(0);
+
+    svg2.append("g")
+      .call(yAxis)
+      .style("font-size", "15px");
+
+    if (xBar.domain()[1] != 0) {
+
+       svg2.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", 0)
+        .attr("width", 0)
+        .attr("y", function(d) {return yBar(distName[d.District-1]); })
+        .attr("height", yBar.bandwidth() - 7);
+
+        svg2.selectAll("rect")
+            .transition()
+            .duration(600)
+            .attr("width", function(d) { return xBar(d[year])})
+            .attr("height", yBar.bandwidth() - 7);
+
+        svg2.selectAll(".text")     
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("class","label")
+        .attr("x", 5)
+        .attr("y", function(d) {return yBar(distName[d.District-1]) + 5;})
+        .attr("dy", ".75em")
+        .text(function(d) { return d[year];})
+        .attr("fill", "white");
+    }  else {
+         svg2.selectAll(".text")     
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("class","label")
+        .attr("x", 5)
+        .attr("y", function(d) {return yBar(distName[d.District-1]) + 5;})
+        .attr("dy", ".75em")
+        .text(function(d) { return 0;})
+        .attr("fill", "black");
+    }  
+  });
+}
+// bar chart ends here
 
 function update(type) {
     svg.selectAll("*").remove();
-    draw(file_data, type, 2001);
+    drawLine(file_data, type, 2001);
     sliderTime.value(new Date(2001,1,1));
-    drawMap(type, 2001)
+    drawMap(type, 2001);
+    drawBar(type, 2001);
 }
 
 document.getElementById("inds").onchange = function(d) {
