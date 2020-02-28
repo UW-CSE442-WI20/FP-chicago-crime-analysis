@@ -3,7 +3,12 @@ var margin = {top: 80, right: 50, bottom: -30, left: 80},
     width = 800 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+var active = d3.select(null);
+var isclick = false;
+var clickpart = null;
+
 var year = 2010;
+var dist1 = -1;
 var format = d3.timeFormat("%Y");
 
 // set the ranges
@@ -146,7 +151,9 @@ var svg4 = d3.select("#mapArea").append("svg")
         .style("font-family", "STFangsong")
         .style("font-weight", "bold")
         .text("Chicago Map");
-svg4.selectAll("path")
+var g4 = svg4.append("g")
+    .style("stroke-width", "1.5px");
+g4.selectAll("path")
             	.data(json.features)
             	.enter()
             	.append("path")
@@ -166,7 +173,7 @@ function drawMap(type, year) {
 
           var legend_data = [];
           var difference;
-          //console.log(difference);
+
           legend_data.push(-1);
           if (maxV - minV >= 5) {
             for (var i = 0; i < 5; i++) {
@@ -212,15 +219,11 @@ function drawMap(type, year) {
             	}
         	}
         	//Bind data and create one path per GeoJSON feature
-        	svg4.selectAll("path")
-              .on("mouseover", function(d) {
-                tip2.show(d);
-                d3.select(this).transition().duration('50').attr('opacity', '0.3');
-            })
-            .on("mouseout", function(d) {
-                tip2.hide(d);
-                d3.select(this).transition().duration('50').attr('opacity', '1');
-            })  
+        	g4.selectAll("path")
+            .on("click", clicked)
+              .on("mouseover", over)
+              .on("mouseout", out)  
+              .attr("value", function(d) {return d.properties.dist_num;})
               .style("fill", function(d) {
                 //Get data value
                   var value = d.properties.value;
@@ -234,7 +237,13 @@ function drawMap(type, year) {
                     //If value is undefined…
                       return "#ccc";
                   }
-              });  
+              });
+
+              if (isclick) {
+                g4.selectAll("path")
+              .on("mouseover", tip2.show)
+              .on("mouseout", tip2.hide);
+              } 
 
 
         	//create legend
@@ -302,6 +311,105 @@ function drawMap(type, year) {
                   .style("alignment-baseline", "middle");
       });
  }
+
+ function over(d) {
+    tip2.show(d);
+    svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+    d3.select(this).transition().duration('50').attr('opacity', '1');
+}
+
+function out(d) {
+    tip2.hide(d);
+    svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+}
+
+function getdata(dist1) {
+  var csvFile5 = mapData[type];
+      d3.csv(csvFile5).then(function(data) {
+        var datad = [];
+        f1 = false;
+        for (var i = 0; i < data.length; i++) {
+                  var dataState = data[i].District;
+                  if (dataState == dist1) {
+                    for (var j = 2001; j < 2020; j++) {
+                    var dataValue = parseInt(data[i][j]);
+                    var part = {}
+                    part["Year"] = j
+                    part["Number"] = dataValue;
+                    datad.push(part);
+                  }
+                  f1 = true;
+                  break;
+                }
+            }
+            if (!f1) {
+              for (var j = 2001; j < 2020; j++) {
+                var part = {}
+                part["Year"] = j
+                part["Number"] = 0  
+                datad.push(part);
+              } 
+            }
+            getNum(year);
+        svg.selectAll("*").remove();
+        drawLine(datad, type, 2001);
+        sliderTime.value(new Date(2001,1,1));
+        });
+        
+}
+
+
+// zoom in
+function clicked(d) {
+  isclick = true;
+  clickpart = d;
+  g4.selectAll("path")
+      .on("mouseover", tip2.show)
+      .on("mouseout", tip2.hide);
+  dist1 = parseInt(d.properties.dist_num);
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
+  getdata(dist1);
+
+  var bounds = path.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = .75 / Math.max(dx / width4, dy / height4),
+      translate = [width4 / 2 - scale * x, height4 / 2 - scale * y];
+      svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+      d3.select(this).transition().duration('50').attr('opacity', '1');
+     
+
+  g4.transition()
+      .duration(750)
+      .style("stroke-width", 1.5 / scale + "px")
+      .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+}
+
+//zoom out
+function reset() {
+  clickpart = null;
+  active.classed("active", false);
+  dist1 = -1;
+  svg.selectAll("*").remove();
+  getNum(year);
+  isclick = false;
+  drawLine(file_data[type], type, 2001);
+  sliderTime.value(new Date(2001,1,1));
+  active = d3.select(null);
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+  g4.selectAll("path")
+    .on("mouseover", over)
+    .on("mouseout", out) 
+  g4.transition()
+      .duration(750)
+      .style("stroke-width", "1.5px")
+      .attr("transform", "");
+}
+
 
 
 // Line-Chart start here
@@ -465,9 +573,15 @@ function getNum(year) {
     var data = file_data[type];
     data.forEach(function(d) {
       var y = d.Year;
+      var districtName;
+      if (dist1 == -1) {
+        districtName = "all";
+      } else {
+        districtName = distName[dist1-1];
+      }
       if (y == year) {
         d3.select('#year')
-        .text("Type: " + type + " | Year: "+ year + " | Number of Cases: " + d.Number);
+        .text("Type: " + type + " | District: " + districtName + " | Year: "+ year + " | Number of Cases: " + d.Number);
         return;
       }
     }); 
@@ -476,7 +590,6 @@ function getNum(year) {
 function drawLine(data, type, year) {
   
   // format the data
-  data = data[type];
   data.forEach(function(d) {
       d.Year = parseTime(d.Year);
       d.Number = d.Number;
@@ -669,11 +782,16 @@ function drawBar(type, year) {
 // bar chart ends here
 
 function update(type) {
+  if (!isclick) {
     svg.selectAll("*").remove();
-    drawLine(file_data, type, 2001);
+    drawLine(file_data[type], type, 2001);
     sliderTime.value(new Date(2001,1,1));
     drawMap(type, 2001);
+  } else {
+    getdata(dist1);
+    drawMap(type, 2001);
     drawBar(type, 2001);
+  }
 }
 
 document.getElementById("inds").onchange = function(d) {
