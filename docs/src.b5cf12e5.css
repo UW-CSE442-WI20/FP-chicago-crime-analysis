@@ -1,5 +1,3 @@
-.bar { fill: cornflowerblue }
-.bar:hover {opacity: 0.6; transition: 0.3s ease-in-out}
 .d3-tip {
     line-height: 1;
     padding: 4px;
@@ -119,7 +117,7 @@ h3 {
 }
 
 .zipcode {
-	stroke: steelblue;
+	stroke: dimgrey;
 	fill: #FFF;
 }
 
@@ -129,16 +127,16 @@ h3 {
 }
 
 #sy {
-	position: absolute;
-	right: 400px;
-	margin-top: 100px;
+	position: relative;
+	right: -600px;
+	top: 100px;
 	font-size: 18px;
 }
 
 #inds {
-	position: absolute;
-	right: 405px;
-	margin-top: 130px;
+	position: relative;
+	right: -600px;
+	top: 120px;
 	font-size: 14px;
 }
 
@@ -148,5 +146,24 @@ h3 {
 	margin-left: 10px;
 }
 
+#description {
+	position: absolute;
+	margin-top: 80px;
+	margin-left: 910px;
+	background-color: lightgray;
+	padding: 8px;
+	border-radius: 8px;
+}
 
-/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.6743fb0c.css.map */
+#showText {
+	position: absolute;
+	margin-top: 50px;
+	margin-left: 910px;
+}
+
+.labels {
+	
+}
+
+
+/*# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.b5cf12e5.css.map */

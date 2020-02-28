@@ -399,7 +399,7 @@ module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/gam
 },{}],"zgVV":[function(require,module,exports) {
 module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/homicide.30bb5e22.csv";
 },{}],"NFT6":[function(require,module,exports) {
-module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/human_trafficking.cf1f964e.csv";
+module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/human_trafficking.d5360612.csv";
 },{}],"clO3":[function(require,module,exports) {
 module.exports = "https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/interference_with_public_officer.8955687d.csv";
 },{}],"wxIp":[function(require,module,exports) {
@@ -1224,6 +1224,12 @@ module.exports = {
   }, {
     "Year": 2010,
     "Number": 1
+  }, {
+    "Year": 2011,
+    "Number": 0
+  }, {
+    "Year": 2012,
+    "Number": 0
   }, {
     "Year": 2013,
     "Number": 2
@@ -2359,7 +2365,11 @@ var margin = {
 },
     width = 800 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
+var active = d3.select(null);
+var isclick = false;
+var clickpart = null;
 var year = 2010;
+var dist1 = -1;
 var format = d3.timeFormat("%Y"); // set the ranges
 
 var x = d3.scaleBand().range([0, width]).padding(0.2);
@@ -2401,7 +2411,7 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0, 0]).html(function (d) {
   if (dist != 31) {
     name = distName[dist - 1];
   } else {
-    name = "Norridge,Harwood Heights";
+    name = "Norridge and Harwood Heights";
   }
 
   if (d.properties.value == null) {
@@ -2413,7 +2423,7 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0, 0]).html(function (d) {
   var content = "<span style='margin-left: 2.5px;'>District: " + name + "<br>Case Count: " + num + "</span><br>";
   return content;
 });
-color5 = ["rgb(237,248,233)", "rgb(186,228,179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"];
+color5 = ["rgb(215,224,232)", "rgb(175,194,210)", "rgb(135,164,188)", "rgb(95,134,166)", "rgb(56,104,144)"];
 
 function color4(legend_data, maxV, minV, difference, x) {
   for (var i = 1; i < legend_data.length; i++) {
@@ -2481,7 +2491,8 @@ mapData["weapons_violation"] = require('./weapons_violation.csv');
 var svg4 = d3.select("#mapArea").append("svg").attr("width", width4).attr("height", height4).attr("id", "map");
 svg4.call(tip2);
 svg4.append("text").attr("x", 480).attr("y", 18).attr("text-anchor", "middle").style("font-size", "22px").style("font-family", "STFangsong").style("font-weight", "bold").text("Chicago Map");
-svg4.selectAll("path").data(json.features).enter().append("path").attr("d", path).attr("class", "zipcode");
+var g4 = svg4.append("g").style("stroke-width", "1.5px");
+g4.selectAll("path").data(json.features).enter().append("path").attr("d", path).attr("class", "zipcode");
 
 function drawMap(type, year) {
   var csvFile4 = mapData[type];
@@ -2497,8 +2508,7 @@ function drawMap(type, year) {
       return parseInt(d[year]);
     });
     var legend_data = [];
-    var difference; //console.log(difference);
-
+    var difference;
     legend_data.push(-1);
 
     if (maxV - minV >= 5) {
@@ -2542,12 +2552,8 @@ function drawMap(type, year) {
     } //Bind data and create one path per GeoJSON feature
 
 
-    svg4.selectAll("path").on("mouseover", function (d) {
-      tip2.show(d);
-      d3.select(this).transition().duration('50').attr('opacity', '0.6');
-    }).on("mouseout", function (d) {
-      tip2.hide(d);
-      d3.select(this).transition().duration('50').attr('opacity', '1');
+    g4.selectAll("path").on("click", clicked).on("mouseover", over).on("mouseout", out).attr("value", function (d) {
+      return d.properties.dist_num;
     }).style("fill", function (d) {
       //Get data value
       var value = d.properties.value;
@@ -2560,8 +2566,13 @@ function drawMap(type, year) {
         //If value is undefined…
         return "#ccc";
       }
-    }); //create legend
+    });
+
+    if (isclick) {
+      g4.selectAll("path").on("mouseover", tip2.show).on("mouseout", tip2.hide);
+    } //create legend
     //create legend
+
 
     d3.select('#legendId').select("svg").remove();
     var svgLegend = d3.select('#legendId').append("svg").attr("id", "legend").attr("width", 130).attr("height", 200);
@@ -2595,8 +2606,6 @@ function drawMap(type, year) {
     svgLegend.selectAll("legendLabels").data(legend_data).enter().append("text").attr("x", 3 + legend_box_size * 1.2).attr("y", function (d, i) {
       return 10 + i * (legend_box_size + 8) + 8;
     }).text(function (d) {
-      console.log(difference);
-
       if (d == -1) {
         return 0;
       }
@@ -2612,6 +2621,94 @@ function drawMap(type, year) {
       return Math.floor(d + 1) + " - " + Math.floor(d + difference);
     }).attr("text-anchor", "left").style("alignment-baseline", "middle");
   });
+}
+
+function over(d) {
+  tip2.show(d);
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+  d3.select(this).transition().duration('50').attr('opacity', '1');
+}
+
+function out(d) {
+  tip2.hide(d);
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+}
+
+function getdata(dist1) {
+  var csvFile5 = mapData[type];
+  d3.csv(csvFile5).then(function (data) {
+    var datad = [];
+    f1 = false;
+
+    for (var i = 0; i < data.length; i++) {
+      var dataState = data[i].District;
+
+      if (dataState == dist1) {
+        for (var j = 2001; j < 2020; j++) {
+          var dataValue = parseInt(data[i][j]);
+          var part = {};
+          part["Year"] = j;
+          part["Number"] = dataValue;
+          datad.push(part);
+        }
+
+        f1 = true;
+        break;
+      }
+    }
+
+    if (!f1) {
+      for (var j = 2001; j < 2020; j++) {
+        var part = {};
+        part["Year"] = j;
+        part["Number"] = 0;
+        datad.push(part);
+      }
+    }
+
+    getNum(year);
+    svg.selectAll("*").remove();
+    drawLine(datad, type, 2001);
+    sliderTime.value(new Date(2001, 1, 1));
+  });
+} // zoom in
+
+
+function clicked(d) {
+  isclick = true;
+  clickpart = d;
+  g4.selectAll("path").on("mouseover", tip2.show).on("mouseout", tip2.hide);
+  dist1 = parseInt(d.properties.dist_num);
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
+  getdata(dist1);
+  var bounds = path.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = .75 / Math.max(dx / width4, dy / height4),
+      translate = [width4 / 2 - scale * x, height4 / 2 - scale * y];
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+  d3.select(this).transition().duration('50').attr('opacity', '1');
+  g4.transition().duration(750).style("stroke-width", 1.5 / scale + "px").attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+} //zoom out
+
+
+function reset() {
+  clickpart = null;
+  active.classed("active", false);
+  dist1 = -1;
+  svg.selectAll("*").remove();
+  getNum(year);
+  isclick = false;
+  drawLine(file_data[type], type, 2001);
+  sliderTime.value(new Date(2001, 1, 1));
+  active = d3.select(null);
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+  g4.selectAll("path").on("mouseover", over).on("mouseout", out);
+  g4.transition().duration(750).style("stroke-width", "1.5px").attr("transform", "");
 } // Line-Chart start here
 
 
@@ -2653,6 +2750,7 @@ var sliderTime = d3.sliderBottom().min(d3.min(dataTime)).max(d3.max(dataTime)).s
   var year = format(val);
   getNum(year);
   drawMap(type, year);
+  drawBar(type, year);
   var x_pos = (year - 2001) * 650 / 18;
   svg.append("line").attr("x1", x_pos) //<<== change your code here
   .attr("y1", 0).attr("x2", x_pos) //<<== and here
@@ -2690,7 +2788,7 @@ playButton.onclick = function () {
     clearInterval(timer);
     button.text("Play");
   } else {
-    timer = setInterval(step, 400);
+    timer = setInterval(step, 1200);
     button.text("Pause");
   }
 };
@@ -2698,30 +2796,52 @@ playButton.onclick = function () {
 function step() {
   current = sliderTime.value().setFullYear(sliderTime.value().getFullYear() + 1);
   sliderTime.value(current);
+
+  if (current >= new Date(2018, 3, 10).getTime()) {
+    playButton.click();
+  }
 }
 
 resetButton.onclick = function () {
   sliderTime.value(new Date(2001, 1, 1));
-  playButton.click();
+
+  if (playButton.textContent == "Pause") {
+    playButton.click();
+  }
+
   current = new Date(2001, 1, 1);
 }; // play ends here
 
 
 function getNum(year) {
-  var data = file_data[type];
-  data.forEach(function (d) {
-    var y = d.Year;
+  if (dist1 == -1) {
+    var data = file_data[type];
+    data.forEach(function (d) {
+      var y = d.Year;
 
-    if (y == year) {
-      d3.select('#year').text("Type: " + type + " | Year: " + year + " | Number of Cases: " + d.Number);
-      return;
-    }
-  });
+      if (y == year) {
+        d3.select('#year').text("Type: " + type + " | District: all" + " | Year: " + year + " | Number of Cases: " + d.Number);
+        return;
+      }
+    });
+  } else {
+    districtName = distName[dist1 - 1];
+    var csvFile6 = mapData[type];
+    d3.csv(csvFile6).then(function (data) {
+      for (var i = 0; i < data.length; i++) {
+        var dataState = data[i].District;
+
+        if (dataState == dist1) {
+          d3.select('#year').text("Type: " + type + " | District: " + distName[dist1 - 1] + " | Year: " + year + " | Number of Cases: " + parseInt(data[i][year]));
+          return;
+        }
+      }
+    });
+  }
 }
 
-function draw(data, type, year) {
+function drawLine(data, type, year) {
   // format the data
-  data = data[type];
   data.forEach(function (d) {
     d.Year = parseTime(d.Year);
     d.Number = d.Number;
@@ -2738,7 +2858,7 @@ function draw(data, type, year) {
 
   svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20)).style("font-size", "12px"); // Add the Y Axis
 
-  svg.append("g").call(d3.axisLeft(y)).style("font-size", "12px");
+  svg.append("g").call(d3.axisLeft(y)).transition(100).style("font-size", "12px");
   var path = svg.select("path");
   var pathEl = path.node();
 
@@ -2768,13 +2888,95 @@ function draw(data, type, year) {
     d.Year = format(d.Year);
     d.Number = d.Number;
   });
-}
+} // Line chart ends here
+//Bar chart start here
+
+
+var marginBar = {
+  top: 30,
+  right: 50,
+  bottom: 50,
+  left: 110
+},
+    widthBar = 550 - marginBar.left - marginBar.right,
+    heightBar = 300 - marginBar.top - marginBar.bottom; // append the svg object to the body of the page
+
+var svg2 = d3.select("#barChart").append("svg").attr("width", widthBar + marginBar.left + marginBar.right).attr("height", heightBar + marginBar.bottom + marginBar.top).append("g").attr("transform", "translate(" + marginBar.left + "," + marginBar.top + ")");
+
+function drawBar(type, year) {
+  svg2.selectAll("*").remove();
+  var typeName = type;
+
+  if (typeName == "all") {
+    typeName = "All Crime";
+  } else {
+    var words = typeName.split('_');
+    typeName = "";
+
+    for (var i = 0; i < words.length; i++) {
+      typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
+    }
+  }
+
+  svg2.append("text").attr("x", 150).attr("y", -15).attr("text-anchor", "middle").style("font-size", "18px").text("Top 5 Districts of " + typeName + " in Chicago " + year);
+  var csvFile4 = mapData[type];
+  d3.csv(csvFile4).then(function (data) {
+    data = data.sort(function (a, b) {
+      return d3.descending(+a[year], +b[year]);
+    }).slice(0, 5);
+    data = data.sort(function (a, b) {
+      return d3.ascending(+a[year], +b[year]);
+    });
+    var xBar = d3.scaleLinear().range([0, widthBar]).domain([0, d3.max(data, function (d) {
+      return parseInt(d[year]);
+    })]);
+    svg2.append("g").attr("transform", "translate(0," + heightBar + ")").call(d3.axisBottom(xBar).ticks(3).tickFormat(d3.format("d"))).style("font-size", "12px");
+    svg2.append("text").attr("x", 150).attr("y", 260).text("Number of Cases").style("font-size", "15px");
+    var yBar = d3.scaleBand().rangeRound([heightBar, 0], .1).domain(data.map(function (d) {
+      return distName[d.District - 1];
+    }));
+    var yAxis = d3.axisLeft().scale(yBar).tickSize(0);
+    svg2.append("g").call(yAxis).style("font-size", "15px");
+
+    if (xBar.domain()[1] != 0) {
+      svg2.selectAll(".bar").data(data).enter().append("rect").attr("class", "bar").attr("x", 0).attr("width", function (d) {
+        return xBar(d[year]);
+      }).attr("y", function (d) {
+        return yBar(distName[d.District - 1]);
+      }).attr("height", yBar.bandwidth() - 7).attr("fill", function (d) {
+        if (d.District == dist1) {
+          return "tomato";
+        } else {
+          return "steelblue";
+        }
+      });
+      svg2.selectAll(".text").data(data).enter().append("text").attr("class", "label").attr("x", 5).attr("y", function (d) {
+        return yBar(distName[d.District - 1]) + 5;
+      }).attr("dy", ".75em").text(function (d) {
+        return d[year];
+      }).attr("fill", "white");
+    } else {
+      svg2.selectAll(".text").data(data).enter().append("text").attr("class", "label").attr("x", 5).attr("y", function (d) {
+        return yBar(distName[d.District - 1]) + 5;
+      }).attr("dy", ".75em").text(function (d) {
+        return 0;
+      }).attr("fill", "black");
+    }
+  });
+} // bar chart ends here
+
 
 function update(type) {
-  svg.selectAll("*").remove();
-  draw(file_data, type, 2001);
-  sliderTime.value(new Date(2001, 1, 1));
-  drawMap(type, 2001);
+  if (!isclick) {
+    svg.selectAll("*").remove();
+    drawLine(file_data[type], type, 2001);
+    sliderTime.value(new Date(2001, 1, 1));
+    drawMap(type, 2001);
+  } else {
+    getdata(dist1);
+    drawMap(type, 2001);
+    drawBar(type, 2001);
+  }
 }
 
 document.getElementById("inds").onchange = function (d) {
@@ -2982,4 +3184,4 @@ update("all"); // append the svg object to the body of the page
 //     });
 // }
 },{"./chicago.json":"hXOi","./all.csv":"TSeo","./arson.csv":"J683","./assualt.csv":"En6q","./battery.csv":"qkM5","./burglary.csv":"Glyx","./conceal_carry_license_violation.csv":"sTgT","./crim_sexaul_assault.csv":"BECv","./criminal_damage.csv":"qDpI","./ciminal_trespass.csv":"t9qf","/deceptive_practice.csv":"kw1y","./domestic_violence.csv":"I9DO","./gambling.csv":"dWrb","./homicide.csv":"zgVV","./human_trafficking.csv":"NFT6","./interference_with_public_officer.csv":"clO3","./intimidation.csv":"wxIp","./kidnapping.csv":"TtOU","./liquor_law_violation.csv":"duZc","./motor_vehicle_theft.csv":"lE4B","./narcotics.csv":"hPKQ","./obscenity.csv":"lXNf","./offense_involving_children.csv":"FWGR","./other_narcotic_violation.csv":"j9Bk","./other_offense.csv":"aPOM","./prostitution.csv":"ilLv","./public_indecency.csv":"i14k","./public_peace_violation.csv":"rJun","./ritualism.csv":"JdXh","./robbery.csv":"CcB3","./sex_offense.csv":"XPPc","./stalking.csv":"sd9o","./theft.csv":"PPgd","./weapons_violation.csv":"H5Wm","./line_data.json":"h8WH"}]},{},["Focm"], null)
-//# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.d41a8ca3.js.map
+//# sourceMappingURL=https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.c6157a82.js.map

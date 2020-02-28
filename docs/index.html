@@ -2,11 +2,27 @@
 <head>
     <meta charset="utf-8">
     <title>Chicago Crime Analysis</title>
-    <link rel="stylesheet" type="text/css" href="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.6743fb0c.css">
+    <link rel="stylesheet" type="text/css" href="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.b5cf12e5.css">
 </head>
 <div style="height: 500px; background-image: url('https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/chicago.096ee838.jpg');">
     <h1 id="tt">Chicago Crime Analysis from 2001-2019</h1>
     <h3>Explore the distribution of each crime type across Chicago over years</h3>
+    <!-- <h3>Choose your interested crime type using the drop-down box "Crime Type"</h3>
+    <h3>Choose your interested year using the slide bar under the map</h3>
+    <h3>hover over a district on map to get name and number of crime cases in that district</h3>
+    <h3>Click on your interested district to get more information about crimes in that district</h3>
+    <h3>Click on "Play" button next to the year slide bar to see animation of changing in distribution of chosen crime type from 2001-2019. Click on "Reset" to set beginning year back to 2001.</h3>-->
+</div>
+<div id="showText">
+	<button class="labels" onclick="getElementById('description').style.visibility='visible'">Show Description</button>
+	<button class="labels" onclick="getElementById('description').style.visibility='hidden'">Hide Description</button>
+</div>
+<div id="description">
+	<p>Choose your interested crime type using the drop-down box "Crime Type"</p>
+	<p>Choose your interested year using the slide bar under the map</p>
+	<p>Hover over a district on map to get name and number of crime cases in that district</p>
+	<p>Click on your interested district to get more information about crimes in that district</p>
+	<p>Click on "Play" button next to the year slide bar to see animation of changing in distribution of chosen crime type from 2001-2019. Click on "Reset" to set beginning year back to 2001.</p>
 </div>
 
 <!-- <div>
@@ -123,9 +139,10 @@
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <div id="mapArea"></div>
 <div id="slider"></div>
-<div style="position: absolute; top: 1175px; left: 95px;" id="year"></div>
-<div class="button" style="position: absolute; top: 1095px; left: 30px;" align="center" id="button1" type="button">Play</div>
-<div class="button" style="position: absolute; top: 1130px; left: 30px;" align="center" id="button2" type="button">Reset</div>
+<div style="position: absolute; top: 1220px; left: 95px;" id="year"></div>
+<div class="button" style="position: absolute; top: 1135px; left: 30px;" align="center" id="button1" type="button">Play</div>
+<div class="button" style="position: absolute; top: 1170px; left: 30px;" align="center" id="button2" type="button">Reset</div>
 <div id="lineChart"></div>
+<div id="barChart" style="position: absolute; top: 1225px; left: 850px"></div>
 <script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/d3-tip.b9f32a63.js"></script>
-<script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.d41a8ca3.js"></script>
+<script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.c6157a82.js"></script>
