@@ -686,9 +686,13 @@ var svg2 = d3.select("#barChart")
     .attr("transform",
           "translate(" + marginBar.left + "," + marginBar.top + ")");
 
-function drawBar(type, year) {
-  svg2.selectAll("*").remove();
+ svg2.append("text")
+            .attr("x", 150)
+            .attr("y", 260)
+            .text("Number of Cases")
+            .style("font-size", "15px");
 
+function drawBar(type, year) {
   var typeName = type;
   if (typeName == "all") {
     typeName = "All Crime";
@@ -700,7 +704,10 @@ function drawBar(type, year) {
     }
   }
 
+  svg2.selectAll("#title").remove();
+  
   svg2.append("text")
+        .attr('id', 'title')
         .attr("x", 150)             
         .attr("y", -15)
         .attr("text-anchor", "middle")  
@@ -722,16 +729,13 @@ function drawBar(type, year) {
               .domain([0, d3.max(data, function(d) { 
                 return parseInt(d[year]); })]);
 
+    svg2.selectAll("#xAxis").remove();
+
     svg2.append("g")
+      .attr('id', 'xAxis')
       .attr("transform", "translate(0," + heightBar + ")")
       .call(d3.axisBottom(xBar).ticks(3).tickFormat(d3.format("d")))
       .style("font-size", "12px");
-
-    svg2.append("text")
-            .attr("x", 150)
-            .attr("y", 260)
-            .text("Number of Cases")
-            .style("font-size", "15px");
 
     var yBar = d3.scaleBand()
             .rangeRound([heightBar, 0], .1)
@@ -743,12 +747,16 @@ function drawBar(type, year) {
             .scale(yBar)
             .tickSize(0);
 
+    svg2.selectAll("#yAxis").remove();
+
     svg2.append("g")
+      .attr('id', 'yAxis')
       .call(yAxis)
       .style("font-size", "15px");
 
-    if (xBar.domain()[1] != 0) {
+    svg2.selectAll(".bar").remove();
 
+    if (xBar.domain()[1] != 0) {
        svg2.selectAll(".bar")
         .data(data)
         .enter().append("rect")
