@@ -159,6 +159,9 @@ g4.selectAll("path")
             	.append("path")
             	.attr("d", path)
             	.attr("class", "zipcode")
+// dist_num to position map
+var distPosMap = {};
+var distPosElMap = {};
 
 function drawMap(type, year) {
 	var csvFile4 = mapData[type];
@@ -193,20 +196,18 @@ function drawMap(type, year) {
         	//Merge the ag. data and GeoJSON
         	//Loop through once for each ag. data value
         	for (var j = 0; j < 25; j++) {
-            	//Grab state name
-            	
-                
+            	//Grab state name  
             	var jsonState = json.features[j].properties.dist_num;
             	var flag = false;
             	//Find the corresponding state inside the GeoJSON
             	for (var i = 0; i < data.length; i++) {
                 	var dataState = data[i].District;
-
             		//Grab data value, and convert from string to float
             		var dataValue = parseInt(data[i][year]);
 
                 	if (dataState == jsonState) {
-
+                      // map position to dist_num
+                      distPosMap[jsonState] = json.features[j];
                    		//Copy the data value into the JSON
                     	json.features[j].properties.value = dataValue;
                     	flag = true;
@@ -220,15 +221,16 @@ function drawMap(type, year) {
         	}
         	//Bind data and create one path per GeoJSON feature
         	g4.selectAll("path")
-            .on("click", clicked)
+              .on("click", clicked)
               .on("mouseover", over)
               .on("mouseout", out)  
-              .attr("value", function(d) {return d.properties.dist_num;})
+              .attr("value", function(d) {
+               distPosElMap[d.properties.dist_num] = this;
+               return d.properties.dist_num;
+              })
               .style("fill", function(d) {
                 //Get data value
                   var value = d.properties.value;
-
-
                   if (value > 0) {
                     //If value exists…
                       //return color4(value);
@@ -241,8 +243,8 @@ function drawMap(type, year) {
 
               if (isclick) {
                 g4.selectAll("path")
-              .on("mouseover", tip2.show)
-              .on("mouseout", tip2.hide);
+                  .on("mouseover", tip2.show)
+                  .on("mouseout", tip2.hide);
               } 
 
 
@@ -323,6 +325,7 @@ function out(d) {
 }
 
 function getdata(dist1) {
+  var curYear = sliderTime.value().getFullYear();
   var csvFile5 = mapData[type];
       d3.csv(csvFile5).then(function(data) {
         var datad = [];
@@ -351,8 +354,8 @@ function getdata(dist1) {
             }
             getNum(year);
         svg.selectAll("*").remove();
-        drawLine(datad, type, 2001);
-        sliderTime.value(new Date(2001,1,1));
+        drawLine(datad, type, curYear);
+        sliderTime.value(sliderTime.value());
         });
         
 }
@@ -390,14 +393,15 @@ function clicked(d) {
 
 //zoom out
 function reset() {
+  var curYear = sliderTime.value().getFullYear();
   clickpart = null;
   active.classed("active", false);
   dist1 = -1;
   svg.selectAll("*").remove();
-  getNum(year);
+  getNum(curYear);
   isclick = false;
-  drawLine(file_data[type], type, 2001);
-  sliderTime.value(new Date(2001,1,1));
+  drawLine(file_data[type], type, curYear);
+  sliderTime.value(sliderTime.value());
   active = d3.select(null);
   svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
   g4.selectAll("path")
@@ -546,7 +550,7 @@ playButton.onclick =  function() {
         clearInterval(timer);
         button.text("Play");
     } else {
-        timer = setInterval(step, 1200);
+        timer = setInterval(step, 500);
         button.text("Pause");
     }
 }
@@ -705,7 +709,7 @@ function drawBar(type, year) {
   }
 
   svg2.selectAll("#title").remove();
-  
+
   svg2.append("text")
         .attr('id', 'title')
         .attr("x", 150)             
@@ -770,7 +774,41 @@ function drawBar(type, year) {
             return "tomato";
           } else {
             return "steelblue";
-          }});
+          }})
+        .on("click", function(d){
+            if (isclick) {
+              reset();
+              isclick = false;
+            }     
+            var pos = distPosMap[d.District];
+            var el = distPosElMap[d.District];
+            isclick = true;
+            clickpart = pos;
+            g4.selectAll("path")
+                .on("mouseover", tip2.show)
+                .on("mouseout", tip2.hide);
+            dist1 = parseInt(pos.properties.dist_num);
+            if (active.node() === el) return reset();
+            active.classed("active", false);
+            active = d3.select(el).classed("active", true);
+            getdata(dist1);
+
+            var bounds = path.bounds(pos),
+                dx = bounds[1][0] - bounds[0][0],
+                dy = bounds[1][1] - bounds[0][1],
+                x = (bounds[0][0] + bounds[1][0]) / 2,
+                y = (bounds[0][1] + bounds[1][1]) / 2,
+                scale = .75 / Math.max(dx / width4, dy / height4),
+                translate = [width4 / 2 - scale * x, height4 / 2 - scale * y];
+                svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+                d3.select(el).transition().duration('50').attr('opacity', '1');
+               
+            g4.transition()
+                .duration(750)
+                .style("stroke-width", 1.5 / scale + "px")
+                .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+              
+        });
 
         svg2.selectAll(".text")     
         .data(data)

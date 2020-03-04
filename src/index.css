@@ -1,3 +1,4 @@
+.bar:hover {fill: tomato; transition: 0.3s ease-in-out}
 .d3-tip {
     line-height: 1;
     padding: 4px;
