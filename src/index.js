@@ -653,7 +653,18 @@ function drawLine(data, type, year) {
         .attr("r", 5)
         .attr("fill", "steelblue")
         .style("opacity", "1")
-        .attr("id", "dot" + i);
+        .attr("id", i)
+        .attr("class", "dots")
+        .on("mouseover", function(d) {
+          d3.select(this).attr("r", 7);
+        })
+        .on("mouseout", function(d) {
+          d3.select(this).attr("r", 5);
+        })
+        .on("click", function(d) {
+          var newDate = new Date(this.id, 1,1);
+          sliderTime.value(newDate);
+        });
   }
 
    svg.append("text")
