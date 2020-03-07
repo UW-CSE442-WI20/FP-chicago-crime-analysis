@@ -751,6 +751,7 @@ function getNum(year) {
 }
 
 function drawLine(data, type, year) {
+	console.log("hh");
   var curYear = sliderTime.value().getFullYear();
   var currType = type;
   // format the data
@@ -769,6 +770,7 @@ function drawLine(data, type, year) {
       .attr("class", "line")
       .attr("d", valueline)
       .style("stroke-width", 2)
+
   
   var path = svg.select("#" + type);
   var pathEl = path.node();
@@ -795,17 +797,15 @@ function drawLine(data, type, year) {
         .attr("fill", "steelblue")
         .style("opacity", "1")
         .attr("id", i)
-        .attr("class", className);
-
-     svg.selectAll("." + className)
-      .on("mouseover", function(d) {         
+        .attr("class", className)
+        .on("mouseover", function(d) {         
           d3.select(this).attr("r", 5);
           d3.select(this).attr("fill", "gray");
           tip1.show(data[this.id - 2001], className);
           for (var i = 0; i < type_arr.length; i++) {
           	if (type_arr[i] != className) {
-          		svg.selectAll("." + type_arr[i]).attr("opacity", 0.3);
-          		svg.selectAll("#" + type_arr[i]).attr("opacity", 0.3);
+          		svg.selectAll("." + type_arr[i]).style("opacity", 0.3);
+          		svg.selectAll("#" + type_arr[i]).style("opacity", 0.3);
           	}
           }
         })
@@ -813,12 +813,12 @@ function drawLine(data, type, year) {
           d3.select(this).attr("fill", "steelblue");
           d3.select(this).attr("r", 4);
           tip1.hide();
-          svg.selectAll("*").attr("opacity", 1);
+          svg.selectAll("*").style("opacity", 1);
         })
         .on("click", function(d) {
           var newDate = new Date(this.id, 1,1);
           sliderTime.value(newDate);
-        })
+        });
   }
 
   	var x_tmp = ((curYear - 2001) * 650)/18;
