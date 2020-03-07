@@ -121,7 +121,7 @@ projection = d3.geoMercator().center(center)
      .scale(scale * 0.9).translate(offset);
 path = path.projection(projection);
 
-    var distName = ["Central","Wentworth","Grand Crossing","South Chicago","Calumet","Gresham","Englewood",
+var distName = ["Central","Wentworth","Grand Crossing","South Chicago","Calumet","Gresham","Englewood",
 "Chicago Lawn","Deering","Ogden","Harrison","Near West","Dist 13","Shakespeare","Austin","Jefferson Park","Albany Park",
 "Near North","Town Hall","Lincoln","Dist 21","Morgan Park","Dist 23","Rogers Park","Grand Central"];
 
@@ -141,6 +141,23 @@ var tip2 = d3.tip().attr('class', 'd3-tip2').offset([0,0])
             var content = "<span style='margin-left: 2.5px;'>District: " + name + "<br>Case Count: " + num + "</span><br>";   
              return content;
          });
+
+
+var tip1 = d3.tip().attr('class', 'd3-tip1').offset([-5,0])
+			.html(function(d, type1) {
+				var typeName = type1;
+			    if (typeName == "all") {
+			      typeName = "All";
+			    } else {
+				    var words = typeName.split('_');
+				    typeName = "";
+				    for (var i = 0; i < words.length; i++) {
+				      typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
+				    }
+			    }
+				var content = "<span style='margin-left: 2.5px;'>Type: " + typeName + "<br>Number: " + d.Number + "</span><br>";   
+             	return content;
+			});
 
 color5 = ["rgb(215,224,232)","rgb(175,194,210)", "rgb(135,164,188)","rgb(95,134,166)", "rgb(56,104,144)"];
 function color4(legend_data, maxV, minV, difference, x) {
@@ -182,16 +199,6 @@ var svg4 = d3.select("#mapArea").append("svg")
             .attr("height", height4)
             .attr("id", "map");
     svg4.call(tip2);
-    var typeName = type;
-    if (typeName == "all") {
-      typeName = "All Crime";
-    } else {
-      var words = typeName.split('_');
-      typeName = "";
-      for (var i = 0; i < words.length; i++) {
-        typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
-      }
-    }
     svg4.append("text")
         .attr("x", 450)             
         .attr("y", 15)
@@ -199,7 +206,7 @@ var svg4 = d3.select("#mapArea").append("svg")
         .style("font-size", "20px") 
         .style("font-family", "STFangsong")
         .style("font-weight", "bold")
-        .text("Chicago " + typeName + " Map");
+        .text("Chicago Map");
 var g4 = svg4.append("g")
     .style("stroke-width", "1.5px");
 g4.selectAll("path")
@@ -437,6 +444,8 @@ var svg = d3.select("#lineChart")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+svg.call(tip1);
+
 var parseTime = d3.timeParse("%Y");
 
 // set the ranges
@@ -477,18 +486,6 @@ var sliderTime = d3
 
     var x_pos = ((year - 2001) * 650)/18;
 
-     svg.append("line")
-    .attr("x1", x_pos)  //<<== change your code here
-    .attr("y1", 0)
-    .attr("x2", x_pos)  //<<== and here
-    .attr("y2", height)
-    .attr("class", "h")
-    .style("stroke-width", 2)
-    .style("stroke", "gray")
-    .style("stroke-dasharray", ("5, 5"))
-    .style("opacity", "0.7")
-    .style("fill", "none");
-
     d3.selectAll('.highlight').remove();
     if (document.getElementById("0").checked) {
     	highlightP('all',  x_pos);
@@ -518,7 +515,8 @@ function clicked(d) {
   active.classed("active", false);
   active = d3.select(this).classed("active", true);
   updateDistrct(dist1);
-
+  var curYear = sliderTime.value().getFullYear();
+  getNum(curYear);
   svg2.selectAll(".bar")
       .attr("fill", function(d) {
           	if (d.District == dist1) {
@@ -545,6 +543,7 @@ function clicked(d) {
 }
 
 function updateDistrct(dist1) {
+  var curYear = sliderTime.value().getFullYear();
   if (document.getElementById("0").checked) {
   	datad = getdata(dist1, 'all');
   	svg.selectAll("*").remove();
@@ -564,7 +563,6 @@ function updateDistrct(dist1) {
     .transition(100)
     .style("font-size", "12px");
     drawLine(datad, type, 2001);
-
   } else {
   	boxs = document.getElementsByName('check');
 	maxN = 0;
@@ -634,45 +632,57 @@ function reset() {
   g4.transition()
       .duration(750)
       .style("stroke-width", "1.5px")
-      .attr("transform", "");
+      .attr("transform", ""); 
 }
 
 function highlightP(type, x_pos){
-				var path = svg.select("#" + type);
-    			var pathEl = path.node();
-    			var pos = pathEl.getPointAtLength(x_pos);
+	var path = svg.select("#" + type);
+	var pathEl = path.node();
+	var pos = pathEl.getPointAtLength(x_pos);
 
-    			var beginning = x_pos, end = 1200;
+	var beginning = x_pos, end = 1200;
 
-    			while (true) {
-     		 		target = Math.floor((beginning + end) / 2);
-      				pos = pathEl.getPointAtLength(target);
-      				if ((target === end || target === beginning) && pos.x !== x) {
-          			break;
-      				}
-     		 		if (pos.x > x_pos)      end = target;
-      				else if (pos.x < x_pos) beginning = target;
-      				else                break; //position found
-    			}
-    			circle = svg.append("circle")
-        						.attr("cx", pos.x)
-        						.attr("cy", pos.y)
- 						   	 	.attr("r", 7)
-        						.attr("opacity", 0.9)
-        						.attr("fill", "gray")
-        						.attr("class", "highlight");
+	while (true) {
+	 		target = Math.floor((beginning + end) / 2);
+			pos = pathEl.getPointAtLength(target);
+			if ((target === end || target === beginning) && pos.x !== x) {
+			break;
+			}
+	 		if (pos.x > x_pos)      end = target;
+			else if (pos.x < x_pos) beginning = target;
+			else                break; //position found
+	}
+	circle = svg.append("circle")
+					.attr("cx", pos.x)
+					.attr("cy", pos.y)
+				   	 	.attr("r", 5)
+					.attr("opacity", 0.9)
+					.attr("fill", "gray")
+					.attr("class", "highlight");
 
-    			svg.append("line")
-    			.attr("x1", 0)  //<<== change your code here
-    			.attr("y1", pos.y)
-    			.attr("x2", width)  //<<== and here
-    			.attr("y2", pos.y)
-    			.attr("class", "v")
-    			.style("stroke-width", 2)
-    			.style("stroke-dasharray", ("5, 5"))
-    			.style("stroke", "grey")
-    			.style("opacity", "0.5")
-    			.style("fill", "none");
+	svg.append("line")
+	.attr("x1", 0)  //<<== change your code here
+	.attr("y1", pos.y)
+	.attr("x2", width)  //<<== and here
+	.attr("y2", pos.y)
+	.attr("class", "v")
+	.style("stroke-width", 2)
+	.style("stroke-dasharray", ("5, 5"))
+	.style("stroke", "grey")
+	.style("opacity", "0.5")
+	.style("fill", "none");
+
+	svg.append("line")
+	.attr("x1", x_pos)  //<<== change your code here
+    .attr("y1", 0)
+    .attr("x2", x_pos)  //<<== and here
+    .attr("y2", height)
+    .attr("class", "h")
+    .style("stroke-width", 2)
+    .style("stroke", "gray")
+    .style("stroke-dasharray", ("5, 5"))
+    .style("opacity", "0.7")
+    .style("fill", "none");
 }
 var gTime = d3
     .select('#slider')
@@ -721,7 +731,7 @@ function getNum(year) {
         var y = d.Year;
         if (y == year) {
           d3.select('#year')
-            .text("Type: " + type + " | District: all" + " | Year: "+ year + " | Number of Cases: " + d.Number);
+            .text("District: all" + " | Year: "+ year);
           return;
         }
       });
@@ -732,7 +742,7 @@ function getNum(year) {
                   var dataState = data[i].District;
                   if (dataState == dist1){
                     d3.select('#year')
-                      .text("Type: " + type + " | District: " + distName[dist1-1] + " | Year: "+ year + " | Number of Cases: " + parseInt(data[i][year]));
+                      .text("District: " + districtName + " | Year: "+ year);
                       return;  
                   }
 
@@ -741,7 +751,8 @@ function getNum(year) {
 }
 
 function drawLine(data, type, year) {
-
+  var curYear = sliderTime.value().getFullYear();
+  var currType = type;
   // format the data
   data.forEach(function(d) {
       d.Year = parseTime(d.Year);
@@ -775,25 +786,43 @@ function drawLine(data, type, year) {
       else if (pos.x < x_pos) beginning = target;
       else                break; //position found
     }
+
+    var className = type;
   	var circle = svg.append("circle")
         .attr("cx", pos.x)
         .attr("cy", pos.y)
-        .attr("r", 5)
+        .attr("r", 4)
         .attr("fill", "steelblue")
         .style("opacity", "1")
         .attr("id", i)
-        .attr("class", "dots")
-        .on("mouseover", function(d) {
-          d3.select(this).attr("r", 7);
+        .attr("class", className);
+
+     svg.selectAll("." + className)
+      .on("mouseover", function(d) {         
+          d3.select(this).attr("r", 5);
+          d3.select(this).attr("fill", "gray");
+          tip1.show(data[this.id - 2001], className);
+          for (var i = 0; i < type_arr.length; i++) {
+          	if (type_arr[i] != className) {
+          		svg.selectAll("." + type_arr[i]).attr("opacity", 0.3);
+          		svg.selectAll("#" + type_arr[i]).attr("opacity", 0.3);
+          	}
+          }
         })
         .on("mouseout", function(d) {
-          d3.select(this).attr("r", 5);
+          d3.select(this).attr("fill", "steelblue");
+          d3.select(this).attr("r", 4);
+          tip1.hide();
+          svg.selectAll("*").attr("opacity", 1);
         })
         .on("click", function(d) {
           var newDate = new Date(this.id, 1,1);
           sliderTime.value(newDate);
-        });
+        })
   }
+
+  	var x_tmp = ((curYear - 2001) * 650)/18;
+    highlightP(type, x_tmp);
 
    svg.append("text")
             .attr("x", 320)
@@ -836,16 +865,6 @@ var svg2 = d3.select("#barChart")
             .style("font-size", "15px");
 
 function drawBar(data, year) {
-  /*var typeName = type;
-  if (typeName == "all") {
-    typeName = "All Crime";
-  } else {
-    var words = typeName.split('_');
-    typeName = "";
-    for (var i = 0; i < words.length; i++) {
-      typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
-    }
-  }*/
 
   svg2.selectAll("#title").remove();
 
@@ -855,15 +874,8 @@ function drawBar(data, year) {
         .attr("y", -15)
         .attr("text-anchor", "middle")  
         .style("font-size", "18px") 
-        .text("Top 5 Districts of " + typename + " in Chicago " + year);
+        .text("Top 5 Districts of Selected Crimes in Chicago " + year);
 
-  
-    /*data = data.sort(function(a, b) {
-              return d3.descending(+a[year], +b[year]);
-          }).slice(0, 5);
-
-    data = data.sort(function(a, b) {
-              return d3.ascending(+a[year], +b[year])});*/
     data = data.sort(function(a, b) {
               return a["value"] - b["value"];
           }).reverse().slice(0, 5);
@@ -984,41 +996,6 @@ function drawBar(data, year) {
 }
 // bar chart ends here
 
-/*function update(type) {
-  if (!isclick) {
-    svg.selectAll("*").remove();
-    drawLine(file_data[type], type, 2001);
-    sliderTime.value(new Date(2001,1,1));
-    drawMap(type, 2001);
-  } else {
-    getdata(dist1);
-    drawMap(type, 2001);
-    drawBar(type, 2001);
-  }
-}
-
-document.getElementById("inds").onchange = function(d) {
-    // recover the option that has been chosen
-    type = type_arr[parseInt(d3.select(this).property("value"))];
-    // run the updateChart function with this selected option
-    update(type);
-}*/
-
-// function handleCheck(){
-//   var allBox = document.getElementById("0");
-//   var checkboxes = document.getElementsById("checkboxes");
-//   if (allBox.checked = true) {
-//     for (var i = 1; i < checkboxes.length; i++) {
-//       checkboxes[i].checked = true;
-//     }
-//   } else {
-//     for (var i = 1; i < checkboxes.length; i++) {
-//       checkboxes[i].checked = false;
-//     }
-//   }
-// }
-
-//update("all");
 updateLineAll(2001);
 sliderTime.value(new Date(2001,1,1));
 
@@ -1081,12 +1058,14 @@ function updateLineAll() {
   	// X Axis
   	svg.append("g")
       .attr("transform", "translate(0," + height + ")")
+      .attr("id", "xAxis")
       .call(d3.axisBottom(x).ticks(20))
       .style("font-size", "12px");
 
     // Add the Y Axis
     svg.append("g")
       .call(d3.axisLeft(y))
+      .attr("id", "yAxis")
       .transition(100)
       .style("font-size", "12px");
 
