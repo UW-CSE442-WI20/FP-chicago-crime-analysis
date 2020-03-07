@@ -1,4 +1,75 @@
-// set the dimensions and margins of the graph
+Promise.all([
+	d3.csv(require('./all.csv')),	
+	d3.csv(require('./arson.csv')),	
+    d3.csv(require('./assualt.csv')),
+    d3.csv(require('./battery.csv')),   
+    d3.csv(require('./burglary.csv')),    
+    d3.csv(require('./conceal_carry_license_violation.csv')),   
+    d3.csv(require('./crim_sexaul_assault.csv')),   
+    d3.csv(require('./criminal_damage.csv')),   
+    d3.csv(require('./ciminal_trespass.csv')),   
+    d3.csv(require('/deceptive_practice.csv')),    
+    d3.csv(require('./domestic_violence.csv')),   
+    d3.csv(require('./gambling.csv')),   
+    d3.csv(require('./homicide.csv')),   
+    d3.csv(require('./human_trafficking.csv')),   
+    d3.csv(require('./interference_with_public_officer.csv')),  
+    d3.csv(require('./intimidation.csv')),  
+    d3.csv(require('./kidnapping.csv')),  
+    d3.csv(require('./liquor_law_violation.csv')),  
+    d3.csv(require('./motor_vehicle_theft.csv')),  
+    d3.csv(require('./narcotics.csv')),  
+    d3.csv(require('./obscenity.csv')),  
+    d3.csv(require('./offense_involving_children.csv')), 
+    d3.csv(require('./other_narcotic_violation.csv')), 
+    d3.csv(require('./other_offense.csv')),
+    d3.csv(require('./prostitution.csv')),
+    d3.csv(require('./public_indecency.csv')),
+    d3.csv(require('./public_peace_violation.csv')),
+    d3.csv(require('./ritualism.csv')),
+    d3.csv(require('./robbery.csv')), 
+    d3.csv(require('./sex_offense.csv')), 
+    d3.csv(require('./stalking.csv')),   
+    d3.csv(require('./theft.csv')), 
+    d3.csv(require('./weapons_violation.csv')),
+]).then(function(files) {
+	mapData= {};
+    mapData["all"] = files[0];
+    mapData["arson"] = files[1];
+    mapData["assualt"] = files[2];
+    mapData["battery"] = files[3];
+    mapData["burglary"] = files[4];
+    mapData["conceal_carry_license_violation"] = files[5];
+    mapData["crim_sexaul_assault"] = files[6];
+    mapData["criminal_damage"] = files[7];
+    mapData["ciminal_trespass"] = files[8];
+    mapData["deceptive_practice"] = files[9];
+    mapData["domestic_violence"] = files[10];
+    mapData["gambling"] = files[11];
+    mapData["homicide"] = files[12];
+    mapData["human_trafficking"] = files[13];
+    mapData["interference_with_public_officer"] = files[14];
+    mapData["intimidation"] = files[15];
+    mapData["kidnapping"] = files[16];
+    mapData["liquor_law_violation"] = files[17];
+    mapData["motor_vehicle_theft"] = files[18];
+    mapData["narcotics"] = files[19];
+    mapData["obscenity"] = files[20];
+    mapData["offense_involving_children"] = files[21];
+    mapData["other_narcotic_violation"] = files[22];
+    mapData["other_offense"] = files[23];
+    mapData["prostitution"] = files[24];
+    mapData["public_indecency"] = files[25];
+    mapData["public_peace_violation"] = files[26];
+    mapData["ritualism"] = files[27];
+    mapData["robbery"] = files[28];
+    mapData["sex_offense"] = files[29];
+    mapData["stalking"] = files[30];
+    mapData["theft"] = files[31];
+    mapData["weapons_violation"] = files[32];
+
+
+    // set the dimensions and margins of the graph
 var margin = {top: 80, right: 50, bottom: -30, left: 80},
     width = 800 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -7,9 +78,13 @@ var active = d3.select(null);
 var isclick = false;
 var clickpart = null;
 
-var year = 2010;
+var typename = "All Crime";
+var year = 2001;
 var dist1 = -1;
+var maxN = 0;
 var format = d3.timeFormat("%Y");
+
+
 
 // set the ranges
 var x = d3.scaleBand()
@@ -46,17 +121,7 @@ projection = d3.geoMercator().center(center)
      .scale(scale * 0.9).translate(offset);
 path = path.projection(projection);
 
-
-
-//Bind data and create one path per GeoJSON feature
-/*svg4.selectAll("path")
-  .data(json.features)
-  .enter()
-  .append("path")
-  .attr("d", path)
-  .attr("class", "zipcode");*/
-
-var distName = ["Central","Wentworth","Grand Crossing","South Chicago","Calumet","Gresham","Englewood",
+    var distName = ["Central","Wentworth","Grand Crossing","South Chicago","Calumet","Gresham","Englewood",
 "Chicago Lawn","Deering","Ogden","Harrison","Near West","Dist 13","Shakespeare","Austin","Jefferson Park","Albany Park",
 "Near North","Town Hall","Lincoln","Dist 21","Morgan Park","Dist 23","Rogers Park","Grand Central"];
 
@@ -111,40 +176,6 @@ var type_arr = ["all","arson","assualt","battery","burglary","conceal_carry_lice
 "obscenity","offense_involving_children","other_narcotic_violation","other_offense","prostitution","public_indecency",
 "public_peace_violation","ritualism","robbery","sex_offense","stalking","theft","weapons_violation"];
 
-var mapData = {};
-mapData["all"] = require('./all.csv');
-mapData["arson"] = require('./arson.csv');
-mapData["assualt"] = require('./assualt.csv');
-mapData["battery"] = require('./battery.csv');
-mapData["burglary"] = require('./burglary.csv');
-mapData["conceal_carry_license_violation"] = require('./conceal_carry_license_violation.csv');
-mapData["crim_sexaul_assault"] = require('./crim_sexaul_assault.csv');
-mapData["criminal_damage"] = require('./criminal_damage.csv');
-mapData["ciminal_trespass"] = require('./ciminal_trespass.csv');
-mapData["deceptive_practice"] = require('/deceptive_practice.csv');
-mapData["domestic_violence"] = require('./domestic_violence.csv');
-mapData["gambling"] = require('./gambling.csv');
-mapData["homicide"] = require('./homicide.csv');
-mapData["human_trafficking"] = require('./human_trafficking.csv');
-mapData["interference_with_public_officer"] = require('./interference_with_public_officer.csv');
-mapData["intimidation"] = require('./intimidation.csv');
-mapData["kidnapping"] = require('./kidnapping.csv');
-mapData["liquor_law_violation"] = require('./liquor_law_violation.csv');
-mapData["motor_vehicle_theft"] = require('./motor_vehicle_theft.csv');
-mapData["narcotics"] = require('./narcotics.csv');
-mapData["obscenity"] = require('./obscenity.csv');
-mapData["offense_involving_children"] = require('./offense_involving_children.csv');
-mapData["other_narcotic_violation"] = require('./other_narcotic_violation.csv');
-mapData["other_offense"] = require('./other_offense.csv');
-mapData["prostitution"] = require('./prostitution.csv');
-mapData["public_indecency"] = require('./public_indecency.csv');
-mapData["public_peace_violation"] = require('./public_peace_violation.csv');
-mapData["ritualism"] = require('./ritualism.csv');
-mapData["robbery"] = require('./robbery.csv');
-mapData["sex_offense"] = require('./sex_offense.csv');
-mapData["stalking"] = require('./stalking.csv');
-mapData["theft"] = require('./theft.csv');
-mapData["weapons_violation"] = require('./weapons_violation.csv');
 
 var svg4 = d3.select("#mapArea").append("svg")
            .attr("width", width4)
@@ -181,16 +212,32 @@ g4.selectAll("path")
 var distPosMap = {};
 var distPosElMap = {};
 
-function drawMap(type, year) {
-	var csvFile4 = mapData[type];
-    	d3.csv(csvFile4).then(function(data) {
-       		var minV = d3.min(data, function(d) { 
-            if (parseInt(d[year]) == 0) {
-                return Number.MAX_SAFE_INTEGER;
-              } 
-              return parseInt(d[year]);
-              });
-          var maxV = d3.max(data, function(d) { return parseInt(d[year]); });
+function findMax() {
+	var max = 0
+	for (var i = 2001; i < 2020; i++) {
+		sum = sumSelected(i);
+		max = Math.max(max, d3.max(sum, function(d) { return parseInt(d)}));
+	}
+	return max;
+}
+
+function findMin() {
+	var min = Number.MAX_SAFE_INTEGER;
+	for (var i = 2001; i < 2020; i++) {
+		sum = sumSelected(i);
+		min = Math.min(min, d3.min(sum, function(d) {
+								 if (parseInt(d) == 0) {
+               					 	return Number.MAX_SAFE_INTEGER;
+            					 } else { 
+			                       return parseInt(d);
+			                     }}));
+	}
+	return min;
+}
+
+function drawMap(data, year) {
+       		var minV = findMin();
+            var maxV = findMax();
 
           var legend_data = [];
           var difference;
@@ -219,9 +266,9 @@ function drawMap(type, year) {
             	var flag = false;
             	//Find the corresponding state inside the GeoJSON
             	for (var i = 0; i < data.length; i++) {
-                	var dataState = data[i].District;
+                	var dataState = data[i]["District"];
             		//Grab data value, and convert from string to float
-            		var dataValue = parseInt(data[i][year]);
+            		var dataValue = parseInt(data[i]["value"]);
 
                 	if (dataState == jsonState) {
                       // map position to dist_num
@@ -328,7 +375,6 @@ function drawMap(type, year) {
                   })
                   .attr("text-anchor", "left")
                   .style("alignment-baseline", "middle");
-      });
  }
 
  function over(d) {
@@ -342,10 +388,9 @@ function out(d) {
     svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
 }
 
-function getdata(dist1) {
+function getdata(dist1, type) {
   var curYear = sliderTime.value().getFullYear();
-  var csvFile5 = mapData[type];
-      d3.csv(csvFile5).then(function(data) {
+  var data = mapData[type];
         var datad = [];
         f1 = false;
         for (var i = 0; i < data.length; i++) {
@@ -370,71 +415,13 @@ function getdata(dist1) {
                 datad.push(part);
               } 
             }
-            getNum(year);
-        svg.selectAll("*").remove();
-        drawLine(datad, type, curYear);
-        sliderTime.value(sliderTime.value());
-        });
+        return datad;
         
-}
-
-
-// zoom in
-function clicked(d) {
-  isclick = true;
-  clickpart = d;
-  g4.selectAll("path")
-      .on("mouseover", tip2.show)
-      .on("mouseout", tip2.hide);
-  dist1 = parseInt(d.properties.dist_num);
-  if (active.node() === this) return reset();
-  active.classed("active", false);
-  active = d3.select(this).classed("active", true);
-  getdata(dist1);
-
-  var bounds = path.bounds(d),
-      dx = bounds[1][0] - bounds[0][0],
-      dy = bounds[1][1] - bounds[0][1],
-      x = (bounds[0][0] + bounds[1][0]) / 2,
-      y = (bounds[0][1] + bounds[1][1]) / 2,
-      scale = .75 / Math.max(dx / width4, dy / height4),
-      translate = [width4 / 2 - scale * x, height4 / 2 - scale * y];
-      svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
-      d3.select(this).transition().duration('50').attr('opacity', '1');
-     
-
-  g4.transition()
-      .duration(750)
-      .style("stroke-width", 1.5 / scale + "px")
-      .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
-}
-
-//zoom out
-function reset() {
-  var curYear = sliderTime.value().getFullYear();
-  clickpart = null;
-  active.classed("active", false);
-  dist1 = -1;
-  svg.selectAll("*").remove();
-  getNum(curYear);
-  isclick = false;
-  drawLine(file_data[type], type, curYear);
-  sliderTime.value(sliderTime.value());
-  active = d3.select(null);
-  svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
-  g4.selectAll("path")
-    .on("mouseover", over)
-    .on("mouseout", out) 
-  g4.transition()
-      .duration(750)
-      .style("stroke-width", "1.5px")
-      .attr("transform", "");
 }
 
 
 
 // Line-Chart start here
-
 var file_data = require('./line_data.json');
 
 var margin = {top: 30, right: 50, bottom: 50, left: 100},
@@ -486,12 +473,11 @@ var sliderTime = d3
     var year = format(val);
 
     getNum(year);
-    drawMap(type, year);
-    drawBar(type, year);
+    updateBarMap(year);
 
     var x_pos = ((year - 2001) * 650)/18;
 
-    svg.append("line")
+     svg.append("line")
     .attr("x1", x_pos)  //<<== change your code here
     .attr("y1", 0)
     .attr("x2", x_pos)  //<<== and here
@@ -503,45 +489,191 @@ var sliderTime = d3
     .style("opacity", "0.7")
     .style("fill", "none");
 
-    var path = svg.select("path");
-    var pathEl = path.node();
-    var pos = pathEl.getPointAtLength(x_pos);
-
-    var beginning = x_pos, end = 1200;
-
-    while (true) {
-      target = Math.floor((beginning + end) / 2);
-      pos = pathEl.getPointAtLength(target);
-      if ((target === end || target === beginning) && pos.x !== x) {
-          break;
-      }
-      if (pos.x > x_pos)      end = target;
-      else if (pos.x < x_pos) beginning = target;
-      else                break; //position found
-    }
-    var circle = svg.append("circle")
-        .attr("cx", pos.x)
-        .attr("cy", pos.y)
-        .attr("r", 7)
-        .attr("opacity", 0.9)
-        .attr("fill", "gray")
-        .attr("id", "highlight");
-
-    svg.append("line")
-    .attr("x1", 0)  //<<== change your code here
-    .attr("y1", pos.y)
-    .attr("x2", width)  //<<== and here
-    .attr("y2", pos.y)
-    .attr("class", "v")
-    .style("stroke-width", 2)
-    .style("stroke-dasharray", ("5, 5"))
-    .style("stroke", "grey")
-    .style("opacity", "0.5")
-    .style("fill", "none");
+    d3.selectAll('.highlight').remove();
+    if (document.getElementById("0").checked) {
+    	highlightP('all',  x_pos);
+    } else {
+   		boxs = document.getElementsByName('check');
+   		
+    	for (var j =0; j < boxs.length; j++) {
+			if (boxs[j].checked) {
+				type = type_arr[parseInt(boxs[j].id)];	
+				highlightP(type, x_pos);
+				}
+			}
+		}
+	}
+);
 
 
-});
+// zoom in
+function clicked(d) {
+  isclick = true;
+  clickpart = d;
+  g4.selectAll("path")
+      .on("mouseover", tip2.show)
+      .on("mouseout", tip2.hide);
+  dist1 = parseInt(d.properties.dist_num);
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
+  updateDistrct(dist1);
 
+  svg2.selectAll(".bar")
+      .attr("fill", function(d) {
+          	if (d.District == dist1) {
+            	return "tomato";
+          	} else {
+            	return "steelblue";
+          	}});
+
+  var bounds = path.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = .75 / Math.max(dx / width4, dy / height4),
+      translate = [width4 / 2 - scale * x, height4 / 2 - scale * y];
+      svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+      d3.select(this).transition().duration('50').attr('opacity', '1');
+     
+
+  g4.transition()
+      .duration(750)
+      .style("stroke-width", 1.5 / scale + "px")
+      .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+}
+
+function updateDistrct(dist1) {
+  if (document.getElementById("0").checked) {
+  	datad = getdata(dist1, 'all');
+  	svg.selectAll("*").remove();
+  	maxN = d3.max(datad, function(d) { return d.Number;});
+  	var x = d3.scaleTime().range([0, width]);
+	var y = d3.scaleLinear().range([height, 0]);
+  	x.domain(d3.extent(datad, function(d) { return parseTime(d.Year); }));
+  	y.domain([0, maxN]);
+  	svg.append("g")
+      			.attr("transform", "translate(0," + height + ")")
+      			.call(d3.axisBottom(x).ticks(20))
+      			.style("font-size", "12px");
+
+  	// Add the Y Axis
+  	svg.append("g")
+    .call(d3.axisLeft(y))
+    .transition(100)
+    .style("font-size", "12px");
+    drawLine(datad, type, 2001);
+
+  } else {
+  	boxs = document.getElementsByName('check');
+	maxN = 0;
+	var datad
+	for (var i =0; i < boxs.length; i++) {
+		if (boxs[i].checked) {
+			type = type_arr[parseInt(boxs[i].id)];
+			datad = getdata(dist1, type);
+			maxN = Math.max(maxN, d3.max(datad, function(d) { return d.Number;}))
+		}	
+	}
+	svg.selectAll("*").remove();
+	var x = d3.scaleTime().range([0, width]);
+	var y = d3.scaleLinear().range([height, 0]);
+	datad = getdata(dist1, 'all');
+  	x.domain(d3.extent(datad, function(d) { return parseTime(d.Year); }));
+  	y.domain([0, maxN]);
+  	// Add the X Axis
+  	svg.append("g")
+      			.attr("transform", "translate(0," + height + ")")
+      			.call(d3.axisBottom(x).ticks(20))
+      			.style("font-size", "12px");
+
+  	// Add the Y Axis
+  	svg.append("g")
+    .call(d3.axisLeft(y))
+    .transition(100)
+    .style("font-size", "12px");
+	for (var j =0; j < boxs.length; j++) {
+		if (boxs[j].checked) {
+			type = type_arr[parseInt(boxs[j].id)];
+			datad = getdata(dist1, type);
+			drawLine(datad, type, 2001);
+		}
+	}
+  }
+  
+}
+
+//zoom out
+function reset() {
+  var curYear = sliderTime.value().getFullYear();
+  clickpart = null;
+  active.classed("active", false);
+  dist1 = -1;
+  svg2.selectAll(".bar")
+      .attr("fill", function(d) {
+          	if (d.District == dist1) {
+            	return "tomato";
+          	} else {
+            	return "steelblue";
+          	}});  
+  svg.selectAll("*").remove();
+  getNum(curYear);
+  isclick = false;
+  
+  if (document.getElementById("0").checked) {
+  	updateLineAll();
+  } else {
+  	updateLineGraph()
+  }
+  active = d3.select(null);
+  svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+  g4.selectAll("path")
+    .on("mouseover", over)
+    .on("mouseout", out) 
+  g4.transition()
+      .duration(750)
+      .style("stroke-width", "1.5px")
+      .attr("transform", "");
+}
+
+function highlightP(type, x_pos){
+				var path = svg.select("#" + type);
+    			var pathEl = path.node();
+    			var pos = pathEl.getPointAtLength(x_pos);
+
+    			var beginning = x_pos, end = 1200;
+
+    			while (true) {
+     		 		target = Math.floor((beginning + end) / 2);
+      				pos = pathEl.getPointAtLength(target);
+      				if ((target === end || target === beginning) && pos.x !== x) {
+          			break;
+      				}
+     		 		if (pos.x > x_pos)      end = target;
+      				else if (pos.x < x_pos) beginning = target;
+      				else                break; //position found
+    			}
+    			circle = svg.append("circle")
+        						.attr("cx", pos.x)
+        						.attr("cy", pos.y)
+ 						   	 	.attr("r", 7)
+        						.attr("opacity", 0.9)
+        						.attr("fill", "gray")
+        						.attr("class", "highlight");
+
+    			svg.append("line")
+    			.attr("x1", 0)  //<<== change your code here
+    			.attr("y1", pos.y)
+    			.attr("x2", width)  //<<== and here
+    			.attr("y2", pos.y)
+    			.attr("class", "v")
+    			.style("stroke-width", 2)
+    			.style("stroke-dasharray", ("5, 5"))
+    			.style("stroke", "grey")
+    			.style("opacity", "0.5")
+    			.style("fill", "none");
+}
 var gTime = d3
     .select('#slider')
     .append('svg')
@@ -595,8 +727,7 @@ function getNum(year) {
       });
     } else {
       districtName = distName[dist1-1];
-      var csvFile6 = mapData[type];
-      d3.csv(csvFile6).then(function(data) {
+      var data = mapData[type];
         for (var i = 0; i < data.length; i++) {
                   var dataState = data[i].District;
                   if (dataState == dist1){
@@ -606,42 +737,29 @@ function getNum(year) {
                   }
 
         }
-      });
     }
 }
 
 function drawLine(data, type, year) {
-  
+
   // format the data
   data.forEach(function(d) {
       d.Year = parseTime(d.Year);
       d.Number = d.Number;
   });
 
-  // Scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.Year; }));
-  y.domain([0, d3.max(data, function(d) { return d.Number; })]);
+  y.domain([0, maxN]);
 
   // Add the valueline path.
   svg.append("path")
       .data([data])
+      .attr("id", type)
       .attr("class", "line")
       .attr("d", valueline)
-      .style("stroke-width", 2);
+      .style("stroke-width", 2)
   
-  // Add the X Axis
-  svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(20))
-      .style("font-size", "12px");
-
-  // Add the Y Axis
-  svg.append("g")
-      .call(d3.axisLeft(y))
-      .transition(100)
-      .style("font-size", "12px");
-
-  var path = svg.select("path");
+  var path = svg.select("#" + type);
   var pathEl = path.node();
   for (var i = 2001; i < 2020; i++) {
   	var x_pos = ((i - 2001) * 650)/18;
@@ -717,8 +835,8 @@ var svg2 = d3.select("#barChart")
             .text("Number of Cases")
             .style("font-size", "15px");
 
-function drawBar(type, year) {
-  var typeName = type;
+function drawBar(data, year) {
+  /*var typeName = type;
   if (typeName == "all") {
     typeName = "All Crime";
   } else {
@@ -727,7 +845,7 @@ function drawBar(type, year) {
     for (var i = 0; i < words.length; i++) {
       typeName += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
     }
-  }
+  }*/
 
   svg2.selectAll("#title").remove();
 
@@ -737,22 +855,26 @@ function drawBar(type, year) {
         .attr("y", -15)
         .attr("text-anchor", "middle")  
         .style("font-size", "18px") 
-        .text("Top 5 Districts of " + typeName + " in Chicago " + year);
+        .text("Top 5 Districts of " + typename + " in Chicago " + year);
 
-  var csvFile4 = mapData[type];
-  d3.csv(csvFile4).then(function(data) {
-
-    data = data.sort(function(a, b) {
+  
+    /*data = data.sort(function(a, b) {
               return d3.descending(+a[year], +b[year]);
           }).slice(0, 5);
 
     data = data.sort(function(a, b) {
-              return d3.ascending(+a[year], +b[year])});
+              return d3.ascending(+a[year], +b[year])});*/
+    data = data.sort(function(a, b) {
+              return a["value"] - b["value"];
+          }).reverse().slice(0, 5);
+    data = data.sort(function(a, b) {
+              return a["value"] - b["value"];
+             });
 
     var xBar = d3.scaleLinear()
               .range([0, widthBar])
               .domain([0, d3.max(data, function(d) { 
-                return parseInt(d[year]); })]);
+                return parseInt(d["value"])})]);
 
     svg2.selectAll("#xAxis").remove();
 
@@ -765,7 +887,7 @@ function drawBar(type, year) {
     var yBar = d3.scaleBand()
             .rangeRound([heightBar, 0], .1)
             .domain(data.map(function (d) {
-              return distName[d.District-1];
+              return distName[d["District"]-1];
             }));
 
     var yAxis = d3.axisLeft()
@@ -787,8 +909,8 @@ function drawBar(type, year) {
         .enter().append("rect")
         .attr("class", "bar")
         .attr("x", 0)
-        .attr("width", function(d) { return xBar(d[year])})
-        .attr("y", function(d) {return yBar(distName[d.District-1]); })
+        .attr("width", function(d) { return xBar(d["value"])})
+        .attr("y", function(d) {return yBar(distName[d["District"] - 1]); })
         .attr("height", yBar.bandwidth() - 7)
         .attr("fill", function(d) {
           if (d.District == dist1) {
@@ -801,8 +923,8 @@ function drawBar(type, year) {
               reset();
               isclick = false;
             }     
-            var pos = distPosMap[d.District];
-            var el = distPosElMap[d.District];
+            var pos = distPosMap[d["District"]];
+            var el = distPosElMap[d["District"]];
             isclick = true;
             clickpart = pos;
             g4.selectAll("path")
@@ -812,8 +934,14 @@ function drawBar(type, year) {
             if (active.node() === el) return reset();
             active.classed("active", false);
             active = d3.select(el).classed("active", true);
-            getdata(dist1);
-
+            updateDistrct(dist1);
+            svg2.selectAll(".bar")
+            	.attr("fill", function(d) {
+          				if (d.District == dist1) {
+            				return "tomato";
+          				} else {
+            				return "steelblue";
+          			}});
             var bounds = path.bounds(pos),
                 dx = bounds[1][0] - bounds[0][0],
                 dy = bounds[1][1] - bounds[0][1],
@@ -837,9 +965,9 @@ function drawBar(type, year) {
         .append("text")
         .attr("class","label")
         .attr("x", 5)
-        .attr("y", function(d) {return yBar(distName[d.District-1]) + 5;})
+        .attr("y", function(d) {return yBar(distName[d["District"]-1]) + 5;})
         .attr("dy", ".75em")
-        .text(function(d) { return d[year];})
+        .text(function(d) { return d["value"];})
         .attr("fill", "white");
     }  else {
          svg2.selectAll(".text")     
@@ -852,12 +980,11 @@ function drawBar(type, year) {
         .attr("dy", ".75em")
         .text(function(d) { return 0;})
         .attr("fill", "black");
-    }  
-  });
+    } 
 }
 // bar chart ends here
 
-function update(type) {
+/*function update(type) {
   if (!isclick) {
     svg.selectAll("*").remove();
     drawLine(file_data[type], type, 2001);
@@ -875,7 +1002,7 @@ document.getElementById("inds").onchange = function(d) {
     type = type_arr[parseInt(d3.select(this).property("value"))];
     // run the updateChart function with this selected option
     update(type);
-}
+}*/
 
 // function handleCheck(){
 //   var allBox = document.getElementById("0");
@@ -891,4 +1018,161 @@ document.getElementById("inds").onchange = function(d) {
 //   }
 // }
 
-update("all");
+//update("all");
+updateLineAll(2001);
+sliderTime.value(new Date(2001,1,1));
+
+document.getElementById("0").onclick = function() {
+  checkboxes = document.getElementsByName('check');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = this.checked;
+  }
+  update();
+}
+
+
+
+checkboxes = document.getElementsByName('check');
+for (var i = 0; i < checkboxes.length; i++){
+	checkboxes[i].onclick = function() {
+		var data1 = [];
+		file_data[type];
+		document.getElementById("0").checked = true;
+		checks = document.getElementsByName('check');
+		for (var j =0; j < checks.length; j++) {
+			if (!checks[j].checked) {
+				document.getElementById("0").checked = false;	
+				break;
+			}
+		}
+		update();
+		
+	}
+}
+
+function update() {
+	if (document.getElementById("0").checked) {
+		if (!isclick) {
+			updateLineAll();
+			updateBarMap(2001);
+			sliderTime.value(new Date(2001,1,1));
+		} else {
+			updateBarMap(year);
+			updateDistrct(dist1);
+		}
+	} else {
+		if (!isclick) {
+			updateLineGraph();
+			updateBarMap(2001);
+			sliderTime.value(new Date(2001,1,1));
+		} else {
+			updateBarMap(year);
+			updateDistrct(dist1);
+		}
+	}			
+}
+
+function updateLineAll() {
+	svg.selectAll("*").remove();
+	maxN = d3.max(file_data['all'], function(d) { return d.Number; });
+	x.domain(d3.extent(file_data['all'], function(d) { return parseTime(d.Year); }));
+  	y.domain([0, maxN]);
+
+  	// X Axis
+  	svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(20))
+      .style("font-size", "12px");
+
+    // Add the Y Axis
+    svg.append("g")
+      .call(d3.axisLeft(y))
+      .transition(100)
+      .style("font-size", "12px");
+
+	drawLine(file_data['all'], 'all', year);
+
+
+}
+
+function updateLineGraph() {
+	boxs = document.getElementsByName('check');
+	maxN = 0;
+	for (var i =0; i < boxs.length; i++) {
+		if (boxs[i].checked) {
+			type = type_arr[parseInt(boxs[i].id)];
+			maxN = Math.max(maxN, d3.max(file_data[type], function(d) { return d.Number;}))
+		}	
+	}
+	svg.selectAll("*").remove();
+  	x.domain(d3.extent(file_data['all'], function(d) { return parseTime(d.Year); }));
+  	y.domain([0, maxN]);
+  	// Add the X Axis
+  	svg.append("g")
+      			.attr("transform", "translate(0," + height + ")")
+      			.call(d3.axisBottom(x).ticks(20))
+      			.style("font-size", "12px");
+
+  	// Add the Y Axis
+  	svg.append("g")
+    .call(d3.axisLeft(y))
+    .transition(100)
+    .style("font-size", "12px");
+	for (var j =0; j < boxs.length; j++) {
+		if (boxs[j].checked) {
+			type = type_arr[parseInt(boxs[j].id)];
+			drawLine(file_data[type], type, 2001);
+		}
+	}
+}
+
+function sumSelected(year) {
+	sum=[];
+	for (var i = 0; i <32; i++){
+		sum[i] = 0;
+	}
+	for (var j =0; j < boxs.length; j++) {
+		if (boxs[j].checked) {
+			type = type_arr[parseInt(boxs[j].id)];
+			var data = mapData[type];
+  			for (var i = 0; i < data.length; i++) {
+                var dataState = parseInt(data[i].District);
+            	//Grab data value, and convert from string to float
+            	if (data[i][year]) {
+            		sum[dataState] = parseInt(data[i][year]) + sum[dataState];	
+            	}
+            }
+		}
+	}
+	return sum;
+}
+
+function updateBarMap (year) {
+	typename = "selected crime";
+	boxs = document.getElementsByName('check');
+	var sum = sumSelected(year);
+	sumData = [];
+	for (var i = 0; i < 32; i++) {
+		var part = [];
+		part["District"] = i;
+		part["value"] = sum[i]
+		sumData.push(part);
+	}
+	drawBar(sumData, year);
+	drawMap(sumData, year);
+}
+}).catch(function(err) {
+    // handle error here
+})
+
+
+//Bind data and create one path per GeoJSON feature
+/*svg4.selectAll("path")
+  .data(json.features)
+  .enter()
+  .append("path")
+  .attr("d", path)
+  .attr("class", "zipcode");*/
+
+
+
