@@ -171,6 +171,16 @@ ul {
 	margin-left: 1100px;
 }
 
-.labels {
-	
+#checkboxes {
+	margin-left: 150px;
+}
+
+#types {
+	position: absolute;
+	margin-left: 800px;
+	margin-top: 480px;
+	max-width: 450px;
+}
+.imgs {
+	cursor: pointer;
 }

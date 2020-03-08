@@ -8,11 +8,11 @@
     <h1 id = "tt">Chicago Crime Analysis from 2001-2019</h1>
     <h3>Explore the distribution of each crime type across Chicago over years</h3>
 </div>
-<div id="showText">
+<div id="showText" style="visibility: hidden;">
 	<button class="labels" onclick="getElementById('description').style.visibility='visible'" >Show Description</button>
 	<button class="labels" onclick="getElementById('description').style.visibility='hidden'" >Hide Description</button>
 </div>
-<div id="description">
+<div id="description" style="visibility: hidden;">
 	<p>Choose your interested crime type using the drop-down box "Crime Type"</p>
 	<p>Choose your interested year using the slide bar under the map</p>
 	<p>Hover over a district on map to get name and number of crime cases in that district</p>
@@ -24,41 +24,44 @@
 	<div id="checkboxes">  
 	  <label>Crime Type</label>
 	  <ul>
-	    <li><input type="checkbox" id ="0" checked = "checked"> All</li>
-	    <li><input name="check" type="checkbox" id ="1" checked = "checked"> Arson</li>
-	    <li><input name="check" type="checkbox" id ="2" checked = "checked"> Assault</li>
-	    <li><input name="check" type="checkbox" id ="3" checked = "checked"> Battery</li>
-	    <li><input name="check" type="checkbox" id ="4" checked = "checked"> Burglary</li>
-	    <li><input name="check" type="checkbox" id ="5" checked = "checked"> Concealed Carry License Violation</li>
-	    <li><input name="check" type="checkbox" id ="6" checked = "checked"> Crim Sexual Assault</li>
-	    <li><input name="check" type="checkbox" id ="7" checked = "checked"> Criminal Damage</li>
-	    <li><input name="check" type="checkbox" id ="8" checked = "checked"> Criminal Trespass</li>
-	    <li><input name="check" type="checkbox" id ="9" checked = "checked"> Deceptive Practice</li>
-	    <li><input name="check" type="checkbox" id ="10" checked = "checked"> Domestic Violence</li>
-	    <li><input name="check" type="checkbox" id ="11" checked = "checked"> Gambling</li>
-	    <li><input name="check" type="checkbox" id ="12" checked = "checked"> Homicide</li>
-	    <li><input name="check" type="checkbox" id ="13" checked = "checked"> Human Trafficking</li>
-	    <li><input name="check" type="checkbox" id ="14" checked = "checked"> Interference With Public Officer</li>
-	    <li><input name="check" type="checkbox" id ="15" checked = "checked"> Intimidation</li>
-	    <li><input name="check" type="checkbox" id ="16" checked = "checked"> Kidnapping</li>	  
-	    <li><input name="check" type="checkbox" id ="17" checked = "checked"> Liquor Law Violation</li>
-	    <li><input name="check" type="checkbox" id ="18" checked = "checked"> Motor Vehicle Theft</li>
-	    <li><input name="check" type="checkbox" id ="19" checked = "checked"> Narcotics</li>
-	    <li><input name="check" type="checkbox" id ="20" checked = "checked"> Obscenity</li>
-	    <li><input name="check" type="checkbox" id ="21" checked = "checked"> Offense Involving Children</li>
-	    <li><input name="check" type="checkbox" id ="22" checked = "checked"> Other Narcotic Violation</li>
-	    <li><input name="check" type="checkbox" id ="23" checked = "checked"> Other Offense</li>
-	    <li><input name="check" type="checkbox" id ="24" checked = "checked"> Prostitution</li>
-	    <li><input name="check" type="checkbox" id ="25" checked = "checked"> Public Indecency</li>
-	    <li><input name="check" type="checkbox" id ="26" checked = "checked"> Public Peace Violation</li>
-	    <li><input name="check" type="checkbox" id ="27" checked = "checked"> Ritualism</li>
-	    <li><input name="check" type="checkbox" id ="28" checked = "checked"> Robbery</li>
-	    <li><input name="check" type="checkbox" id ="29" checked = "checked"> Sex Offense</li>
-	    <li><input name="check" type="checkbox" id ="30" checked = "checked"> Stalking</li>
-	    <li><input name="check" type="checkbox" id ="31" checked = "checked"> Theft</li>
-	    <li><input name="check" type="checkbox" id ="32" checked = "checked"> Weapons Violation</li>
+	    <li><input type="checkbox" id ="0" checked = "checked"> All </li>
+
+	    <li><input name="check" type="checkbox" id ="1" checked = "checked"> Arson <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'The willful and malicious burning or charring of property or structure'"></li>
+	    <li><input name="check" type="checkbox" id ="2" checked = "checked"> Assault <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The act of inflicting physical harm or unwanted physical contact upon a person or, in some specific legal definitions, a threat or attempt to commit such an action'"></li>
+	    <li><input name="check" type="checkbox" id ="3" checked = "checked"> Battery <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'A criminal offense involving unlawful physical contact, distinct from assault which is the act of creating apprehension of such contact'"></li>
+	    <li><input name="check" type="checkbox" id ="4" checked = "checked"> Burglary <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'An unlawful entry into a building or other location for the purposes of committing an offence'"></li>
+	    <li><input name="check" type="checkbox" id ="5" checked = "checked"> Concealed Carry License Violation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Illegal firearm or weapon not permitted under the statute or carrying a weapon into a place that has banned weapons, such as a school or courtroom'"></li>
+	    <li><input name="check" type="checkbox" id ="6" checked = "checked"> Crim Sexual Assault <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'An act in which a person intentionally sexually touches another person without that person consent, or coerces or physically forces a person to engage in a sexual act against their will'"></li>
+	    <li><input name="check" type="checkbox" id ="7" checked = "checked"> Criminal Damage <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'A person who without lawful excuse destroys or damages any property belonging to another intending to destroy or damage any such property or being reckless as to whether any such property would be destroyed or damaged shall be guilty of an offence'"></li>
+	    <li><input name="check" type="checkbox" id ="8" checked = "checked"> Criminal Trespass <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The action of illegally going onto property owned by someone else'"></li>
+	    <li><input name="check" type="checkbox" id ="9" checked = "checked"> Deceptive Practice <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Activity by an individual or business that is meant to mislead or lure the public into purchasing a product or service'"></li>
+	    <li><input name="check" type="checkbox" id ="10" checked = "checked"> Domestic Violence <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'A pattern of abusive behavior in any relationship that is used by one partner to gain or maintain control over another intimate partner'"></li>
+	    <li><input name="check" type="checkbox" id ="11" checked = "checked"> Gambling <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The wagering of money or something of value on an event with an uncertain outcome, with the primary intent of winning money or material goods'"></li>
+	    <li><input name="check" type="checkbox" id ="12" checked = "checked"> Homicide <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The act of one human killing another'"></li>
+	    <li><input name="check" type="checkbox" id ="13" checked = "checked"> Human Trafficking <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The trade of humans for the purpose of forced labour, sexual slavery, or commercial sexual exploitation for the trafficker or others'"></li>
+	    <li><input name="check" type="checkbox" id ="14" checked = "checked"> Interference With Public Officer <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Interfering with the duties of various types of officials, such as police officers, fire fighters, animal wardens, and others'"></li>
+	    <li><input name="check" type="checkbox" id ="15" checked = "checked"> Intimidation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Intentional behavior that would cause a person of ordinary sensibilities to fear injury or harm'"></li>
+	    <li><input name="check" type="checkbox" id ="16" checked = "checked"> Kidnapping <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The unlawful transportation, asportation and confinement of a person against their will'"></li>	  
+	    <li><input name="check" type="checkbox" id ="17" checked = "checked"> Liquor Law Violation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Violations of state laws or local laws/ordinances prohibiting the manufacture, sale, purchase, transportation, possession, use of alcoholic beverages'"></li>
+	    <li><input name="check" type="checkbox" id ="18" checked = "checked"> Motor Vehicle Theft <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The theft or attempted theft of a motor vehicle'"></li>
+	    <li><input name="check" type="checkbox" id ="19" checked = "checked"> Narcotics <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Drugs that dull the senses or alter perception'"></li>
+	    <li><input name="check" type="checkbox" id ="20" checked = "checked"> Obscenity <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Any utterance or act that strongly offends the prevalent morality of the time'"></li>
+	    <li><input name="check" type="checkbox" id ="21" checked = "checked"> Offense Involving Children <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'An offense involving the sexual or physical abuse, or kidnaping, of a child under the age of 18 years'"></li>
+	    <li><input name="check" type="checkbox" id ="22" checked = "checked"> Other Narcotic Violation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Production, distribution, and/or use of certain controlled substances and the equipment or devices utilized in their preparation and/or use'"></li>
+	    <li><input name="check" type="checkbox" id ="23" checked = "checked"> Other Offense <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Any criminal offense, other than an offense triable by court-martial, military commission, provost court, or other military tribunal, which is in violation of an Act of Congress and is triable in any court established by Act of Congress'"></li>
+	    <li><input name="check" type="checkbox" id ="24" checked = "checked"> Prostitution <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The business or practice of engaging in sexual activity in exchange for payment'"></li>
+	    <li><input name="check" type="checkbox" id ="25" checked = "checked"> Public Indecency <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The deliberate exposure in public or in view of the general public by a person of a portion or portions of their body in circumstances where the exposure is contrary to local moral or other standards of appropriate behavior'"></li>
+	    <li><input name="check" type="checkbox" id ="26" checked = "checked"> Public Peace Violation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'A criminal offense that occurs when a person engages in some form of unruly public behavior, such as fighting or causing excessively loud noise'"></li>
+	    <li><input name="check" type="checkbox" id ="27" checked = "checked"> Ritualism <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Individuals have abandoned all hope of advancing in society and achieving the higher goal, and instead they keep what little they have by respecting the rules'"></li>
+	    <li><input name="check" type="checkbox" id ="28" checked = "checked"> Robbery <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The crime of taking or attempting to take anything of value by force, threat of force, or by putting the victim in fear'"></li>
+	    <li><input name="check" type="checkbox" id ="29" checked = "checked"> Sex Offense <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Forms of human sexual behavior that are crimes'"></li>
+	    <li><input name="check" type="checkbox" id ="30" checked = "checked"> Stalking <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Unwanted and/or repeated surveillance by an individual or group toward another person'"></li>
+	    <li><input name="check" type="checkbox" id ="31" checked = "checked"> Theft <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The taking of another person property or services without that person permission or consent with the intent to deprive the rightful owner of it'"></li>
+	    <li><input name="check" type="checkbox" id ="32" checked = "checked"> Weapons Violation <img class="imgs" src="./Information_icon.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Violations of statutes or regulations that control deadly weapons'"></li>
 	  </ul>
 	</div>
+    <div id="types">Click on the icons after each crime type to get more information of it
+    </div>
     <div id="sy">Crime Type</div>
     <select id="inds">
         <option value="0" id selected="selected" >All</option>

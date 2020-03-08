@@ -2,22 +2,17 @@
 <head>
     <meta charset="utf-8">
     <title>Chicago Crime Analysis</title>
-    <link rel="stylesheet" type="text/css" href="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.b5cf12e5.css">
+    <link rel="stylesheet" type="text/css" href="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.32f14183.css">
 </head>
 <div style="height: 500px; background-image: url('https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/chicago.096ee838.jpg');">
     <h1 id="tt">Chicago Crime Analysis from 2001-2019</h1>
     <h3>Explore the distribution of each crime type across Chicago over years</h3>
-    <!-- <h3>Choose your interested crime type using the drop-down box "Crime Type"</h3>
-    <h3>Choose your interested year using the slide bar under the map</h3>
-    <h3>hover over a district on map to get name and number of crime cases in that district</h3>
-    <h3>Click on your interested district to get more information about crimes in that district</h3>
-    <h3>Click on "Play" button next to the year slide bar to see animation of changing in distribution of chosen crime type from 2001-2019. Click on "Reset" to set beginning year back to 2001.</h3>-->
 </div>
-<div id="showText">
+<div id="showText" style="visibility: hidden;">
 	<button class="labels" onclick="getElementById('description').style.visibility='visible'">Show Description</button>
 	<button class="labels" onclick="getElementById('description').style.visibility='hidden'">Hide Description</button>
 </div>
-<div id="description">
+<div id="description" style="visibility: hidden;">
 	<p>Choose your interested crime type using the drop-down box "Crime Type"</p>
 	<p>Choose your interested year using the slide bar under the map</p>
 	<p>Hover over a district on map to get name and number of crime cases in that district</p>
@@ -25,53 +20,51 @@
 	<p>Click on "Play" button next to the year slide bar to see animation of changing in distribution of chosen crime type from 2001-2019. Click on "Reset" to set beginning year back to 2001.</p>
 </div>
 
-<!-- <div>
-    <p id="note">
-        *Percentage of each type may add up to be not equal to 100% due to rounding.</p>
-</div>
-
-<div>
-    <p id="explain1">
-        Hover over bars of years you are interetsed in to see how many homicide cases happened in that year. <br> <br>Click on bars of interested years to get more details about homicide cases in that year.</p>
-</div>
-
-<div>
-    <p id="explain2">
-        Hover over sectors you are interested in to see the percentage.</p>
-</div>
-
-<div style="position: absolute; top: 2000px; left: 10px; right: 60px; background-color: white; padding: 15px; font-size: 20px;">
-    <h2>WriteUp</h2>
-    <p>1. Rationale</p>
-    <p>We first did an exploratory analysis of our chosen dataset: Chicago Crimes, 2001-present, and decided to focus on the data more recently from 2010 to 2019. Since we are most interested in homicide, we filtered our data by homicide. Then, we explored multiple dimensions and found “time” and “arrested” most interesting. Thus, we wanted to design an interactive visualization to show the time percentage of cases and percentage of arrested criminals in each year from 2010 to 2019. To show the number of cases vs year, we used a bar chart with x-axis being each year and y-axis being total cases. We encoded total cases into “height” of each bar since it is easy to compare total cases across years by just comparing the heights of bars. Then, we used a donut chart to show the percentage of cases in each time region and another donut chart to show the percentage of arrested and unarrested criminals. We used each color to represent each kind (time region, whether arrested) and used the area of each sector to represent the corresponding percentage. We used a donut chart instead of a pie chart because a donut chart has an empty space in the center where we can add information like tips. Also, we included a legend for each donut chart to make it clear which sector belongs to which kind. For the interaction techniques, we chose hover and click. For all the charts, on mouse over bars or sectors of donut charts, it will show a tip of the exact number of the bar or sector. For the bar chart, the tip is right on the top of each bar; for the donut charts, the tip is fixed in the center of the donut chart. We chose such positions of tips because they will not intersect with other bars or sectors and thus will not influence readings of the whole graph. Then, if the mouse clicks on the bar, it will show the donut charts of the time percentage of cases and the arrested percentage in that corresponding year (the donut chart is shown at the exactly same position as the bar chart). We used two labels to let the user choose which one they want to view. Also, there is a “back” button at the left of those two labels to let the user go back to the main bar chart to view more interesting years. After the user clicks on the back button, the tip of the year that the user clicked remains on top of that bar, and we made this design choice because we wanted to let users know which year they just clicked on.</p>
-    <p>2. Alternative</p>
-    <p>During our visualization design process, we first come up with the idea of only using hover as interaction. The original idea was when users hover on a certain bar for the year they are interested in, show two more boxes on the chart which they can hover into, when they hover into one of those boxes, either donut chart about time period or donut chart about arrest percentage will appear. But after considering the problem of users may want to explore the donut chart leading mouse off the bar chart area, this may cause the problem of donut chart disappear when users try to explore it. Also, this involves nested hover which may be hard for users to understand and for us to implement. So we reconsidered our design and added click as the interaction for getting donut charts of the year the users are interested in because we found most people will click on the object after they hover on it and discover that they can interact with it. Also, in our first design we were planning to use pie charts for showing  time and arrested details of cases in a year. But when we were adding tips to the pie chart, we found the moving tip when hovering over different sectors hard to follow. So we came up with the idea of using donut charts and always putting tip in the middle when users hover over different sectors for continuity of interaction. At the middle of realizing our design, we came over the problem of combining bar chart and donut chart into the same page, so we tried to go over this problem by redirecting users to the page with donut chart after they click on a certain bar. But after thinking over it, we feel that the reloading of page may break the continuity of users’ experience on exploring data so we ended up not using this strategy.</p>
-    <p>3. Work Split</p>
-    <p>Design visualization: all of us</p> 
-    <p>Data reorganization: Chris Nie, Kexuan Liu</p>
-    <p>Design the style of website: Kexuan Liu, Ivy Wang</p>
-    <p>Add annotation/explanation to website: Chris Nie</p>
-    <p>Draw bar chart and donut chart: Kexuan Liu</p>
-    <p>Make interaction between bar chart and donut chart: Chris Nie, Ivy Wang</p>
-    <p>Add mouseover event(tips and highlight): Chris Nie, Ivy Wang</p>
-    <p>Make website work properly on online: Kexuan Liu, Ivy Wang</p>
-    <p>Write up: All of us</p>
-    <p>We choose to meet up together to do this project and we basically have one person do the actual coding, other people help to debug.</p>
-    <p>4. Development Process</p>
-    <p>Each person spent about 14 hours on this project. We spent most time working with d3 to make the interaction/graph work properly. For the design part, we didn’t spend much time on the design of visualization but the design keeps changing when we develop our application. We keep adjusting our design to make it realizable and user friendly. For the implementation part,  all of us are new to d3, so we spent a lot of time looking at examples online and trying to learn and use technique in our project.It is interesting to learn a new coding language by looking at examples. We first tried to understand the code then apply it to our own data.</p>
-</div> -->
-
 <body>
-	<!-- <div id="control" style="display: none">
-	    <form>
-	    	<div class="button_cont" align="center" id="button" type="button">Back to All Years</div>
-	        <label class="select"><input type="radio" name="dataset" value="time_percentage" id = "r" checked> Time Period Percentage</label>
-	        <label class="select"><input type="radio" name="dataset" value="arrested_percentage"> Arrested Percentage</label>
-	    </form>
-	</div> -->
+	<div id="checkboxes">  
+	  <label>Crime Type</label>
+	  <ul>
+	    <li><input type="checkbox" id="0" checked="checked"> All </li>
+
+	    <li><input name="check" type="checkbox" id="1" checked="checked"> Arson <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'The willful and malicious burning or charring of property or structure'"></li>
+	    <li><input name="check" type="checkbox" id="2" checked="checked"> Assault <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The act of inflicting physical harm or unwanted physical contact upon a person or, in some specific legal definitions, a threat or attempt to commit such an action'"></li>
+	    <li><input name="check" type="checkbox" id="3" checked="checked"> Battery <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'A criminal offense involving unlawful physical contact, distinct from assault which is the act of creating apprehension of such contact'"></li>
+	    <li><input name="check" type="checkbox" id="4" checked="checked"> Burglary <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'An unlawful entry into a building or other location for the purposes of committing an offence'"></li>
+	    <li><input name="check" type="checkbox" id="5" checked="checked"> Concealed Carry License Violation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Illegal firearm or weapon not permitted under the statute or carrying a weapon into a place that has banned weapons, such as a school or courtroom'"></li>
+	    <li><input name="check" type="checkbox" id="6" checked="checked"> Crim Sexual Assault <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'An act in which a person intentionally sexually touches another person without that person consent, or coerces or physically forces a person to engage in a sexual act against their will'"></li>
+	    <li><input name="check" type="checkbox" id="7" checked="checked"> Criminal Damage <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px; padding-top: 5px;" onclick="document.getElementById('types').innerHTML = 'A person who without lawful excuse destroys or damages any property belonging to another intending to destroy or damage any such property or being reckless as to whether any such property would be destroyed or damaged shall be guilty of an offence'"></li>
+	    <li><input name="check" type="checkbox" id="8" checked="checked"> Criminal Trespass <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The action of illegally going onto property owned by someone else'"></li>
+	    <li><input name="check" type="checkbox" id="9" checked="checked"> Deceptive Practice <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Activity by an individual or business that is meant to mislead or lure the public into purchasing a product or service'"></li>
+	    <li><input name="check" type="checkbox" id="10" checked="checked"> Domestic Violence <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'A pattern of abusive behavior in any relationship that is used by one partner to gain or maintain control over another intimate partner'"></li>
+	    <li><input name="check" type="checkbox" id="11" checked="checked"> Gambling <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The wagering of money or something of value on an event with an uncertain outcome, with the primary intent of winning money or material goods'"></li>
+	    <li><input name="check" type="checkbox" id="12" checked="checked"> Homicide <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The act of one human killing another'"></li>
+	    <li><input name="check" type="checkbox" id="13" checked="checked"> Human Trafficking <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The trade of humans for the purpose of forced labour, sexual slavery, or commercial sexual exploitation for the trafficker or others'"></li>
+	    <li><input name="check" type="checkbox" id="14" checked="checked"> Interference With Public Officer <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Interfering with the duties of various types of officials, such as police officers, fire fighters, animal wardens, and others'"></li>
+	    <li><input name="check" type="checkbox" id="15" checked="checked"> Intimidation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Intentional behavior that would cause a person of ordinary sensibilities to fear injury or harm'"></li>
+	    <li><input name="check" type="checkbox" id="16" checked="checked"> Kidnapping <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The unlawful transportation, asportation and confinement of a person against their will'"></li>	  
+	    <li><input name="check" type="checkbox" id="17" checked="checked"> Liquor Law Violation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Violations of state laws or local laws/ordinances prohibiting the manufacture, sale, purchase, transportation, possession, use of alcoholic beverages'"></li>
+	    <li><input name="check" type="checkbox" id="18" checked="checked"> Motor Vehicle Theft <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The theft or attempted theft of a motor vehicle'"></li>
+	    <li><input name="check" type="checkbox" id="19" checked="checked"> Narcotics <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Drugs that dull the senses or alter perception'"></li>
+	    <li><input name="check" type="checkbox" id="20" checked="checked"> Obscenity <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Any utterance or act that strongly offends the prevalent morality of the time'"></li>
+	    <li><input name="check" type="checkbox" id="21" checked="checked"> Offense Involving Children <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'An offense involving the sexual or physical abuse, or kidnaping, of a child under the age of 18 years'"></li>
+	    <li><input name="check" type="checkbox" id="22" checked="checked"> Other Narcotic Violation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Production, distribution, and/or use of certain controlled substances and the equipment or devices utilized in their preparation and/or use'"></li>
+	    <li><input name="check" type="checkbox" id="23" checked="checked"> Other Offense <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Any criminal offense, other than an offense triable by court-martial, military commission, provost court, or other military tribunal, which is in violation of an Act of Congress and is triable in any court established by Act of Congress'"></li>
+	    <li><input name="check" type="checkbox" id="24" checked="checked"> Prostitution <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The business or practice of engaging in sexual activity in exchange for payment'"></li>
+	    <li><input name="check" type="checkbox" id="25" checked="checked"> Public Indecency <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The deliberate exposure in public or in view of the general public by a person of a portion or portions of their body in circumstances where the exposure is contrary to local moral or other standards of appropriate behavior'"></li>
+	    <li><input name="check" type="checkbox" id="26" checked="checked"> Public Peace Violation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'A criminal offense that occurs when a person engages in some form of unruly public behavior, such as fighting or causing excessively loud noise'"></li>
+	    <li><input name="check" type="checkbox" id="27" checked="checked"> Ritualism <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Individuals have abandoned all hope of advancing in society and achieving the higher goal, and instead they keep what little they have by respecting the rules'"></li>
+	    <li><input name="check" type="checkbox" id="28" checked="checked"> Robbery <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The crime of taking or attempting to take anything of value by force, threat of force, or by putting the victim in fear'"></li>
+	    <li><input name="check" type="checkbox" id="29" checked="checked"> Sex Offense <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Forms of human sexual behavior that are crimes'"></li>
+	    <li><input name="check" type="checkbox" id="30" checked="checked"> Stalking <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Unwanted and/or repeated surveillance by an individual or group toward another person'"></li>
+	    <li><input name="check" type="checkbox" id="31" checked="checked"> Theft <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'The taking of another person property or services without that person permission or consent with the intent to deprive the rightful owner of it'"></li>
+	    <li><input name="check" type="checkbox" id="32" checked="checked"> Weapons Violation <img class="imgs" src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/Information_icon.65f8987c.svg" style="width: 10px; height: 10px;" onclick="document.getElementById('types').innerHTML = 'Violations of statutes or regulations that control deadly weapons'"></li>
+	  </ul>
+	</div>
+    <div id="types">Click on the icons after each crime type to get more information of it
+    </div>
     <div id="sy">Crime Type</div>
     <select id="inds">
-        <option value="0" selected="selected">All</option>
+        <option value="0" id="" selected="selected">All</option>
         <option value="1">Arson</option>
         <option value="2">Assault</option>
         <option value="3">Battery</option>
@@ -139,10 +132,10 @@
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <div id="mapArea"></div>
 <div id="slider"></div>
-<div style="position: absolute; top: 1220px; left: 95px;" id="year"></div>
-<div class="button" style="position: absolute; top: 1135px; left: 30px;" align="center" id="button1" type="button">Play</div>
-<div class="button" style="position: absolute; top: 1170px; left: 30px;" align="center" id="button2" type="button">Reset</div>
+<div style="position: absolute; top: 1170px; left: 95px;" id="year"></div>
+<div class="button" style="position: absolute; top: 1105px; left: 30px;" align="center" id="button1" type="button">Play</div>
+<div class="button" style="position: absolute; top: 1140px; left: 30px;" align="center" id="button2" type="button">Reset</div>
 <div id="lineChart"></div>
-<div id="barChart" style="position: absolute; top: 1225px; left: 850px"></div>
+<div id="barChart" style="position: absolute; top: 1180px; left: 850px"></div>
 <script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/d3-tip.b9f32a63.js"></script>
-<script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.c6157a82.js"></script>
+<script src="https://uw-cse442-wi20.github.io/FP-chicago-crime-analysis/src.d9f10fa3.js"></script>
