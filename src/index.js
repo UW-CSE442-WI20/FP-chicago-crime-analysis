@@ -930,6 +930,28 @@ function drawBar(data, year) {
           } else {
             return "steelblue";
           }})
+        .on("mouseover", function(d) {
+        	if (isclick) {
+        		return;
+        	}
+        	var pos = distPosMap[d["District"]];
+            var el = distPosElMap[d["District"]];
+            clickpart = pos;
+            g4.selectAll("path")
+                .on("mouseover", tip2.show)
+                .on("mouseout", tip2.hide);
+            var curYear = sliderTime.value().getFullYear();
+            getNum(curYear);
+      
+            svg4.selectAll("path").transition().duration('50').attr('opacity', '0.2');
+            d3.select(el).transition().duration('50').attr('opacity', '1');                       
+        })
+        .on("mouseout", function(d) {
+        	if (isclick) {
+        		return;
+        	}
+        	svg4.selectAll("path").transition().duration('50').attr('opacity', '1');
+        })
         .on("click", function(d){
             if (isclick) {
               reset();
@@ -947,6 +969,8 @@ function drawBar(data, year) {
             active.classed("active", false);
             active = d3.select(el).classed("active", true);
             updateDistrct(dist1);
+            var curYear = sliderTime.value().getFullYear();
+            getNum(curYear);
             svg2.selectAll(".bar")
             	.attr("fill", function(d) {
           				if (d.District == dist1) {
